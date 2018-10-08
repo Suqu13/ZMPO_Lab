@@ -1,0 +1,3 @@
+C:/Users/Jakub/Desktop/PWr/C++_SEM3/Table/cmake-build-debug/CMakeFiles/Table.dir
+C:/Users/Jakub/Desktop/PWr/C++_SEM3/Table/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Jakub/Desktop/PWr/C++_SEM3/Table/cmake-build-debug/CMakeFiles/rebuild_cache.dir
