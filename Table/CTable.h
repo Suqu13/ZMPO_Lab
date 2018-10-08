@@ -25,16 +25,14 @@ public:
     //Functions
     void vSetName(const string sName);
     int iGetLength();
-    int iGetElement(const int iElement_sPlace, int* iSuccess);
+    int iGetElement(const int iElement_sPlace, bool *iSuccess);
     string sGetName();
-    bool bAssignElement(const int iElement_sPlace,const int iElement);
+    bool bAssignElement(const int iElement_sPlace, const int iElement);
     bool bSetLength(const int iNewLength);
     string sToString();
     CTable *cClone();
 
 private:
-    //Functions
-
 
     //Variables
     int iLength;

@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Table.dir/main.cpp.obj"
+  "CMakeFiles/Table.dir/UserInterface.cpp.obj"
   "Table.pdb"
   "Table.exe"
   "Table.exe.manifest"

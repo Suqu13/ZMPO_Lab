@@ -71,7 +71,7 @@ int CTable::iGetLength() {
     return this->iLength;
 }
 
-int CTable::iGetElement(const int iElement_sPlace, int *iSuccess) {
+int CTable::iGetElement(const int iElement_sPlace, bool *iSuccess) {
     if (iElement_sPlace <= iLength - 1 && iElement_sPlace >= 0) {
         //If everything is right, it sets iSuccess on 1!
         *iSuccess = 1;
@@ -103,6 +103,7 @@ bool CTable::bSetLength(const int iNewLength) {
 
         iArray = iArray_;
         iLength = iNewLength;
+
         return true;
     }
     return false;

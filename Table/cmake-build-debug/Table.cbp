@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Jakub/Desktop/PWr/C++_SEM3/Table/UserInterface.cpp">
+			<Option target="Table"/>
+		</Unit>
+		<Unit filename="C:/Users/Jakub/Desktop/PWr/C++_SEM3/Table/UserInterface.h">
+			<Option target="Table"/>
+		</Unit>
 		<Unit filename="C:/Users/Jakub/Desktop/PWr/C++_SEM3/Table/main.cpp">
 			<Option target="Table"/>
 		</Unit>

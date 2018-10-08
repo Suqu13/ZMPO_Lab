@@ -3,4 +3,4 @@ project(Table)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(Table main.cpp)
+add_executable(Table main.cpp UserInterface.cpp UserInterface.h)

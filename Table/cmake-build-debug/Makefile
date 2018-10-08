@@ -122,6 +122,33 @@ Table/fast:
 	$(MAKE) -f CMakeFiles\Table.dir\build.make CMakeFiles/Table.dir/build
 .PHONY : Table/fast
 
+UserInterface.obj: UserInterface.cpp.obj
+
+.PHONY : UserInterface.obj
+
+# target to build an object file
+UserInterface.cpp.obj:
+	$(MAKE) -f CMakeFiles\Table.dir\build.make CMakeFiles/Table.dir/UserInterface.cpp.obj
+.PHONY : UserInterface.cpp.obj
+
+UserInterface.i: UserInterface.cpp.i
+
+.PHONY : UserInterface.i
+
+# target to preprocess a source file
+UserInterface.cpp.i:
+	$(MAKE) -f CMakeFiles\Table.dir\build.make CMakeFiles/Table.dir/UserInterface.cpp.i
+.PHONY : UserInterface.cpp.i
+
+UserInterface.s: UserInterface.cpp.s
+
+.PHONY : UserInterface.s
+
+# target to generate assembly for a file
+UserInterface.cpp.s:
+	$(MAKE) -f CMakeFiles\Table.dir\build.make CMakeFiles/Table.dir/UserInterface.cpp.s
+.PHONY : UserInterface.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -158,6 +185,9 @@ help:
 	@echo ... Table
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... UserInterface.obj
+	@echo ... UserInterface.i
+	@echo ... UserInterface.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
