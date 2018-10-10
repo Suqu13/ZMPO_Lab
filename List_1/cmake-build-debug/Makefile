@@ -195,6 +195,33 @@ src/Menu.cpp.s:
 	$(MAKE) -f CMakeFiles\Test.dir\build.make CMakeFiles/Test.dir/src/Menu.cpp.s
 .PHONY : src/Menu.cpp.s
 
+src/Utilities.obj: src/Utilities.cpp.obj
+
+.PHONY : src/Utilities.obj
+
+# target to build an object file
+src/Utilities.cpp.obj:
+	$(MAKE) -f CMakeFiles\List_1.dir\build.make CMakeFiles/List_1.dir/src/Utilities.cpp.obj
+.PHONY : src/Utilities.cpp.obj
+
+src/Utilities.i: src/Utilities.cpp.i
+
+.PHONY : src/Utilities.i
+
+# target to preprocess a source file
+src/Utilities.cpp.i:
+	$(MAKE) -f CMakeFiles\List_1.dir\build.make CMakeFiles/List_1.dir/src/Utilities.cpp.i
+.PHONY : src/Utilities.cpp.i
+
+src/Utilities.s: src/Utilities.cpp.s
+
+.PHONY : src/Utilities.s
+
+# target to generate assembly for a file
+src/Utilities.cpp.s:
+	$(MAKE) -f CMakeFiles\List_1.dir\build.make CMakeFiles/List_1.dir/src/Utilities.cpp.s
+.PHONY : src/Utilities.cpp.s
+
 src/main.obj: src/main.cpp.obj
 
 .PHONY : src/main.obj
@@ -265,6 +292,9 @@ help:
 	@echo ... src/Menu.obj
 	@echo ... src/Menu.i
 	@echo ... src/Menu.s
+	@echo ... src/Utilities.obj
+	@echo ... src/Utilities.i
+	@echo ... src/Utilities.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

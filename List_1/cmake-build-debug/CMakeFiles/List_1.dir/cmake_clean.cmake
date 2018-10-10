@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/List_1.dir/src/main.cpp.obj"
   "CMakeFiles/List_1.dir/src/CTable.cpp.obj"
   "CMakeFiles/List_1.dir/src/Menu.cpp.obj"
+  "CMakeFiles/List_1.dir/src/Utilities.cpp.obj"
   "List_1.pdb"
   "List_1.exe"
   "List_1.exe.manifest"

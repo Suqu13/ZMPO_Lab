@@ -140,6 +140,12 @@
 		<Unit filename="C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/Menu.h">
 			<Option target="List_1"/>
 		</Unit>
+		<Unit filename="C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/Utilities.cpp">
+			<Option target="List_1"/>
+		</Unit>
+		<Unit filename="C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/Utilities.h">
+			<Option target="List_1"/>
+		</Unit>
 		<Unit filename="C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/main.cpp">
 			<Option target="List_1"/>
 		</Unit>
