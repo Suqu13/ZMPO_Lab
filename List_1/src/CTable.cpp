@@ -103,7 +103,10 @@ int CTable::iGetElement(const int iIndex, bool *iSuccess) {
 }
 
 bool CTable::bInsertElement(const int iIndex, const int iElement) {
-    if (iIndex <= iLength - 1 && iIndex >= 0) {
+    if (iLength == 0) {
+        bSetLength(1);
+        iArray[0] = iElement;
+    } else if (iIndex <= iLength - 1 && iIndex >= 0) {
         iArray[iIndex] = iElement;
         return true;
     } else {

@@ -5,10 +5,9 @@
 #ifndef LIST_1_MENU_H
 #define LIST_1_MENU_H
 
-
+#include "CTable.h"
 #include <string>
 #include <vector>
-#include "CTable.h"
 
 
 using namespace std;

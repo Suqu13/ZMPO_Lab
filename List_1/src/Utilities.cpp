@@ -1,37 +1,43 @@
 //
 // Created by Jakub on 10.10.2018.
 //
-
-#include <iostream>
-#include <limits>
 #include "Utilities.h"
+#include <limits>
+#include <iostream>
+#include <sstream>
+
 
 using namespace std;
 
 int Utilities::iProvideInt() {
     int iInput;
-    while (!(cin >> iInput)) {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Try again, you provided wrong data." << endl;
-    }
+    bool bValid;
+    do {
+        std::string string;
+        std::stringstream stream;
+        std::getline(std::cin, string);
+        stream << string;
+        bValid = (bool) (stream >> iInput);
+    } while (!bValid);
     return iInput;
 }
 
 //TODO
-int Utilities::iProvideIntBetween(const int iStart, const int iEnd) {
+int Utilities::iProvideIntBetween(int iStart, int iEnd){
     int iInput;
-    while (!((cin >> iInput) && (iInput >= iStart && iInput <= iEnd))) {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Try again, you provided wrong data." << endl;
-    }
+    bool bValid;
+    do{
+        string sString_;
+        stringstream sStream;
+        getline(cin, sString_);
+        sStream << sString_;
+        bValid = (bool)(sStream >> iInput);
+    } while (!bValid || iInput < iStart || iEnd < iInput);
     return iInput;
 }
 
 string Utilities::sProvideString() {
     string sInput;
     cin >> sInput;
-
     return sInput;
 }

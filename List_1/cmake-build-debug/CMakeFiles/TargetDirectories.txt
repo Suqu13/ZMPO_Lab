@@ -1,4 +1,4 @@
-C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/cmake-build-debug/CMakeFiles/List_1.dir
-C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/cmake-build-debug/CMakeFiles/Test.dir
-C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/cmake-build-debug/CMakeFiles/List_1.dir
+/cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/cmake-build-debug/CMakeFiles/Test.dir

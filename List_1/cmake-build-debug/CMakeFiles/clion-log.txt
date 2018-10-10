@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2018.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\Jakub\Desktop\PWr\C++_SEM3\List_1
+C:\Users\Jakub\.CLion2018.2\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/cmake-build-debug
+-- Build files have been written to: /cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/cmake-build-debug

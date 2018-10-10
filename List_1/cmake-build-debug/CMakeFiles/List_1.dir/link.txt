@@ -1,3 +1,1 @@
-"C:\Program Files\JetBrains\CLion 2018.2.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\List_1.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\List_1.dir/objects.a @CMakeFiles\List_1.dir\objects1.rsp
-C:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\List_1.dir/objects.a -Wl,--no-whole-archive  -o List_1.exe -Wl,--out-implib,libList_1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\List_1.dir\linklibs.rsp
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/List_1.dir/src/main.cpp.o CMakeFiles/List_1.dir/src/CTable.cpp.o CMakeFiles/List_1.dir/src/Menu.cpp.o CMakeFiles/List_1.dir/src/Utilities.cpp.o  -o List_1.exe -Wl,--out-implib,libList_1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
