@@ -24,7 +24,7 @@ Menu::~Menu() {
 
 
 void Menu::vVec_CreateCTables() {
-    cout << "Provide the number of elements: ";
+    cout << "Please provide a number of elements: ";
     int iNumber = Utilities::iProvideInt();
     for (int i = 0; i < iNumber; ++i) {
         vCTables_Vec.push_back(new CTable);
@@ -40,7 +40,7 @@ void Menu::vVec_CreateSpecCTable() {
     sName = Utilities::sProvideString();
 
     cout << "\nPlease provide a length: ";
-    iLength = Utilities::iProvideInt();;
+    iLength = Utilities::iProvideIntBetween(0, numeric_limits<int>::max());
 
     vCTables_Vec.push_back(new CTable(sName, iLength));
 }
@@ -95,7 +95,7 @@ void Menu::vVec_SetName() {
     }
     cout << "Please provide an index of the table to change name: ";
     int iTableIndex = Utilities::iProvideIntBetween(1, vCTables_Vec.size()) - 1;
-    cout << "\nPlease provide a new name: ";
+    cout << "\nPlease provide the name: ";
     string sNewName = Utilities::sProvideString();
     vCTables_Vec[iTableIndex]->vSetName(sNewName);
 }
@@ -105,12 +105,12 @@ void Menu::vVec_Insert() {
         cout << "Firstly, you have to create a table!!" << endl;
         return;
     }
-    cout << "Please provide a table where you want to insert element: ";
+    cout << "Please provide the table where you want to insert a new element: ";
     int iTableIndex = Utilities::iProvideIntBetween(1, vCTables_Vec.size()) - 1;
-    cout << "\nPlease provide a new element: ";
+    cout << "\nPlease provide the new element: ";
     int iNewElement = Utilities::iProvideInt();
     vCTables_Vec[iTableIndex]->sToString();
-    cout << "\nPlease provide an index of a new element: ";
+    cout << "\nPlease provide an index for the element: ";
     vCTables_Vec[iTableIndex]->bInsertElement(
             Utilities::iProvideIntBetween(0, vCTables_Vec[iTableIndex]->iGetLength() - 1), iNewElement);
 }
@@ -120,7 +120,7 @@ void Menu::vVec_SetLength() {
         cout << "Firstly, you have to create a table!!" << endl;
         return;
     }
-    cout << "Please provide a table to change a length: ";
+    cout << "Please enter the table whose length you want to change: ";
     int iTableIndex = Utilities::iProvideIntBetween(0, vCTables_Vec.size()) - 1;
     cout << "\nPlease provide a new length: ";
     vCTables_Vec[iTableIndex]->bSetLength(Utilities::iProvideIntBetween(0, numeric_limits<int>::max()));
@@ -134,7 +134,7 @@ bool Menu::bVec_End() {
 
 void Menu::vVec_ShowMenu() {
     cout << "\n1.  Create a group of regular CTables." << endl << "2.  Create a specified CTable." << endl <<
-         "3.  Clone a specified CTable and attach it to the vector." << endl << "4.  Print the entire list." << endl
+         "3.  Clone a specified CTable and attach it to the list." << endl << "4.  Print the entire list." << endl
          << "5.  Change length of a specified CTable." << endl << "6.  Set name of a specified CTable."
          << endl << "7.  Insert a new element into a specified CTable." << endl << "8.  Delete a specified CTable."
          << endl
