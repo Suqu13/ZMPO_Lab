@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/CTable.h
+string
+-
+
+C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/Menu.cpp
+iostream
+-
+sstream
+-
+Menu.h
+C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/Menu.h
+
+C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/Menu.h
+string
+-
+vector
+-
+CTable.h
+C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/CTable.h
+
