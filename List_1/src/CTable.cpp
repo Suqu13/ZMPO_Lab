@@ -10,6 +10,7 @@
 
 using namespace std;
 
+//Constructor
 CTable::CTable() : iDEF_LENGTH(10), sDEF_NAME("Regular_CTable"),
                    sName(sDEF_NAME), iLength(iDEF_LENGTH) {
     iArray = new int[iLength];
@@ -17,6 +18,7 @@ CTable::CTable() : iDEF_LENGTH(10), sDEF_NAME("Regular_CTable"),
     cout << "bezp: '<" << sName << ">'" << endl;
 }
 
+//Parameterized Constructor
 CTable::CTable(string sName, int iLength) : sDEF_NAME("Regular_CTable"), iDEF_LENGTH(10), sName(sName),
                                             iLength(iLength) {
     iArray = new int[iLength];
@@ -24,6 +26,7 @@ CTable::CTable(string sName, int iLength) : sDEF_NAME("Regular_CTable"), iDEF_LE
     cout << "parametr: '<" << sName << ">'" << endl;
 }
 
+//Copying Constructor
 CTable::CTable(const CTable &pcOther) : iDEF_LENGTH(10), sDEF_NAME("Regular_CTable") {
     sName = pcOther.sName + "_copy";
     iLength = pcOther.iLength;
@@ -41,18 +44,18 @@ CTable::CTable(const CTable &pcOther) : iDEF_LENGTH(10), sDEF_NAME("Regular_CTab
     cout << "kopiuj: '<" << sName << ">'" << endl;
 }
 
+//Deconstuctor
 CTable::~CTable() {
     delete[] iArray;
     cout << "usuwam: '<" << sName << ">'" << endl;
 }
 
+//Operator copies values from A to B
 CTable &CTable::operator=(const CTable &pcOther) {
     iLength = pcOther.iLength;
     int *iArray_ = new int[iLength];
-
     int *w = iArray_;
     int *w_ = pcOther.iArray;
-
     for (int i = 0; i < iLength; i++) {
         *w = *w_;
         //Changing addresses
@@ -63,6 +66,7 @@ CTable &CTable::operator=(const CTable &pcOther) {
     iArray = iArray_;
 }
 
+//Initialization of all new CTables with zeroes
 void CTable::vInitializeWithZeros(int *iTableToInitialize, const int iStartIndex, const int iEndIndex) {
     if (iEndIndex - iStartIndex > 0) {
         int *w = iTableToInitialize;
@@ -141,8 +145,7 @@ string CTable::sToString() {
 }
 
 
-CTable* CTable::cClone()
-{
+CTable *CTable::cClone() {
     return new CTable(*this);
 }
 

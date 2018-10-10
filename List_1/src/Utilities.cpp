@@ -21,7 +21,7 @@ int Utilities::iProvideInt() {
 //TODO
 int Utilities::iProvideIntBetween(const int iStart, const int iEnd) {
     int iInput;
-    while (!(cin >> iInput) && iInput >= iStart && iInput <= iEnd) {
+    while (!((cin >> iInput) && (iInput >= iStart && iInput <= iEnd))) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Try again, you provided wrong data." << endl;

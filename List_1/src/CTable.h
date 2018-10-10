@@ -21,8 +21,7 @@ public:
     ~CTable(); //Deconstuctor
 
 
-    //Operators
-    CTable &operator=(const CTable &pcOther);
+    CTable &operator=(const CTable &pcOther); //Operator copies values from A to B
 
     //Functions
     void vSetName(const string sName);
@@ -37,7 +36,8 @@ public:
 
 private:
 
-    void vInitializeWithZeros(int *iTableToInitialize, const int iStartIndex, const int iEndIndex);
+    void vInitializeWithZeros(int *iTableToInitialize, const int iStartIndex, const int iEndIndex); //Initialization of all new CTables with zeroes
+
     //Default values
     const int iDEF_LENGTH;
     const string sDEF_NAME;

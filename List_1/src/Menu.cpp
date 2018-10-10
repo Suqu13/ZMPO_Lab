@@ -46,6 +46,10 @@ void Menu::vVec_CreateSpecCTable() {
 }
 
 void Menu::vVec_ToString() {
+    if (vCTables_Vec.empty()) {
+        cout << "Firstly, you have to create a table!!" << endl;
+        return;
+    }
     for (int i = 0; i < vCTables_Vec.size(); i++) {
         cout << (i + 1) << ". Name: " << vCTables_Vec[i]->sGetName() << "; Length: " << vCTables_Vec[i]->iGetLength()
              << "; Elements: "
@@ -55,8 +59,12 @@ void Menu::vVec_ToString() {
 }
 
 void Menu::vVec_DeleteCTable() {
+    if (vCTables_Vec.empty()) {
+        cout << "Firstly, you have to create a table!!" << endl;
+        return;
+    }
     cout << "Please provide an index of the table to delete: ";
-    int iTableIndex = (Utilities::iProvideInt()) -1;
+    int iTableIndex = (Utilities::iProvideIntBetween(1, vCTables_Vec.size())) - 1;
     if (vCTables_Vec.size() > iTableIndex) {
         delete vCTables_Vec[iTableIndex];
         vCTables_Vec.erase(vCTables_Vec.begin() + iTableIndex);
@@ -71,34 +79,50 @@ void Menu::vVec_DeleteAll() {
 }
 
 void Menu::vVec_Clone() {
+    if (vCTables_Vec.empty()) {
+        cout << "Firstly, you have to create a table!!" << endl;
+        return;
+    }
     cout << "Please provide an index of the table to clone: ";
-    int iTableIndex = (Utilities::iProvideInt()) -1;
+    int iTableIndex = (Utilities::iProvideIntBetween(1, vCTables_Vec.size()) - 1);
     vCTables_Vec.push_back(new CTable(*vCTables_Vec[(iTableIndex)]));
 }
 
 void Menu::vVec_SetName() {
+    if (vCTables_Vec.empty()) {
+        cout << "Firstly, you have to create a table!!" << endl;
+        return;
+    }
     cout << "Please provide an index of the table to change name: ";
-    int iTableIndex = Utilities::iProvideIntBetween(0,vCTables_Vec.size()) -1;
+    int iTableIndex = Utilities::iProvideIntBetween(1, vCTables_Vec.size()) - 1;
     cout << "\nPlease provide a new name: ";
     string sNewName = Utilities::sProvideString();
     vCTables_Vec[iTableIndex]->vSetName(sNewName);
 }
 
 void Menu::vVec_Insert() {
+    if (vCTables_Vec.empty()) {
+        cout << "Firstly, you have to create a table!!" << endl;
+        return;
+    }
     cout << "Please provide a table where you want to insert element: ";
-    int iTableIndex = Utilities::iProvideIntBetween(0,vCTables_Vec.size()) -1;
+    int iTableIndex = Utilities::iProvideIntBetween(1, vCTables_Vec.size()) - 1;
     cout << "\nPlease provide a new element: ";
     int iNewElement = Utilities::iProvideInt();
     vCTables_Vec[iTableIndex]->sToString();
     cout << "\nPlease provide an index of a new element: ";
-    vCTables_Vec[iTableIndex]->bInsertElement(Utilities::iProvideIntBetween(0, vCTables_Vec[iTableIndex]->iGetLength()), iNewElement);
+    vCTables_Vec[iTableIndex]->bInsertElement(
+            Utilities::iProvideIntBetween(0, vCTables_Vec[iTableIndex]->iGetLength() - 1), iNewElement);
 }
 
 void Menu::vVec_SetLength() {
+    if (vCTables_Vec.empty()) {
+        cout << "Firstly, you have to create a table!!" << endl;
+        return;
+    }
     cout << "Please provide a table to change a length: ";
-    int iTableIndex = Utilities::iProvideIntBetween(0,vCTables_Vec.size()) -1;
+    int iTableIndex = Utilities::iProvideIntBetween(0, vCTables_Vec.size()) - 1;
     cout << "\nPlease provide a new length: ";
-    int iNewLength = Utilities::iProvideInt();
     vCTables_Vec[iTableIndex]->bSetLength(Utilities::iProvideIntBetween(0, numeric_limits<int>::max()));
 
 }
