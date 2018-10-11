@@ -15,6 +15,7 @@ public:
     static int iProvideInt();
     static int iProvideIntBetween(const int iStart, const int iEnd);
     static string sProvideString();
+    static bool bYOrNIntepreter();
 };
 
 

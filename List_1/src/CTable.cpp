@@ -15,7 +15,7 @@ CTable::CTable() : iDEF_LENGTH(10), sDEF_NAME("Regular_CTable"),
                    sName(sDEF_NAME), iLength(iDEF_LENGTH) {
     iArray = new int[iLength];
     vInitializeWithZeros(iArray, 0, iLength);
-    cout << "bezp: '<" << sName << ">'" << endl;
+    cout << "bezp: " << sName << endl;
 }
 
 //Parameterized Constructor
@@ -23,7 +23,7 @@ CTable::CTable(string sName, int iLength) : sDEF_NAME("Regular_CTable"), iDEF_LE
                                             iLength(iLength) {
     iArray = new int[iLength];
     vInitializeWithZeros(iArray, 0, iLength);
-    cout << "parametr: '<" << sName << ">'" << endl;
+    cout << "parametr: " << sName << endl;
 }
 
 //Copying Constructor
@@ -41,13 +41,13 @@ CTable::CTable(const CTable &pcOther) : iDEF_LENGTH(10), sDEF_NAME("Regular_CTab
         w++;
         w_++;
     }
-    cout << "kopiuj: '<" << sName << ">'" << endl;
+    cout << "kopiuj: " << sName << endl;
 }
 
 //Deconstuctor
 CTable::~CTable() {
     delete[] iArray;
-    cout << "usuwam: '<" << sName << ">'" << endl;
+    cout << "usuwam: " << sName << endl;
 }
 
 //Operator copies values from A to B

@@ -34,6 +34,7 @@ private:
     void vVec_DeleteAll();
     void vVec_DeleteCTable();
     void vVec_ToString();
+    void vVec_ToStringSingle();
     bool bVec_End();
 
     vector<CTable *> vCTables_Vec;

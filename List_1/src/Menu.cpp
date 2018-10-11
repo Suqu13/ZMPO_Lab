@@ -35,14 +35,17 @@ void Menu::vVec_CreateCTables() {
 void Menu::vVec_CreateSpecCTable() {
     string sName;
     int iLength;
+    do {
+        cout << "Please provide a name: ";
+        sName = Utilities::sProvideString();
 
-    cout << "Please provide a name: ";
-    sName = Utilities::sProvideString();
+        cout << "Please provide a length: ";
+        iLength = Utilities::iProvideIntBetween(0, numeric_limits<int>::max());
 
-    cout << "Please provide a length: ";
-    iLength = Utilities::iProvideIntBetween(0, numeric_limits<int>::max());
+        vCTables_Vec.push_back(new CTable(sName, iLength));
+        cout << "Do you want to create one more specified CTable? (Y/N):";
 
-    vCTables_Vec.push_back(new CTable(sName, iLength));
+    } while (Utilities::bYOrNIntepreter());
 }
 
 void Menu::vVec_ToString() {
@@ -55,8 +58,21 @@ void Menu::vVec_ToString() {
              << "; Elements: "
              << vCTables_Vec[i]->sToString() << endl;
     }
-
 }
+
+void Menu::vVec_ToStringSingle() {
+    if (vCTables_Vec.empty()) {
+        cout << "Firstly, you have to create a table!!" << endl;
+        return;
+    }
+    cout << "Please provide an index of the table to show: ";
+    int iTableIndex = (Utilities::iProvideIntBetween(1, vCTables_Vec.size())) - 1;
+    cout << (iTableIndex + 1) << ". Name: " << vCTables_Vec[iTableIndex]->sGetName() << "; Length: "
+         << vCTables_Vec[iTableIndex]->iGetLength()
+         << "; Elements: "
+         << vCTables_Vec[iTableIndex]->sToString() << endl;
+}
+
 
 void Menu::vVec_DeleteCTable() {
     if (vCTables_Vec.empty()) {
@@ -133,17 +149,18 @@ void Menu::vVec_SetLength() {
 
 bool Menu::bVec_End() {
     vVec_DeleteAll();
-    cout << "Ciao! :-D" <<endl ;
+    cout << "Ciao! :-D" << endl;
     return false;
 }
 
 void Menu::vVec_ShowMenu() {
     cout << "\n1.  Create a group of regular CTables." << endl << "2.  Create a specified CTable." << endl <<
          "3.  Clone a specified CTable and attach it to the list." << endl << "4.  Print the entire list." << endl
-         << "5.  Change length of a specified CTable." << endl << "6.  Set name of a specified CTable."
-         << endl << "7.  Insert a new element into a specified CTable." << endl << "8.  Delete a single CTable."
+         << "5.  Print a single CTable." << endl
+         << "6.  Change length of a specified CTable." << endl << "7.  Set name of a specified CTable."
+         << endl << "8.  Insert a new element into a specified CTable." << endl << "9.  Delete a single CTable."
          << endl
-         << "9.  Delete all CTables." << endl << "10. Exit" << endl << "\nI'm ready! Provide an integer (1-10):";
+         << "10. Delete all CTables." << endl << "11. Exit" << endl << "\nI'm ready! Provide an integer (1-11):";
 
 
 }
@@ -153,7 +170,7 @@ void Menu::vRun() {
     int iChoose;
     while (bExit) {
         vVec_ShowMenu();
-        iChoose = Utilities::iProvideIntBetween(1, 10);
+        iChoose = Utilities::iProvideIntBetween(1, 11);
         cout << endl;
         switch (iChoose) {
             default:
@@ -172,21 +189,24 @@ void Menu::vRun() {
                 vVec_ToString();
                 break;
             case 5:
-                vVec_SetLength();
+                vVec_ToStringSingle();
                 break;
             case 6:
-                vVec_SetName();
+                vVec_SetLength();
                 break;
             case 7:
-                vVec_Insert();
+                vVec_SetName();
                 break;
             case 8:
-                vVec_DeleteCTable();
+                vVec_Insert();
                 break;
             case 9:
-                vVec_DeleteAll();
+                vVec_DeleteCTable();
                 break;
             case 10:
+                vVec_DeleteAll();
+                break;
+            case 11:
                 bExit = bVec_End();
                 break;
 

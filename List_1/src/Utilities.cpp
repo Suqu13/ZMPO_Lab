@@ -22,16 +22,15 @@ int Utilities::iProvideInt() {
     return iInput;
 }
 
-//TODO
-int Utilities::iProvideIntBetween(int iStart, int iEnd){
+int Utilities::iProvideIntBetween(int iStart, int iEnd) {
     int iInput;
     bool bValid;
-    do{
+    do {
         string sString_;
         stringstream sStream;
         getline(cin, sString_);
         sStream << sString_;
-        bValid = (bool)(sStream >> iInput);
+        bValid = (bool) (sStream >> iInput);
     } while (!bValid || iInput < iStart || iEnd < iInput);
     return iInput;
 }
@@ -40,4 +39,15 @@ string Utilities::sProvideString() {
     string sInput;
     cin >> sInput;
     return sInput;
+}
+
+bool Utilities::bYOrNIntepreter() {
+    string sInput;
+    while (true) {
+        cin >> sInput;
+        if (sInput.at(0) == 'Y' || sInput.at(0) == 'y')
+            return true;
+        if (sInput.at(0) == 'N' || sInput.at(0) == 'n')
+            return false;
+    }
 }

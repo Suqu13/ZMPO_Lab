@@ -6,28 +6,14 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/CTable.h
-string
--
-
-/cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/Menu.cpp
-iostream
--
-sstream
--
-Menu.h
-/cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/Menu.h
+/cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/Utilities.cpp
 Utilities.h
 /cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/Utilities.h
 limits
 -
-
-/cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/Menu.h
-CTable.h
-/cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/CTable.h
-string
+iostream
 -
-vector
+sstream
 -
 
 /cygdrive/c/Users/Jakub/Desktop/PWr/C++_SEM3/List_1/src/Utilities.h
