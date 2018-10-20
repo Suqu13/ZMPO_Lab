@@ -11,8 +11,10 @@ using namespace std;
 class CMenuItem {
 public:
     virtual void Run() = 0;
+    virtual string getS_command() const = 0;
+    virtual string getS_name() const = 0;
 
-private:
+protected:
 string s_command;
 string s_name;
 };

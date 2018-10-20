@@ -11,7 +11,10 @@
 using namespace std;
 
 class CMenu: protected CMenuItem {
-protected:
+public:
+    CMenu();
+    CMenu(string s_name, string s_command);
+    ~CMenu();
     void Run();
 private:
     vector<CMenuItem*> vMenuItems;
