@@ -12,7 +12,7 @@ class CMenuItem {
 public:
     virtual void Run() = 0;
     virtual string getS_command() const = 0;
-    virtual string getS_name() const = 0;
+    virtual string getS_name() const= 0;
 
 protected:
     string s_command;

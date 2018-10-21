@@ -4,7 +4,6 @@
 
 #include "CTabHandler.h"
 
-
 vector<CTable*> CTabHandler:: vCTab;
 
 void CTabHandler::cleanIt() {

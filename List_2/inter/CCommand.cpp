@@ -7,6 +7,6 @@
 
 //TODO może się wyjebać
 void CCommand::RunCommand() {
-        cout << "Komenda domyślna!!" << endl;
-        return;
+//        cout << "Komenda domyślna!!" << endl;
+//        return;
 }

@@ -33,15 +33,18 @@ CMenu::CMenu(string s_name, string s_command) {
 
 CMenu::~CMenu() {
     for (int i = 0; i < vMenuItems.size(); i++) {
+        cout << "usuwam CMenu: " + vMenuItems[i]->getS_name() << endl;
         delete vMenuItems[i];
     }
     vMenuItems.clear();
 }
 
 string CMenu::getS_command() const {
+    return s_command;
 }
 
 string CMenu::getS_name() const {
+    return s_name;
 }
 
 void CMenu::AddMenuItem(CMenuItem *vMenuItem) {
@@ -49,29 +52,50 @@ void CMenu::AddMenuItem(CMenuItem *vMenuItem) {
 }
 
 void CMenu::InitializeMenu() {
+    CMenu *menu_create;
+    menu_create = new CMenu("Create CTables", "create");
+    menu_create->AddMenuItem(new CMenuCommand("Create default CTables", "c1", new Comm_0));
+    menu_create->AddMenuItem(new CMenuCommand("Create a specific CTable", "c2", new Comm_1));
 
-    AddMenuItem(new CMenuCommand("create default CTables", "comm_1", new Comm_0));
-    AddMenuItem(new CMenuCommand("create a specific CTable", "comm_2", new Comm_1));
-    AddMenuItem(new CMenuCommand("insert value into a specific CTable", "comm_3", new Comm_2));
-    AddMenuItem(new CMenuCommand("set a length of a specific CTable", "comm_4", new Comm_3));
-    AddMenuItem(new CMenuCommand("set a name of a specific CTable", "comm_5", new Comm_4));
-    AddMenuItem(new CMenuCommand("clone a specific CTable", "comm_6", new Comm_5));
-    AddMenuItem(new CMenuCommand("remove all CTables", "comm_7", new Comm_6));
-    AddMenuItem(new CMenuCommand("remove a specific CTable", "comm_8", new Comm_7));
-    AddMenuItem(new CMenuCommand("show all CTables", "comm_9", new Comm_8));
-    AddMenuItem(new CMenuCommand("show a single CTable", "comm_10", new Comm_9));
+    this->AddMenuItem(menu_create);
+
+    CMenu *menu_change;
+    menu_change = new CMenu("Change details", "change");
+    menu_change->AddMenuItem(new CMenuCommand("Insert value into a specific CTable", "c1", new Comm_2));
+    menu_change->AddMenuItem(new CMenuCommand("Set a length of a specific CTable", "c2", new Comm_3));
+    menu_change->AddMenuItem(new CMenuCommand("Set a name of a specific CTable", "c3", new Comm_4));
+
+    this->AddMenuItem(menu_change);
+
+    CMenu *menu_remove;
+    menu_remove = new CMenu("Remove CTables", "remove");
+    menu_remove->AddMenuItem(new CMenuCommand("Remove all CTables", "r1", new Comm_6));
+    menu_remove->AddMenuItem(new CMenuCommand("Remove a specific CTable", "r2", new Comm_7));
+
+    this->AddMenuItem(menu_remove);
+
+    CMenu *menu_show;
+    menu_show = new CMenu("Show CTables", "show");
+    menu_show->AddMenuItem(new CMenuCommand("Show all CTables", "s1", new Comm_8));
+    menu_show->AddMenuItem(new CMenuCommand("Show a single CTable", "s2", new Comm_9));
+
+    this->AddMenuItem(menu_show);
+
+    AddMenuItem(new CMenuCommand("Clone a specific CTable", "clone", new Comm_5));
+
 }
 
 void CMenu::Run() {
     CMenuToString();
     CMenuItem *item;
-    while ((item = findMenuItem()) != nullptr) {
+    while ((item = this->findMenuItem()) != nullptr) {
         item->Run();
         CMenuToString();
     }
     if (s_name == "Main MENU") {
-        cout << "Ciao!";
+        cout << "Ciao!\n";
         CTabHandler::cleanIt();
+        delete this;
     }
     return;
 }

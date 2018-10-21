@@ -17,8 +17,8 @@ public:
     CMenuCommand(string s_name, string s_command, CCommand* cCommand);
     ~CMenuCommand();
     void Run();
-    string getS_command() const;
-    string getS_name() const;
+    string getS_command() const override;
+    string getS_name() const override;
 
 private:
     CCommand* cCommand;
