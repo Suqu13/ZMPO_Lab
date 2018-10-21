@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include "CMenu.h"
+#include "CMenuCommand.h"
+#include "../handlers/CComHandler.h"
 #include "../ctab/Utilities.h"
 
 using namespace std;
@@ -24,6 +26,31 @@ CMenu::~CMenu() {
     }
     vMenuItems.clear();
 }
+
+void CMenu::AddMenuItem(CMenuItem *vMenuItem) {
+    vMenuItems.push_back(vMenuItem);
+}
+
+bool CMenu::AddSpecifiedMenuItem(string s_name, string s_command) {
+    CMenuItem *cMenuCommand = CComHandler::getCMenuCommand(s_name, s_command);
+    if(cMenuCommand) {
+        vMenuItems.push_back(cMenuCommand);
+        return true;
+    } else{
+        return false;
+    }
+}
+
+void CMenu::RemoveMenuItem(string s_name) {
+    for (int i = 0; i < vMenuItems.size(); ++i) {
+        if (vMenuItems[i]->getS_name() == s_name) {
+            delete vMenuItems[i];
+            vMenuItems.erase(vMenuItems.begin() + i);
+            return;
+        }
+    }
+}
+
 
 void CMenu::Run() {
     bool b_correctCommand = false;

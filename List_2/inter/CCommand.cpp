@@ -5,10 +5,8 @@
 #include <iostream>
 #include "CCommand.h"
 
-
+//TODO może się wyjebać
 void CCommand::RunCommand() {
-    if(this == nullptr) {
-        cout << "Komenda domyśłna!!" << endl;
+        cout << "Komenda domyślna!!" << endl;
         return;
-    }
 }

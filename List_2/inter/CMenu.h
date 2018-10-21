@@ -15,7 +15,11 @@ public:
     CMenu();
     CMenu(string s_name, string s_command);
     ~CMenu();
+    void AddMenuItem(CMenuItem* vMenuItem);
+    bool AddSpecifiedMenuItem(string s_name, string s_command); //returns false if it did not find the right command in the handler
+    void RemoveMenuItem(string s_name);
     void Run();
+
 private:
     vector<CMenuItem*> vMenuItems;
 };
