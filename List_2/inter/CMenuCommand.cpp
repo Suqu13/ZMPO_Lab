@@ -2,6 +2,7 @@
 // Created by Jakub on 19.10.2018.
 //
 
+#include <iostream>
 #include "CMenuCommand.h"
 
 CMenuCommand::CMenuCommand() {
@@ -21,6 +22,9 @@ CMenuCommand::~CMenuCommand() {
 
 //TODO
 void CMenuCommand::Run() {
+    if (cCommand == nullptr) {
+        cout << "pusta komenda" << endl;
+    }
     cCommand->RunCommand();
 }
 

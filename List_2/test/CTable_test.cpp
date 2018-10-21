@@ -4,7 +4,7 @@
 
 #define CATCH_CONFIG_MAIN
 
-#include "C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_2/lib/catch.hpp"
+#include "../lib/catch.hpp"
 #include "../ctab/CTable.h"
 
 

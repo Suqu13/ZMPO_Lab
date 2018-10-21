@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "CMenu.h"
-#include "C:/Users/Jakub/Desktop/PWr/C++_SEM3/List_2/ctab/Utilities.h"
+#include "../ctab/Utilities.h"
 
 using namespace std;
 
@@ -26,17 +26,22 @@ CMenu::~CMenu() {
 }
 
 void CMenu::Run() {
-    Utilities utilities;
-    cout << s_name << endl << s_command << endl;
-    for (int i = 0; i < vMenuItems.size(); ++i) {
-        cout << "Name: " + vMenuItems[i]->getS_command() + " Command" + vMenuItems[i]->getS_command() << endl;
-    }
-    string s_newCommand = utilities.sProvideString();
-    if(s_newCommand == "back")
-        return;
-    for (int i = 0; i < vMenuItems.size(); ++i) {
-        if (vMenuItems[i]->getS_command() == s_newCommand)
-            vMenuItems[i]->Run();
-    }
+    bool b_correctCommand = false;
 
+    cout << "CMenu name: " << s_name << endl << " CMenu command: " << s_command << endl;
+    for (int i = 0; i < vMenuItems.size(); ++i) {
+        cout << i + ". Name: " + vMenuItems[i]->getS_command() + " Command" + vMenuItems[i]->getS_command() << endl;
+    }
+    do {
+        string s_newCommand = Utilities::sProvideString(); //utilities -> static function
+        if (s_newCommand == "back")
+            return;
+        for (int i = 0; i < vMenuItems.size(); ++i) {
+            if (vMenuItems[i]->getS_command() == s_newCommand) {
+                vMenuItems[i]->Run();
+                b_correctCommand = true;
+            }
+        }
+        if (!b_correctCommand) cout << "Wrong command, try again!" << endl;
+    } while (!b_correctCommand);
 }
