@@ -11,10 +11,10 @@
 
 void Comm_3::RunCommand() {
     if (CTabHandler::vCTab.empty()) {
-        cout << "Firstly, you have to create a table!!" << endl;
+        cout << "\nFirstly, you have to create a table!!" << endl;
         return;
     }
-    cout << "Please enter the table whose length you want to change: ";
+    cout << "\nPlease enter the table whose length you want to change: ";
     int iTableIndex = Utilities::iProvideIntBetween(0, CTabHandler::vCTab.size()) - 1;
     cout << "Please provide a new length: ";
     CTabHandler::vCTab[iTableIndex]->bSetLength(Utilities::iProvideIntBetween(0, numeric_limits<int>::max()));

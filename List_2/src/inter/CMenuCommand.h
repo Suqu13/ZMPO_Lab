@@ -15,10 +15,8 @@ class CMenuCommand: public CMenuItem {
 public:
     CMenuCommand();
     CMenuCommand(string s_name, string s_command, CCommand* cCommand);
-    ~CMenuCommand();
-    void Run();
-    string getS_command() const override;
-    string getS_name() const override;
+    ~CMenuCommand() override;
+    void Run() override;
 
 private:
     CCommand* cCommand;

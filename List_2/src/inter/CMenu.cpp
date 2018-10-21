@@ -6,24 +6,27 @@
 #include <sstream>
 #include "CMenu.h"
 #include "CMenuCommand.h"
-#include "../ctab/Utilities.h"
-#include "../commands/Comm_0.h"
-#include "../commands/Comm_1.h"
-#include "../commands/Comm_2.h"
-#include "../commands/Comm_3.h"
-#include "../commands/Comm_4.h"
-#include "../commands/Comm_5.h"
-#include "../commands/Comm_6.h"
-#include "../commands/Comm_7.h"
-#include "../commands/Comm_8.h"
-#include "../commands/Comm_9.h"
-#include "../handlers/CTabHandler.h"
+#include "../../src/ctab/Utilities.h"
+#include "../../src/commands/Comm_0.h"
+#include "../../src/commands/Comm_1.h"
+#include "../../src/commands/Comm_2.h"
+#include "../../src/commands/Comm_3.h"
+#include "../../src/commands/Comm_4.h"
+#include "../../src/commands/Comm_5.h"
+#include "../../src/commands/Comm_6.h"
+#include "../../src/commands/Comm_7.h"
+#include "../../src/commands/Comm_8.h"
+#include "../../src/commands/Comm_9.h"
+#include "../../src/handlers/CTabHandler.h"
+
+#define DEFAULT_NAME "Main MENU";
+#define DEFAULT_COMMAND "Empty command";
 
 using namespace std;
 
 CMenu::CMenu() {
-    s_name = "Main MENU";
-    s_command = "without command";
+    s_name = DEFAULT_NAME;
+    s_command = DEFAULT_COMMAND;
 };
 
 CMenu::CMenu(string s_name, string s_command) {
@@ -39,14 +42,6 @@ CMenu::~CMenu() {
     vMenuItems.clear();
 }
 
-string CMenu::getS_command() const {
-    return s_command;
-}
-
-string CMenu::getS_name() const {
-    return s_name;
-}
-
 void CMenu::AddMenuItem(CMenuItem *vMenuItem) {
     vMenuItems.push_back(vMenuItem);
 }
@@ -56,7 +51,8 @@ void CMenu::InitializeMenu() {
     menu_create = new CMenu("Create CTables", "create");
     menu_create->AddMenuItem(new CMenuCommand("Create default CTables", "c1", new Comm_0));
     menu_create->AddMenuItem(new CMenuCommand("Create a specific CTable", "c2", new Comm_1));
-
+    menu_create->AddMenuItem(new CMenuCommand("default command", "c3", new CCommand));
+    menu_create->AddMenuItem(new CMenuCommand("empty command", "c4", nullptr));
     this->AddMenuItem(menu_create);
 
     CMenu *menu_change;
@@ -95,7 +91,6 @@ void CMenu::Run() {
     if (s_name == "Main MENU") {
         cout << "Ciao!\n";
         CTabHandler::cleanIt();
-        delete this;
     }
     return;
 }

@@ -14,7 +14,7 @@ void Comm_1::RunCommand() {
     string sName;
     int iLength;
     do {
-        cout << "Please provide a name: ";
+        cout << "\nPlease provide a name: ";
         sName = Utilities::sProvideString();
 
         cout << "Please provide a length: ";

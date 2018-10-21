@@ -11,7 +11,7 @@
 
 void Comm_8::RunCommand() {
     if (CTabHandler::vCTab.empty()) {
-        cout << "Firstly, you have to create a table!!" << endl;
+        cout << "\nFirstly, you have to create a table!!" << endl;
         return;
     }
     for (int i = 0; i < CTabHandler::vCTab.size(); i++) {

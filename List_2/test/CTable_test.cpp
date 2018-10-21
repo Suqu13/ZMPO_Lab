@@ -5,7 +5,7 @@
 #define CATCH_CONFIG_MAIN
 
 #include "../lib/catch.hpp"
-#include "../ctab/CTable.h"
+#include "../../ctab/CTable.h"
 
 
 SCENARIO("Test constructor") {

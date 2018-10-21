@@ -7,7 +7,7 @@
 
 
 #include <vector>
-#include "../ctab/CTable.h"
+#include "../../src/ctab/CTable.h"
 
 class CTabHandler {
 public:

@@ -4,9 +4,13 @@
 
 #include <iostream>
 #include "CCommand.h"
+#define DEFAULT "default command";
 
-//TODO może się wyjebać
+
+CCommand::~CCommand() {
+}
+
 void CCommand::RunCommand() {
-//        cout << "Komenda domyślna!!" << endl;
-//        return;
+    cout <<"\n" DEFAULT;
+    cout << endl;
 }

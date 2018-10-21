@@ -9,6 +9,7 @@ using namespace std;
 
 class CCommand {
 public:
+    virtual ~CCommand();
     virtual void RunCommand();
 };
 

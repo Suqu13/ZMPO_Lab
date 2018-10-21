@@ -11,10 +11,9 @@
 
 void Comm_2::RunCommand() {
     if (CTabHandler::vCTab.empty()) {
-        cout << "Firstly, you have to create a table!!" << endl;
+        cout << "\nFirstly, you have to create a table!!" << endl;
         return;
     }
-    //TODO toString fun
     cout << "\nPlease provide the table where you want to insert a new element: ";
     int iTableIndex = Utilities::iProvideIntBetween(1, CTabHandler::vCTab.size()) - 1;
     cout << "Please provide the new element: ";

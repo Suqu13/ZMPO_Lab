@@ -1,5 +1,5 @@
 #include <iostream>
-#include "inter/CMenu.h"
+#include "src/inter/CMenu.h"
 
 int main() {
     CMenu cMenu;
