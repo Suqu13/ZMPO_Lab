@@ -60,48 +60,38 @@ SCENARIO("Test constructor") {
 
 //Operator
 
-SCENARIO("Test set name")
-{
-    GIVEN("CTable object")
-    {
+SCENARIO("Test set name") {
+    GIVEN("CTable object") {
         CTable table;
 
-        WHEN("It's name is changed")
-        {
+        WHEN("It's name is changed") {
             table.vSetName("MyTable");
 
-            THEN("It should change")
-            {
+            THEN("It should change") {
                 REQUIRE(table.sGetName() == "MyTable");
             }
         }
     }
 }
 
-SCENARIO("Test set length")
-{
-    GIVEN("CTable object")
-    {
+SCENARIO("Test set length") {
+    GIVEN("CTable object") {
         CTable table("Whatever", 5);
 
-        WHEN("it's fields are set")
-        {
+        WHEN("it's fields are set") {
             REQUIRE(table.bInsertElement(0, 1));
             REQUIRE(table.bInsertElement(1, 2));
             REQUIRE(table.bInsertElement(2, 3));
             REQUIRE(table.bInsertElement(3, 4));
             REQUIRE(table.bInsertElement(4, 5));
 
-            AND_WHEN("it's size is expanded")
-            {
+            AND_WHEN("it's size is expanded") {
                 REQUIRE(table.bSetLength(10));
 
-                GIVEN("success variable")
-                {
+                GIVEN("success variable") {
                     bool success = false;
 
-                    THEN("check new fields are 0")
-                    {
+                    THEN("check new fields are 0") {
                         REQUIRE(table.iGetElement(5, &success) == 0);
                         REQUIRE(success);
                         REQUIRE(table.iGetElement(6, &success) == 0);
@@ -114,16 +104,14 @@ SCENARIO("Test set length")
                         REQUIRE(success);
                     }
 
-                    AND_WHEN("new fields are changed")
-                    {
+                    AND_WHEN("new fields are changed") {
                         REQUIRE(table.bInsertElement(5, 11));
                         REQUIRE(table.bInsertElement(6, 12));
                         REQUIRE(table.bInsertElement(7, 13));
                         REQUIRE(table.bInsertElement(8, 14));
                         REQUIRE(table.bInsertElement(9, 15));
 
-                        THEN("make sure all fields have proper values")
-                        {
+                        THEN("make sure all fields have proper values") {
                             REQUIRE(table.iGetElement(0, &success) == 1);
                             REQUIRE(success);
                             REQUIRE(table.iGetElement(1, &success) == 2);
@@ -149,39 +137,32 @@ SCENARIO("Test set length")
                 }
             }
 
-            AND_WHEN("it's size is truncated")
-            {
+            AND_WHEN("it's size is truncated") {
                 REQUIRE(table.bSetLength(3));
 
-                GIVEN("success variable")
-                {
+                GIVEN("success variable") {
                     bool success = true;
 
-                    THEN("left out fields values shouldn't change")
-                    {
+                    THEN("left out fields values shouldn't change") {
                         REQUIRE(table.iGetElement(0, &success) == 1);
                         REQUIRE(table.iGetElement(1, &success) == 2);
                         REQUIRE(table.iGetElement(2, &success) == 3);
                     }
 
-                    AND_WHEN("illegal value is accessed")
-                    {
+                    AND_WHEN("illegal value is accessed") {
                         REQUIRE(table.iGetElement(3, &success) == -1);
 
-                        THEN("it shouldn't be successful")
-                        {
+                        THEN("it shouldn't be successful") {
                             REQUIRE_FALSE(success);
                         }
                     }
                 }
             }
 
-            AND_WHEN("unreasonable argument is passed to set length method")
-            {
+            AND_WHEN("unreasonable argument is passed to set length method") {
                 REQUIRE_FALSE(table.bSetLength(-15));
 
-                THEN("nothing should change")
-                {
+                THEN("nothing should change") {
                     bool success = false;
                     REQUIRE(table.iGetElement(0, &success) == 1);
                     REQUIRE(success);
@@ -199,19 +180,14 @@ SCENARIO("Test set length")
     }
 }
 
-SCENARIO("Test accessing elements")
-{
-    GIVEN("CTable object and variable indicating success")
-    {
+SCENARIO("Test accessing elements") {
+    GIVEN("CTable object and variable indicating success") {
         CTable table;
         bool success = false;
 
-        WHEN("It's elements are changed")
-        {
-            AND_WHEN("They are within legal range")
-            {
-                THEN("They should change")
-                {
+        WHEN("It's elements are changed") {
+            AND_WHEN("They are within legal range") {
+                THEN("They should change") {
                     REQUIRE(table.bInsertElement(0, 15));
                     REQUIRE(table.iGetElement(0, &success) == 15);
                     REQUIRE(success);
@@ -224,10 +200,8 @@ SCENARIO("Test accessing elements")
                 }
             }
 
-            AND_WHEN("They aren't within legal range")
-            {
-                THEN("They shouldn't change")
-                {
+            AND_WHEN("They aren't within legal range") {
+                THEN("They shouldn't change") {
                     REQUIRE_FALSE(table.bInsertElement(-12, 14));
                     REQUIRE(table.iGetElement(-12, &success) == -1);
                     REQUIRE_FALSE(success);
@@ -237,26 +211,21 @@ SCENARIO("Test accessing elements")
     }
 }
 
-SCENARIO("Test cClone")
-{
-    GIVEN("CTable object")
-    {
+SCENARIO("Test cClone") {
+    GIVEN("CTable object") {
         CTable table("Name", 3);
         REQUIRE(table.bInsertElement(0, 1));
         REQUIRE(table.bInsertElement(1, 2));
         REQUIRE(table.bInsertElement(2, 3));
 
-        WHEN("It's cloned")
-        {
-            CTable* cloned = table.cClone();
+        WHEN("It's cloned") {
+            CTable *cloned = table.cClone();
 
-            THEN("Those objects should be in different places in memory")
-            {
+            THEN("Those objects should be in different places in memory") {
                 REQUIRE_FALSE(cloned == &table);
             }
 
-            THEN("Should have all fields same")
-            {
+            THEN("Should have all fields same") {
                 bool success = true;
                 REQUIRE(table.sGetName() + "_copy" == cloned->sGetName());
                 REQUIRE(table.iGetLength() == cloned->iGetLength());
@@ -270,17 +239,14 @@ SCENARIO("Test cClone")
     }
 }
 
-SCENARIO("Test operator =")
-{
-    GIVEN("CTable object to be copied")
-    {
+SCENARIO("Test operator =") {
+    GIVEN("CTable object to be copied") {
         CTable toCpy("To copy", 3);
         REQUIRE(toCpy.bInsertElement(0, 1));
         REQUIRE(toCpy.bInsertElement(1, 2));
         REQUIRE(toCpy.bInsertElement(2, 3));
 
-        AND_GIVEN("CTable object copying")
-        {
+        AND_GIVEN("CTable object copying") {
             CTable table("Copying", 6);
             REQUIRE(table.bInsertElement(0, 6));
             REQUIRE(table.bInsertElement(1, 5));
@@ -289,12 +255,10 @@ SCENARIO("Test operator =")
             REQUIRE(table.bInsertElement(4, 2));
             REQUIRE(table.bInsertElement(5, 1));
 
-            WHEN("Using = operator")
-            {
+            WHEN("Using = operator") {
                 table = toCpy;
 
-                THEN("CTables objects array changes")
-                {
+                THEN("CTables objects array changes") {
                     REQUIRE(table.sGetName() == "Copying");
                     REQUIRE(table.iGetLength() == 3);
 
@@ -308,21 +272,41 @@ SCENARIO("Test operator =")
     }
 }
 
-SCENARIO("Test toString")
-{
-    GIVEN("CTable object")
-    {
+SCENARIO("Test toString") {
+    GIVEN("CTable object") {
         CTable table("Name", 3);
 
-        WHEN("It's values are set")
-        {
+        WHEN("It's values are set") {
             table.bInsertElement(0, 1);
             table.bInsertElement(1, 2);
             table.bInsertElement(2, 3);
 
-            THEN("It's toString should show everything properly")
-            {
-                REQUIRE(table.sToString()== "[1, 2, 3]");
+            THEN("It's toString should show everything properly") {
+                REQUIRE(table.sToString() == "[1, 2, 3]");
+            }
+        }
+    }
+}
+
+SCENARIO("Test vColapse") {
+    GIVEN("CTable object") {
+        CTable table("Name", 5);
+
+        WHEN("It's values are set") {
+            table.bInsertElement(0, 1);
+            table.bInsertElement(1, 2);
+            table.bInsertElement(2, 3);
+            table.bInsertElement(3, 4);
+            table.bInsertElement(4, 5);
+
+            THEN("It's vColapse should divide and colapse") {
+                table.vColapse();
+                bool bSucc = true;
+                REQUIRE(table.iGetElement(0, &bSucc) == 5);
+                REQUIRE(table.iGetElement(1, &bSucc) == 7);
+                REQUIRE(table.iGetElement(2, &bSucc) == 3);
+
+
             }
         }
     }

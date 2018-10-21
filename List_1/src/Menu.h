@@ -36,6 +36,7 @@ private:
     void vVec_ToString();
     void vVec_ToStringSingle();
     bool bVec_End();
+    void vVec_ToColapse();
 
     vector<CTable *> vCTables_Vec;
 };

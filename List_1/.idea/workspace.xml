@@ -13,19 +13,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8de41e68-010d-4e87-a80a-c59c6fa6f2cd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../List_2/commands/Comm_5.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../List_2/commands/Comm_6.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../List_2/commands/Comm_6.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../List_2/commands/Comm_7.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../List_2/commands/Comm_7.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../List_2/commands/Comm_8.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../List_2/commands/Comm_8.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../List_2/commands/Comm_9.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../List_2/commands/Comm_9.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/List_1.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/List_1.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/List_1.dir/src/CTable.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/List_1.dir/src/CTable.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/List_1.dir/src/Menu.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/List_1.dir/src/Menu.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/List_1.dir/src/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/List_1.dir/src/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/src/CTable.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/src/CTable.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/src/Menu.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/test/CTable_test.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Test.dir/test/CTable_test.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/feature_tests.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/feature_tests.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/List_1.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/List_1.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/List_1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/List_1.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CTable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CTable.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTable.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utilities.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilities.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utilities.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilities.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/untitled.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/CTable_test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/CTable_test.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/commands/Comm_0.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/commands/Comm_0.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/commands/Comm_0.h" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/commands/Comm_0.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/commands/Comm_1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/commands/Comm_1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/commands/Comm_1.h" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/commands/Comm_1.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/commands/Comm_2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/commands/Comm_2.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/commands/Comm_2.h" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/commands/Comm_2.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/commands/Comm_3.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/commands/Comm_3.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/commands/Comm_3.h" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/commands/Comm_3.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/commands/Comm_4.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/commands/Comm_4.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/commands/Comm_4.h" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/commands/Comm_4.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/handlers/CComHandler.h" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/handlers/CComHandler.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/handlers/CTabHandler.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/handlers/CTabHandler.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/inter/CMenu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/inter/CMenu.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/inter/CMenu.h" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/inter/CMenu.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/inter/CMenuCommand.h" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/inter/CMenuCommand.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/inter/CMenuItem.h" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/inter/CMenuItem.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../List_2/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../List_2/commands/Comm_5.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,54 +87,54 @@
     <session id="1808527344">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="26" />
-          <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.10" value="1" />
-          <entry key="project.open.time.11" value="2" />
+          <entry key="project.closed" value="37" />
+          <entry key="project.open.time.0" value="3" />
+          <entry key="project.open.time.1" value="4" />
+          <entry key="project.open.time.10" value="2" />
+          <entry key="project.open.time.11" value="3" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.5" value="4" />
-          <entry key="project.open.time.6" value="8" />
-          <entry key="project.open.time.7" value="4" />
+          <entry key="project.open.time.6" value="12" />
+          <entry key="project.open.time.7" value="7" />
           <entry key="project.open.time.8" value="2" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.opened" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cpp" value="17" />
-          <entry key="h" value="26" />
+          <entry key="cpp" value="25" />
+          <entry key="h" value="29" />
           <entry key="hpp" value="1" />
           <entry key="limits" value="1" />
           <entry key="new" value="1" />
           <entry key="string" value="1" />
           <entry key="tcc" value="1" />
-          <entry key="txt" value="1" />
+          <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CMakeLists.txt" value="1" />
-          <entry key="ObjectiveC" value="48" />
+          <entry key="CMakeLists.txt" value="2" />
+          <entry key="ObjectiveC" value="59" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="5441" />
-          <entry key="h" value="866" />
+          <entry key="cpp" value="6398" />
+          <entry key="h" value="923" />
           <entry key="txt" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="28" />
-          <entry key="ObjectiveC" value="6307" />
+          <entry key="ObjectiveC" value="7321" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.cidr.testingFrameworks.usages">
         <counts>
-          <entry key="Catch Test" value="43" />
+          <entry key="Catch Test" value="62" />
         </counts>
       </usages-collector>
     </session>
@@ -96,8 +144,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Menu.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="447">
+              <caret line="38" selection-start-line="37" selection-end-line="38" />
               <folding>
                 <element signature="e#87#106#0" expanded="true" />
               </folding>
@@ -105,62 +153,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/CTable.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Utilities.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
-              <folding>
-                <element signature="e#41#63#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Utilities.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Menu.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="234">
+              <caret line="159" column="4" selection-start-line="159" selection-start-column="4" selection-end-line="160" selection-end-column="32" />
               <folding>
                 <element signature="e#42#61#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CTable.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-75">
-              <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -178,17 +178,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/test/CTable_test.cpp" />
         <option value="$PROJECT_DIR$/Utilities.h" />
         <option value="$PROJECT_DIR$/Utilities.cpp" />
-        <option value="$PROJECT_DIR$/src/CTable.h" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
-        <option value="$PROJECT_DIR$/src/Menu.h" />
         <option value="$PROJECT_DIR$/src/Utilities.h" />
+        <option value="$PROJECT_DIR$/src/Utilities.cpp" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/src/CTable.h" />
+        <option value="$PROJECT_DIR$/src/Menu.h" />
+        <option value="$PROJECT_DIR$/test/CTable_test.cpp" />
         <option value="$PROJECT_DIR$/src/Menu.cpp" />
         <option value="$PROJECT_DIR$/src/CTable.cpp" />
-        <option value="$PROJECT_DIR$/src/Utilities.cpp" />
       </list>
     </option>
   </component>
@@ -199,11 +199,11 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1947" />
-    <option name="y" value="-20" />
-    <option name="width" value="1552" />
-    <option name="height" value="840" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -211,6 +211,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -227,7 +228,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -265,6 +265,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Scenario: Test vColapse" type="CMakeCatchTestRunConfigurationType" factoryName="Catch Test" temporary="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="List_1" TARGET_NAME="Test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="List_1" RUN_TARGET_NAME="Test" TEST_METHOD="Scenario: Test vColapse" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -286,9 +291,11 @@
       <item itemvalue="Application.Test" />
       <item itemvalue="Catch.Scenario: Test constructor" />
       <item itemvalue="Catch.All in CTable_test.cpp" />
+      <item itemvalue="Catch.Scenario: Test vColapse" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Catch.Scenario: Test vColapse" />
         <item itemvalue="Catch.All in CTable_test.cpp" />
         <item itemvalue="Catch.Scenario: Test constructor" />
       </list>
@@ -330,59 +337,72 @@
       <workItem from="1539208453375" duration="56000" />
       <workItem from="1539209788439" duration="5056000" />
       <workItem from="1539236054106" duration="1625000" />
+      <workItem from="1539238519461" duration="264000" />
+      <workItem from="1539249985218" duration="665000" />
+      <workItem from="1539256277600" duration="3077000" />
+      <workItem from="1539259729017" duration="2150000" />
+      <workItem from="1539270690125" duration="595000" />
+      <workItem from="1539296397177" duration="37000" />
+      <workItem from="1539521048454" duration="51000" />
+      <workItem from="1539973689407" duration="56000" />
+      <workItem from="1539973954670" duration="80000" />
+      <workItem from="1539974165015" duration="957000" />
+      <workItem from="1539976888503" duration="600000" />
+      <workItem from="1540113593093" duration="48000" />
+      <workItem from="1540116148056" duration="5305000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_CTable_test_cpp - 2018.10.09 at 12h 47m 10s.xml">
+    <history-entry file="All_in_CTable_test_cpp - 2018.10.11 at 14h 04m 23s.xml">
       <configuration name="All in CTable_test.cpp" configurationId="CMakeCatchTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="All_in_CTable_test_cpp - 2018.10.09 at 12h 49m 32s.xml">
-      <configuration name="All in CTable_test.cpp" configurationId="CMakeCatchTestRunConfigurationType" />
+    <history-entry file="Scenario__Test_vColapse - 2018.10.11 at 14h 08m 08s.xml">
+      <configuration name="Scenario: Test vColapse" configurationId="CMakeCatchTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="All_in_CTable_test_cpp - 2018.10.09 at 12h 52m 33s.xml">
-      <configuration name="All in CTable_test.cpp" configurationId="CMakeCatchTestRunConfigurationType" />
+    <history-entry file="Scenario__Test_vColapse - 2018.10.11 at 14h 09m 21s.xml">
+      <configuration name="Scenario: Test vColapse" configurationId="CMakeCatchTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="All_in_CTable_test_cpp - 2018.10.09 at 12h 53m 51s.xml">
-      <configuration name="All in CTable_test.cpp" configurationId="CMakeCatchTestRunConfigurationType" />
+    <history-entry file="Scenario__Test_vColapse - 2018.10.11 at 14h 12m 28s.xml">
+      <configuration name="Scenario: Test vColapse" configurationId="CMakeCatchTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="All_in_CTable_test_cpp - 2018.10.10 at 00h 43m 08s.xml">
-      <configuration name="All in CTable_test.cpp" configurationId="CMakeCatchTestRunConfigurationType" />
+    <history-entry file="Scenario__Test_vColapse - 2018.10.11 at 14h 14m 50s.xml">
+      <configuration name="Scenario: Test vColapse" configurationId="CMakeCatchTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="All_in_CTable_test_cpp - 2018.10.10 at 00h 44m 33s.xml">
-      <configuration name="All in CTable_test.cpp" configurationId="CMakeCatchTestRunConfigurationType" />
+    <history-entry file="Scenario__Test_vColapse - 2018.10.11 at 14h 18m 57s.xml">
+      <configuration name="Scenario: Test vColapse" configurationId="CMakeCatchTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="All_in_CTable_test_cpp - 2018.10.10 at 09h 03m 30s.xml">
-      <configuration name="All in CTable_test.cpp" configurationId="CMakeCatchTestRunConfigurationType" />
+    <history-entry file="Scenario__Test_vColapse - 2018.10.11 at 14h 20m 49s.xml">
+      <configuration name="Scenario: Test vColapse" configurationId="CMakeCatchTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="All_in_CTable_test_cpp - 2018.10.10 at 13h 45m 30s.xml">
-      <configuration name="All in CTable_test.cpp" configurationId="CMakeCatchTestRunConfigurationType" />
+    <history-entry file="Scenario__Test_vColapse - 2018.10.11 at 14h 24m 54s.xml">
+      <configuration name="Scenario: Test vColapse" configurationId="CMakeCatchTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="Scenario__Test_constructor - 2018.10.11 at 01h 27m 45s.xml">
-      <configuration name="Scenario: Test constructor" configurationId="CMakeCatchTestRunConfigurationType" />
+    <history-entry file="Scenario__Test_vColapse - 2018.10.11 at 14h 36m 48s.xml">
+      <configuration name="Scenario: Test vColapse" configurationId="CMakeCatchTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="Scenario__Test_constructor - 2018.10.11 at 01h 27m 51s.xml">
-      <configuration name="Scenario: Test constructor" configurationId="CMakeCatchTestRunConfigurationType" />
+    <history-entry file="Scenario__Test_vColapse - 2018.10.11 at 14h 38m 27s.xml">
+      <configuration name="Scenario: Test vColapse" configurationId="CMakeCatchTestRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43882000" />
+    <option name="totallyTimeSpent" value="57767000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1096" height="1896" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17181467" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20604026" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32973894" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30874008" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32907802" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.12472885" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3757094" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.49262202" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.25106382" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32973894" />
@@ -420,17 +440,6 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/Menu.cpp</url>
-          <line>167</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lib/catch.hpp">
@@ -545,34 +554,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/CTable_test.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-          <folding>
-            <element signature="e#69#106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/cygwin64/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++/bits/stl_iterator.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
           <caret line="844" selection-start-line="844" selection-end-line="844" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/cygwin64/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++/bits/stl_vector.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="670" selection-start-line="670" selection-end-line="670" />
         </state>
       </provider>
     </entry>
@@ -583,61 +568,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Menu.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="e#87#106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Utilities.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CTable.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
-          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Utilities.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#41#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Menu.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        <state relative-caret-position="1590">
+          <caret line="106" column="4" selection-start-line="106" selection-start-column="4" selection-end-line="106" selection-end-column="4" />
           <folding>
             <element signature="e#42#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        <state relative-caret-position="90">
+          <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Utilities.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+          <folding>
+            <element signature="e#41#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/CTable_test.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4575">
+          <caret line="305" column="57" selection-start-line="305" selection-start-column="57" selection-end-line="305" selection-end-column="57" />
+          <folding>
+            <element signature="e#69#106#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CTable.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+        <state relative-caret-position="405">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/cygwin64/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++/bits/stl_vector.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="562" column="6" selection-start-line="562" selection-start-column="6" selection-end-line="562" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Menu.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="38" selection-start-line="37" selection-end-line="38" />
+          <folding>
+            <element signature="e#87#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Menu.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="159" column="4" selection-start-line="159" selection-start-column="4" selection-end-line="160" selection-end-column="32" />
+          <folding>
+            <element signature="e#42#61#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

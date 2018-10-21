@@ -5,7 +5,6 @@
 
 
 int main() {
-    Menu* menu;
-    menu = new Menu();
-    menu->vRun();
+    Menu menu;
+    menu.vRun();
 }

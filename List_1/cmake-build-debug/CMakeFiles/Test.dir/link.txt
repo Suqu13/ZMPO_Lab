@@ -1,1 +1,1 @@
-/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/Test.dir/test/CTable_test.cpp.o CMakeFiles/Test.dir/src/CTable.cpp.o CMakeFiles/Test.dir/src/Menu.cpp.o  -o Test.exe -Wl,--out-implib,libTest.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/Test.dir/test/CTable_test.cpp.o CMakeFiles/Test.dir/src/CTable.cpp.o  -o Test.exe -Wl,--out-implib,libTest.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

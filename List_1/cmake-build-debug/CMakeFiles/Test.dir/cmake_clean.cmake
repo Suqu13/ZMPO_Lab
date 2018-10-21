@@ -1,7 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Test.dir/test/CTable_test.cpp.o"
   "CMakeFiles/Test.dir/src/CTable.cpp.o"
-  "CMakeFiles/Test.dir/src/Menu.cpp.o"
   "Test.pdb"
   "Test.exe"
   "libTest.dll.a"

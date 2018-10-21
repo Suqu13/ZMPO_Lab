@@ -25,6 +25,7 @@ public:
 
     //Functions
     void vSetName(const string sName);
+    void vColapse();
     int iGetLength();
     int iGetElement(const int iIndex, bool *iSuccess);
     string sGetName();

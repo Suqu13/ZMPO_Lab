@@ -24,8 +24,8 @@ Menu::~Menu() {
 
 
 void Menu::vVec_CreateCTables() {
-    cout << "Please provide a number of elements: ";
-    int iNumber = Utilities::iProvideIntBetween(-1, numeric_limits<int>::max());
+    cout << "Please provide a number of CTables to create: ";
+    int iNumber = Utilities::iProvideIntBetween(0, numeric_limits<int>::max());
     for (int i = 0; i < iNumber; ++i) {
         vCTables_Vec.push_back(new CTable);
     }
@@ -73,6 +73,15 @@ void Menu::vVec_ToStringSingle() {
          << vCTables_Vec[iTableIndex]->sToString() << endl;
 }
 
+void Menu::vVec_ToColapse() {
+    if (vCTables_Vec.empty()) {
+        cout << "Firstly, you have to create a table!!" << endl;
+        return;
+    }
+    cout << "Please provide an index of the table to colapse: ";
+    int iTableIndex = (Utilities::iProvideIntBetween(1, vCTables_Vec.size())) - 1;
+    vCTables_Vec[iTableIndex]->vColapse();
+}
 
 void Menu::vVec_DeleteCTable() {
     if (vCTables_Vec.empty()) {
@@ -154,13 +163,14 @@ bool Menu::bVec_End() {
 }
 
 void Menu::vVec_ShowMenu() {
-    cout << "\n1.  Create a group of regular CTables." << endl << "2.  Create a specified CTable." << endl <<
+    cout << "\n1.  Create a regular CTable." << endl << "2.  Create a specified CTable." << endl <<
          "3.  Clone a specified CTable and attach it to the list." << endl << "4.  Print the entire list." << endl
          << "5.  Print a single CTable." << endl
          << "6.  Change length of a specified CTable." << endl << "7.  Set name of a specified CTable."
          << endl << "8.  Insert a new element into a specified CTable." << endl << "9.  Delete a single CTable."
          << endl
-         << "10. Delete all CTables." << endl << "11. Exit" << endl << "\nI'm ready! Provide an integer (1-11):";
+         << "10. Delete all CTables." << endl << "11. Colapse" << endl << "12. Exit" << endl
+         << "\nI'm ready! Provide an integer (1-11):";
 
 
 }
@@ -207,6 +217,9 @@ void Menu::vRun() {
                 vVec_DeleteAll();
                 break;
             case 11:
+                vVec_ToColapse();
+                break;
+            case 12:
                 bExit = bVec_End();
                 break;
 

@@ -4,11 +4,6 @@
 CMakeFiles/Test.dir/src/CTable.cpp.o: ../src/CTable.cpp
 CMakeFiles/Test.dir/src/CTable.cpp.o: ../src/CTable.h
 
-CMakeFiles/Test.dir/src/Menu.cpp.o: ../src/CTable.h
-CMakeFiles/Test.dir/src/Menu.cpp.o: ../src/Menu.cpp
-CMakeFiles/Test.dir/src/Menu.cpp.o: ../src/Menu.h
-CMakeFiles/Test.dir/src/Menu.cpp.o: ../src/Utilities.h
-
 CMakeFiles/Test.dir/test/CTable_test.cpp.o: ../lib/catch.hpp
 CMakeFiles/Test.dir/test/CTable_test.cpp.o: ../src/CTable.h
 CMakeFiles/Test.dir/test/CTable_test.cpp.o: ../test/CTable_test.cpp

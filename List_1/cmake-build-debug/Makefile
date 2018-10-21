@@ -173,7 +173,6 @@ src/Menu.o: src/Menu.cpp.o
 # target to build an object file
 src/Menu.cpp.o:
 	$(MAKE) -f CMakeFiles/List_1.dir/build.make CMakeFiles/List_1.dir/src/Menu.cpp.o
-	$(MAKE) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/src/Menu.cpp.o
 .PHONY : src/Menu.cpp.o
 
 src/Menu.i: src/Menu.cpp.i
@@ -183,7 +182,6 @@ src/Menu.i: src/Menu.cpp.i
 # target to preprocess a source file
 src/Menu.cpp.i:
 	$(MAKE) -f CMakeFiles/List_1.dir/build.make CMakeFiles/List_1.dir/src/Menu.cpp.i
-	$(MAKE) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/src/Menu.cpp.i
 .PHONY : src/Menu.cpp.i
 
 src/Menu.s: src/Menu.cpp.s
@@ -193,7 +191,6 @@ src/Menu.s: src/Menu.cpp.s
 # target to generate assembly for a file
 src/Menu.cpp.s:
 	$(MAKE) -f CMakeFiles/List_1.dir/build.make CMakeFiles/List_1.dir/src/Menu.cpp.s
-	$(MAKE) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/src/Menu.cpp.s
 .PHONY : src/Menu.cpp.s
 
 src/Utilities.o: src/Utilities.cpp.o

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cstring>
 #include <sstream>
+#include <tgmath.h>
 
 
 using namespace std;
@@ -103,10 +104,7 @@ int CTable::iGetElement(const int iIndex, bool *iSuccess) {
 }
 
 bool CTable::bInsertElement(const int iIndex, const int iElement) {
-    if (iLength == 0) {
-        bSetLength(1);
-        iArray[0] = iElement;
-    } else if (iIndex <= iLength - 1 && iIndex >= 0) {
+    if (iIndex <= iLength - 1 && iIndex >= 0) {
         iArray[iIndex] = iElement;
         return true;
     } else {
@@ -150,6 +148,26 @@ string CTable::sToString() {
 
 CTable *CTable::cClone() {
     return new CTable(*this);
+}
+
+void CTable::vColapse() {
+    int newLength;
+    if (iLength % 2 != 0) {
+        newLength = (iLength / 2) + 1;
+    } else {
+        newLength = iLength / 2;
+    }
+    int *newTable = new int[newLength];
+    for (int i = 0; i != newLength; ++i) {
+        if (newLength + i < iLength) {
+            *(newTable + i) = *(iArray + (newLength + i)) + *(iArray + i);
+        } else {
+            *(newTable + i) = *(iArray + i);
+        }
+    }
+    delete[] iArray;
+    iArray = newTable;
+    iLength = newLength;
 }
 
 
