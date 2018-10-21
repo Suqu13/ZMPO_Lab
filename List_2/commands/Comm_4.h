@@ -9,7 +9,8 @@
 #include "../inter/CCommand.h"
 
 //sets name
-class Comm_4: protected CCommand {
+class Comm_4: public CCommand {
+    void RunCommand() override;
 
 };
 

@@ -11,7 +11,7 @@
 #include "CMenuItem.h"
 
 
-class CMenuCommand: protected CMenuItem {
+class CMenuCommand: public CMenuItem {
 public:
     CMenuCommand();
     CMenuCommand(string s_name, string s_command, CCommand* cCommand);

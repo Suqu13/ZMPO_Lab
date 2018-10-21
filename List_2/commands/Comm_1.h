@@ -9,7 +9,8 @@
 #include "../inter/CCommand.h"
 
 //creates a specific ctable
-class Comm_1: protected CCommand {
+class Comm_1: public CCommand {
+    void RunCommand() override;
 
 };
 

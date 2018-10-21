@@ -9,7 +9,8 @@
 #include "../ctab/CTable.h"
 #include "../handlers/CTabHandler.h"
 
-void CCommand::RunCommand() {
+
+void Comm_1::RunCommand() {
     string sName;
     int iLength;
     do {
@@ -24,4 +25,4 @@ void CCommand::RunCommand() {
 
     } while (Utilities::bYOrNIntepreter());
 }
-}
+

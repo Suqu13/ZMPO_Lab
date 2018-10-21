@@ -6,7 +6,11 @@
 #define LIST_2_COMM_6_H
 
 
-class Comm_6 {
+#include "../inter/CCommand.h"
+
+//removes all ctables
+class Comm_6: public CCommand{
+    void RunCommand() override;
 
 };
 

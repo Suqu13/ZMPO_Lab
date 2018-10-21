@@ -11,7 +11,7 @@
 
 class CTabHandler {
 public:
-    ~CTabHandler();
+    static void cleanIt();
     static vector<CTable*> vCTab;
 };
 

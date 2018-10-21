@@ -6,7 +6,11 @@
 #define LIST_2_COMM_9_H
 
 
-class Comm_9 {
+#include "../inter/CCommand.h"
+
+//a single ctable to string
+class Comm_9: public CCommand {
+    void RunCommand() override;
 
 };
 

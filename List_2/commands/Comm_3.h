@@ -9,7 +9,8 @@
 #include "../inter/CCommand.h"
 
 //sets length of a ctable
-class Comm_3: protected CCommand {
+class Comm_3 : public CCommand {
+    void RunCommand() override;
 
 };
 

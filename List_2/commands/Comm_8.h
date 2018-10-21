@@ -6,7 +6,11 @@
 #define LIST_2_COMM_8_H
 
 
-class Comm_8 {
+#include "../inter/CCommand.h"
+
+//all ctables to string
+class Comm_8: public CCommand{
+    void RunCommand() override;
 
 };
 

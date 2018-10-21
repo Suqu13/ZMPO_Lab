@@ -9,8 +9,8 @@
 #include "../inter/CCommand.h"
 
 //inserts a value into a ctable
-class Comm_2: protected CCommand {
-
+class Comm_2: public CCommand {
+    void RunCommand() override;
 };
 
 

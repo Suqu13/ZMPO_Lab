@@ -1,6 +1,8 @@
 #include <iostream>
+#include "inter/CMenu.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    CMenu cMenu;
+    cMenu.InitializeMenu();
+    cMenu.Run();
 }

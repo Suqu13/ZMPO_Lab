@@ -9,7 +9,7 @@
 #include "../ctab/CTable.h"
 #include "../handlers/CTabHandler.h"
 
-void CCommand::RunCommand() {
+void Comm_2::RunCommand() {
     if (CTabHandler::vCTab.empty()) {
         cout << "Firstly, you have to create a table!!" << endl;
         return;

@@ -15,8 +15,10 @@ public:
     virtual string getS_name() const = 0;
 
 protected:
-string s_command;
-string s_name;
+    string s_command;
+    string s_name;
+
+
 };
 
 

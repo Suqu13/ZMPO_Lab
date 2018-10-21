@@ -9,7 +9,9 @@
 #include "../inter/CCommand.h"
 
 // creates default ctables, user gives a number of those
-class Comm_0 : protected CCommand {
+class Comm_0 : public CCommand {
+public:
+    void RunCommand() override;
 };
 
 

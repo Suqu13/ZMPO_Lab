@@ -22,7 +22,7 @@ CMenuCommand::~CMenuCommand() {
 
 //TODO
 void CMenuCommand::Run() {
-    if (cCommand) {
+    if (cCommand == nullptr) {
         cout << "pusta komenda" << endl;
     }
     cCommand->RunCommand();
