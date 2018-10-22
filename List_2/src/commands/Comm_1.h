@@ -7,9 +7,13 @@
 
 
 #include "../inter/CCommand.h"
+#include "../inter/CCommandWithVector.h"
 
 //creates a specific ctable
-class Comm_1: public CCommand {
+class Comm_1: public CCommandWithVector {
+
+public:
+    explicit Comm_1(CTabHandler &pHandler);
     void RunCommand() override;
 
 };

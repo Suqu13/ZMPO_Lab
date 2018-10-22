@@ -7,16 +7,18 @@
 #include <limits>
 #include "../ctab/Utilities.h"
 #include "../ctab/CTable.h"
-#include "../handlers/CTabHandler.h"
+#include "../helpers/CTabHandler.h"
+
+Comm_4::Comm_4(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 
 void Comm_4::RunCommand() {
-    if (CTabHandler::vCTab.empty()) {
+    if (cTabHandler.getVector().empty()) {
         cout << "\nFirstly, you have to create a table!!" << endl;
         return;
     }
     cout << "\nPlease provide an index of the table to change name: ";
-    int iTableIndex = Utilities::iProvideIntBetween(1, CTabHandler::vCTab.size()) - 1;
+    int iTableIndex = Utilities::iProvideIntBetween(1, cTabHandler.getVector().size()) - 1;
     cout << "Please provide the name: ";
     string sNewName = Utilities::sProvideString();
-    CTabHandler::vCTab[iTableIndex]->vSetName(sNewName);
+    cTabHandler.getVector()[iTableIndex]->vSetName(sNewName);
 }

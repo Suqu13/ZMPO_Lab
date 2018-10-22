@@ -7,11 +7,13 @@
 
 
 #include "../inter/CCommand.h"
+#include "../inter/CCommandWithVector.h"
 
 //all ctables to string
-class Comm_8: public CCommand{
+class Comm_8 : public CCommandWithVector {
+public:
+    explicit Comm_8(CTabHandler &pHandler);
     void RunCommand() override;
-
 };
 
 

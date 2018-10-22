@@ -4,11 +4,13 @@
 
 #include "CTabHandler.h"
 
-vector<CTable*> CTabHandler:: vCTab;
-
-void CTabHandler::cleanIt() {
+CTabHandler::~CTabHandler() {
     for (int i = 0; i < vCTab.size() ; ++i) {
         delete vCTab[i];
     }
     vCTab.clear();
+}
+
+vector<CTable *> &CTabHandler::getVector() {
+    return vCTab;
 }

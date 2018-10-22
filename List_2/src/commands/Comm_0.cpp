@@ -7,13 +7,16 @@
 #include "Comm_0.h"
 #include "../ctab/Utilities.h"
 #include "../ctab/CTable.h"
-#include "../handlers/CTabHandler.h"
+#include "../helpers/CTabHandler.h"
+
+Comm_0::Comm_0(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 
 void Comm_0::RunCommand() {
     cout << "\nPlease provide a number of CTables to create: ";
     int iNumber = Utilities::iProvideIntBetween(0, numeric_limits<int>::max());
     for (int i = 0; i < iNumber; ++i) {
-        CTabHandler::vCTab.push_back(new CTable);
+        cTabHandler.getVector().push_back(new CTable);
     }
 }
+
 

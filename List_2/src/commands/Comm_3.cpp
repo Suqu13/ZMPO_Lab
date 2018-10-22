@@ -7,15 +7,18 @@
 #include <limits>
 #include "../ctab/Utilities.h"
 #include "../ctab/CTable.h"
-#include "../handlers/CTabHandler.h"
+#include "../helpers/CTabHandler.h"
+
+Comm_3::Comm_3(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 
 void Comm_3::RunCommand() {
-    if (CTabHandler::vCTab.empty()) {
+    if (cTabHandler.getVector().empty()) {
         cout << "\nFirstly, you have to create a table!!" << endl;
         return;
     }
     cout << "\nPlease enter the table whose length you want to change: ";
-    int iTableIndex = Utilities::iProvideIntBetween(0, CTabHandler::vCTab.size()) - 1;
+    int iTableIndex = Utilities::iProvideIntBetween(0, cTabHandler.getVector().size()) - 1;
     cout << "Please provide a new length: ";
-    CTabHandler::vCTab[iTableIndex]->bSetLength(Utilities::iProvideIntBetween(0, numeric_limits<int>::max()));
+    cTabHandler.getVector()[iTableIndex]->bSetLength(Utilities::iProvideIntBetween(0, numeric_limits<int>::max()));
 }
+

@@ -7,11 +7,13 @@
 
 
 #include "../inter/CCommand.h"
+#include "../inter/CCommandWithVector.h"
 
 //sets name
-class Comm_4: public CCommand {
+class Comm_4 : public CCommandWithVector {
+public:
+    explicit Comm_4(CTabHandler &pHandler);
     void RunCommand() override;
-
 };
 
 

@@ -7,18 +7,21 @@
 #include <limits>
 #include "../ctab/Utilities.h"
 #include "../ctab/CTable.h"
-#include "../handlers/CTabHandler.h"
+#include "../helpers/CTabHandler.h"
+
+Comm_8::Comm_8(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 
 void Comm_8::RunCommand() {
-    if (CTabHandler::vCTab.empty()) {
+    if (cTabHandler.getVector().empty()) {
         cout << "\nFirstly, you have to create a table!!" << endl;
         return;
     }
-    for (int i = 0; i < CTabHandler::vCTab.size(); i++) {
-        cout << (i + 1) << ". Name: " << CTabHandler::vCTab[i]->sGetName() << "; Length: " << CTabHandler::vCTab[i]->iGetLength()
+    for (int i = 0; i < cTabHandler.getVector().size(); i++) {
+        cout << (i + 1) << ". Name: " << cTabHandler.getVector()[i]->sGetName() << "; Length: " << cTabHandler.getVector()[i]->iGetLength()
              << "; Elements: "
-             << CTabHandler::vCTab[i]->sToString() << endl;
+             << cTabHandler.getVector()[i]->sToString() << endl;
     }
 }
+
 
 

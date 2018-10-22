@@ -7,9 +7,12 @@
 
 
 #include "../inter/CCommand.h"
+#include "../inter/CCommandWithVector.h"
 
 //inserts a value into a ctable
-class Comm_2: public CCommand {
+class Comm_2: public CCommandWithVector {
+public:
+    explicit Comm_2(CTabHandler &pHandler);
     void RunCommand() override;
 };
 

@@ -15,14 +15,15 @@ public:
     CMenu();
     CMenu(string s_name, string s_command);
     ~CMenu() override;
-    void InitializeMenu();
     void Run() override;
     void CMenuToString();
+    void AddMenuItem(CMenuItem* vMenuItem);
 
 private:
-    vector<CMenuItem*> vMenuItems;
-    void AddMenuItem(CMenuItem* vMenuItem);
+    bool ifExist(CMenuItem *vMenuItem);
     CMenuItem* findMenuItem();
+    vector<CMenuItem*> vMenuItems;
+
 };
 
 

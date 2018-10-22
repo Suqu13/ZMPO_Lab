@@ -17,7 +17,7 @@
 #include "../../src/commands/Comm_7.h"
 #include "../../src/commands/Comm_8.h"
 #include "../../src/commands/Comm_9.h"
-#include "../../src/handlers/CTabHandler.h"
+#include "../../src/helpers/CTabHandler.h"
 
 #define DEFAULT_NAME "Main MENU";
 #define DEFAULT_COMMAND "Empty command";
@@ -43,42 +43,9 @@ CMenu::~CMenu() {
 }
 
 void CMenu::AddMenuItem(CMenuItem *vMenuItem) {
-    vMenuItems.push_back(vMenuItem);
-}
-
-void CMenu::InitializeMenu() {
-    CMenu *menu_create;
-    menu_create = new CMenu("Create CTables", "create");
-    menu_create->AddMenuItem(new CMenuCommand("Create default CTables", "c1", new Comm_0));
-    menu_create->AddMenuItem(new CMenuCommand("Create a specific CTable", "c2", new Comm_1));
-    menu_create->AddMenuItem(new CMenuCommand("default command", "c3", new CCommand));
-    menu_create->AddMenuItem(new CMenuCommand("empty command", "c4", nullptr));
-    this->AddMenuItem(menu_create);
-
-    CMenu *menu_change;
-    menu_change = new CMenu("Change details", "change");
-    menu_change->AddMenuItem(new CMenuCommand("Insert value into a specific CTable", "c1", new Comm_2));
-    menu_change->AddMenuItem(new CMenuCommand("Set a length of a specific CTable", "c2", new Comm_3));
-    menu_change->AddMenuItem(new CMenuCommand("Set a name of a specific CTable", "c3", new Comm_4));
-
-    this->AddMenuItem(menu_change);
-
-    CMenu *menu_remove;
-    menu_remove = new CMenu("Remove CTables", "remove");
-    menu_remove->AddMenuItem(new CMenuCommand("Remove all CTables", "r1", new Comm_6));
-    menu_remove->AddMenuItem(new CMenuCommand("Remove a specific CTable", "r2", new Comm_7));
-
-    this->AddMenuItem(menu_remove);
-
-    CMenu *menu_show;
-    menu_show = new CMenu("Show CTables", "show");
-    menu_show->AddMenuItem(new CMenuCommand("Show all CTables", "s1", new Comm_8));
-    menu_show->AddMenuItem(new CMenuCommand("Show a single CTable", "s2", new Comm_9));
-
-    this->AddMenuItem(menu_show);
-
-    AddMenuItem(new CMenuCommand("Clone a specific CTable", "clone", new Comm_5));
-
+    if (ifExist(vMenuItem)) {
+        vMenuItems.push_back(vMenuItem);
+    }
 }
 
 void CMenu::Run() {
@@ -88,12 +55,8 @@ void CMenu::Run() {
         item->Run();
         CMenuToString();
     }
-    if (s_name == "Main MENU") {
-        cout << "Ciao!\n";
-        CTabHandler::cleanIt();
-    }
-    return;
 }
+
 
 void CMenu::CMenuToString() {
     cout << "\nCMenu name: " << s_name << endl << "CMenu command: " << s_command << endl << endl;
@@ -120,4 +83,13 @@ CMenuItem *CMenu::findMenuItem() {
         cout << "Wrong command, try again!" << endl;
     }
     return nullptr;
+}
+
+bool CMenu::ifExist(CMenuItem *vMenuItem) {
+    for (int i = 0; i < vMenuItems.size(); ++i) {
+        if (vMenuItems[i]->getS_name() == vMenuItem->getS_name() ||
+            vMenuItems[i]->getS_command() == vMenuItem->getS_command())
+            return false;
+    }
+    return true;
 }

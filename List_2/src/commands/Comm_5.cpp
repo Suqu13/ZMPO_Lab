@@ -7,14 +7,16 @@
 #include <limits>
 #include "../ctab/Utilities.h"
 #include "../ctab/CTable.h"
-#include "../handlers/CTabHandler.h"
+#include "../helpers/CTabHandler.h"
+
+Comm_5::Comm_5(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 
 void Comm_5::RunCommand() {
-    if (CTabHandler::vCTab.empty()) {
+    if (cTabHandler.getVector().empty()) {
         cout << "\nFirstly, you have to create a table!!" << endl;
         return;
     }
     cout << "\nPlease provide an index of the table to clone: ";
-    int iTableIndex = (Utilities::iProvideIntBetween(1, CTabHandler::vCTab.size()) - 1);
-    CTabHandler::vCTab.push_back(new CTable(*CTabHandler::vCTab[(iTableIndex)]));
+    int iTableIndex = (Utilities::iProvideIntBetween(1, cTabHandler.getVector().size()) - 1);
+    cTabHandler.getVector().push_back(new CTable(*cTabHandler.getVector()[(iTableIndex)]));
 }

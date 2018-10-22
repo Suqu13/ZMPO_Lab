@@ -7,8 +7,9 @@
 #include <limits>
 #include "../ctab/Utilities.h"
 #include "../ctab/CTable.h"
-#include "../handlers/CTabHandler.h"
+#include "../helpers/CTabHandler.h"
 
+Comm_1::Comm_1(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 
 void Comm_1::RunCommand() {
     string sName;
@@ -20,7 +21,7 @@ void Comm_1::RunCommand() {
         cout << "Please provide a length: ";
         iLength = Utilities::iProvideIntBetween(0, numeric_limits<int>::max());
 
-        CTabHandler::vCTab.push_back(new CTable(sName, iLength));
+        cTabHandler.getVector().push_back(new CTable(sName, iLength));
         cout << "Do you want to create one more specified CTable? (Y/N):";
 
     } while (Utilities::bYOrNIntepreter());

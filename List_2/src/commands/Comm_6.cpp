@@ -7,11 +7,14 @@
 #include <limits>
 #include "../ctab/Utilities.h"
 #include "../ctab/CTable.h"
-#include "../handlers/CTabHandler.h"
+#include "../helpers/CTabHandler.h"
+
+Comm_6::Comm_6(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 
 void Comm_6::RunCommand() {
-    for (int i = 0; i < CTabHandler::vCTab.size(); i++) {
-        delete CTabHandler::vCTab[i];
+    for (int i = 0; i < cTabHandler.getVector().size(); i++) {
+        delete cTabHandler.getVector()[i];
     }
-    CTabHandler::vCTab.clear();
+    cTabHandler.getVector().clear();
 }
+

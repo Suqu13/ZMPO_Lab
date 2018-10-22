@@ -6,11 +6,13 @@
 #define LIST_2_COMM_5_H
 
 #include "../inter/CCommand.h"
+#include "../inter/CCommandWithVector.h"
 
 //clones a table
-class Comm_5: public CCommand {
+class Comm_5 : public CCommandWithVector {
+public:
+    explicit Comm_5(CTabHandler &pHandler);
     void RunCommand() override;
-
 };
 
 

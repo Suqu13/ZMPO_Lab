@@ -7,11 +7,13 @@
 
 
 #include "../inter/CCommand.h"
+#include "../inter/CCommandWithVector.h"
 
 //removes all ctables
-class Comm_6: public CCommand{
+class Comm_6 : public CCommandWithVector {
+public:
+    explicit Comm_6(CTabHandler &pHandler);
     void RunCommand() override;
-
 };
 
 

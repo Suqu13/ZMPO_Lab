@@ -7,10 +7,12 @@
 
 
 #include "../inter/CCommand.h"
+#include "../inter/CCommandWithVector.h"
 
 // creates default ctables, user gives a number of those
-class Comm_0 : public CCommand {
+class Comm_0 : public CCommandWithVector {
 public:
+    explicit Comm_0(CTabHandler &pHandler);
     void RunCommand() override;
 };
 
