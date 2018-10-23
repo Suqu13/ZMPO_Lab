@@ -4,7 +4,7 @@
 
 #include "CCommandWithVector.h"
 
-CCommandWithVector::CCommandWithVector(CTabHandler &cTabHandler): cTabHandler(cTabHandler) {}
+CCommandWithVector::CCommandWithVector(CTabHandler &cTabHandler) : cTabHandler(cTabHandler) {}
 
 CCommandWithVector::~CCommandWithVector() {}
 

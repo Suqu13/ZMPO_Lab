@@ -4,13 +4,15 @@
 
 #include <iostream>
 #include "CCommand.h"
+
 #define DEFAULT "default command";
 
 
 CCommand::~CCommand() {
+    cout << "usuwam: CCommand" << endl;
 }
 
 void CCommand::RunCommand() {
-    cout <<"\n" DEFAULT;
+    cout << "\n" DEFAULT;
     cout << endl;
 }

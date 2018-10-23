@@ -11,7 +11,7 @@
 
 class CInitializer {
 public:
-    static void Initialize(CMenu& cMenu, CTabHandler &cTabHandler);
+    static void Initialize(CMenu &cMenu, CTabHandler &cTabHandler);
 };
 
 

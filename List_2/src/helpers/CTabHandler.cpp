@@ -5,7 +5,7 @@
 #include "CTabHandler.h"
 
 CTabHandler::~CTabHandler() {
-    for (int i = 0; i < vCTab.size() ; ++i) {
+    for (int i = 0; i < vCTab.size(); ++i) {
         delete vCTab[i];
     }
     vCTab.clear();

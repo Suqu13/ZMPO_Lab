@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "CMenuCommand.h"
+
 #define DEFAULT_COMMAND "empty command";
 
 CMenuCommand::CMenuCommand() {
@@ -18,16 +19,16 @@ CMenuCommand::CMenuCommand(string s_name, string s_command, CCommand *cCommand) 
 }
 
 CMenuCommand::~CMenuCommand() {
-    cout << "usuwam: name: " + s_name + ", command: " + s_command << endl;
+    cout << "usuwam: CMenuCommand > name: " + s_name + ", command: " + s_command << endl;
     delete cCommand;
 }
 
 //TODO
 void CMenuCommand::Run() {
-    if(cCommand)
+    if (cCommand)
         cCommand->RunCommand();
     else {
-        cout <<"\n" DEFAULT_COMMAND;
+        cout << "\n" DEFAULT_COMMAND;
         cout << endl;
     }
 }

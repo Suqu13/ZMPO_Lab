@@ -36,7 +36,7 @@ CMenu::CMenu(string s_name, string s_command) {
 
 CMenu::~CMenu() {
     for (int i = 0; i < vMenuItems.size(); i++) {
-        cout << "usuwam CMenu: " + vMenuItems[i]->getS_name() << endl;
+        cout << "usuwam: CMenu > " + vMenuItems[i]->getS_name() << endl;
         delete vMenuItems[i];
     }
     vMenuItems.clear();

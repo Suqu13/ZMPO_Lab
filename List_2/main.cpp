@@ -7,4 +7,5 @@ int main() {
     CTabHandler cTabHandler;
     CInitializer::Initialize(cMenu, cTabHandler);
     cMenu.Run();
+    return 0;
 }
