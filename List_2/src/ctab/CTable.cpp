@@ -12,43 +12,41 @@
 using namespace std;
 
 //Constructor
-CTable::CTable() : iDEF_LENGTH(10), sDEF_NAME("Regular_CTable"),
+CTable::CTable() : iDEF_LENGTH(10), sDEF_NAME(Def_NAME),
                    sName(sDEF_NAME), iLength(iDEF_LENGTH) {
     iArray = new int[iLength];
     vInitializeWithZeros(iArray, 0, iLength);
-    cout << "bezp: " << sName << endl;
+    cout << Def_CON << sName << endl;
 }
 
 //Parameterized Constructor
-CTable::CTable(string sName, int iLength) : sDEF_NAME("Regular_CTable"), iDEF_LENGTH(10), sName(sName),
+CTable::CTable(string sName, int iLength) : sDEF_NAME(Def_NAME), iDEF_LENGTH(10), sName(sName),
                                             iLength(iLength) {
     iArray = new int[iLength];
     vInitializeWithZeros(iArray, 0, iLength);
-    cout << "parametr: " << sName << endl;
+    cout << PARAMETER << sName << endl;
 }
 
 //Copying Constructor
-CTable::CTable(const CTable &pcOther) : iDEF_LENGTH(10), sDEF_NAME("Regular_CTable") {
-    sName = pcOther.sName + "_copy";
+CTable::CTable(const CTable &pcOther) : iDEF_LENGTH(10), sDEF_NAME(Def_NAME) {
+    sName = pcOther.sName + Copy_SUFFIX;
     iLength = pcOther.iLength;
     iArray = new int[iLength];
-    //Working on pointers is faster
     int *w = iArray;
     int *w_ = pcOther.iArray;
 
     for (int i = 0; i < iLength; i++) {
         *w = *w_;
-        //Changing addresses
         w++;
         w_++;
     }
-    cout << "kopiuj: " << sName << endl;
+    cout << COPY << sName << endl;
 }
 
 //Deconstuctor
 CTable::~CTable() {
     delete[] iArray;
-    cout << "usuwam: " << sName << endl;
+    cout << REMOVE << sName << endl;
 }
 
 //Operator copies values from A to B

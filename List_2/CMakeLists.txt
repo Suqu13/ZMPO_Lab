@@ -3,5 +3,72 @@ project(List_2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(List_2 main.cpp src/ctab/CTable.h src/ctab/CTable.cpp src/ctab/Utilities.h src/ctab/Utilities.cpp src/inter/CMenu.cpp src/inter/CMenu.h src/inter/CMenuItem.h src/inter/CMenuCommand.cpp src/inter/CMenuCommand.h src/inter/CCommand.cpp src/inter/CCommand.h src/helpers/CTabHandler.cpp src/helpers/CTabHandler.h src/commands/Comm_0.cpp src/commands/Comm_0.h src/commands/Comm_1.cpp src/commands/Comm_1.h src/commands/Comm_2.cpp src/commands/Comm_2.h src/commands/Comm_3.cpp src/commands/Comm_3.h src/commands/Comm_4.cpp src/commands/Comm_4.h src/commands/Comm_5.cpp src/commands/Comm_5.h src/commands/Comm_6.cpp src/commands/Comm_6.h src/commands/Comm_7.cpp src/commands/Comm_7.h src/commands/Comm_8.cpp src/commands/Comm_8.cpp src/commands/Comm_8.h src/commands/Comm_9.cpp src/commands/Comm_9.h src/inter/CMenuItem.cpp src/helpers/CInitializer.cpp src/helpers/CInitializer.h src/inter/CCommandWithVector.cpp src/inter/CCommandWithVector.h)
-add_executable(test test/CTable_test.cpp src/ctab/CTable.cpp lib/catch.hpp)
+include_directories(lib)
+include_directories(src/calc)
+include_directories(src/calc_commands)
+include_directories(src/ctab)
+include_directories(src/ctab_commands)
+include_directories(src/helpers)
+include_directories(src/interface)
+include_directories(src/utilities)
+
+add_executable(List_2
+        src/calc/CCalculator.cpp
+        src/calc/CCalculator.h
+        src/calc_commands/AddValues.cpp
+        src/calc_commands/AddValues.h
+        src/calc_commands/Def_Command_For_Calculator.cpp
+        src/calc_commands/Def_Command_For_Calculator.h
+        src/calc_commands/ResetValues.cpp
+        src/calc_commands/ResetValues.h
+        src/calc_commands/SetAValue.cpp
+        src/calc_commands/SetAValue.h
+        src/calc_commands/SetBValue.cpp
+        src/calc_commands/SetBValue.h
+        src/calc_commands/SubstractValues.cpp
+        src/calc_commands/SubstractValues.h
+        src/ctab/CTable.cpp
+        src/ctab/CTable.h
+        src/ctab_commands/CloneCTable.cpp
+        src/ctab_commands/CloneCTable.h
+        src/ctab_commands/CreateDefaultCTables.cpp
+        src/ctab_commands/CreateDefaultCTables.h
+        src/ctab_commands/CreateSpecificCTables.cpp
+        src/ctab_commands/CreateSpecificCTables.h
+        src/ctab_commands/InsertValueIntoCTable.cpp
+        src/ctab_commands/InsertValueIntoCTable.h
+        src/ctab_commands/RemoveAllCTable.cpp
+        src/ctab_commands/RemoveAllCTable.h
+        src/ctab_commands/RemoveSingleCTable.cpp
+        src/ctab_commands/RemoveSingleCTable.h
+        src/ctab_commands/SetCTableName.cpp
+        src/ctab_commands/SetCTableName.h
+        src/ctab_commands/SetLengthOfCTable.cpp
+        src/ctab_commands/SetLengthOfCTable.h
+        src/ctab_commands/ShowAll.cpp
+        src/ctab_commands/ShowAll.h
+        src/ctab_commands/ShowOne.cpp
+        src/ctab_commands/ShowOne.h
+        src/helpers/CInitializer.cpp
+        src/helpers/CInitializer.h
+        src/helpers/CTabHandler.cpp
+        src/helpers/CTabHandler.h
+        src/interface/CCommand.cpp
+        src/interface/CCommand.h
+        src/interface/CCommandWithVector.cpp
+        src/interface/CCommandWithVector.h
+        src/interface/CMenu.cpp
+        src/interface/CMenu.h
+        src/interface/CMenuCommand.cpp
+        src/interface/CMenuCommand.h
+        src/interface/CMenuItem.cpp
+        src/interface/CMenuItem.h
+        src/utilities/Utilities.cpp
+        src/utilities/Utilities.h
+        main.cpp)
+
+add_executable(Test
+        lib/catch.hpp
+        src/ctab/CTable.cpp
+        src/ctab/CTable.h
+        test/CTable_test.cpp)

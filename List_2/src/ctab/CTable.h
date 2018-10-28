@@ -5,6 +5,13 @@
 #ifndef TABLE_CTABLE_H
 #define TABLE_CTABLE_H
 
+#define PARAMETER "parametr: "
+#define Copy_SUFFIX "_copy"
+#define REMOVE "usuwam: "
+#define Def_NAME "Regular_CTable"
+#define Def_CON "bezp: "
+#define COPY "kopiuj: "
+
 #include <string>
 
 using namespace std;
