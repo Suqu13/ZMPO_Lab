@@ -1,6 +1,12 @@
 #include <iostream>
+#include "interface/CMenu.h"
+#include "helpers/CTabHandler.h"
+#include "helpers/CInitializer.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    CMenu cMenu;
+    CTabHandler cTabHandler;
+    CInitializer::Initialize(cMenu, cTabHandler);
+    cMenu.Run();
     return 0;
 }
