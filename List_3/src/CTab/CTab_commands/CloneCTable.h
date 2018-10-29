@@ -8,8 +8,9 @@
 #define Message_If_Empty "Firstly, you have to create a table!!"
 #define Provide_INT "Please provide an index of the table to clone: "
 
-#include "../../../interface/CCommand.h"
-#include "../../../interface/CCommandWithVector.h"
+
+#include "../../../lib/interface/CCommandWithVector.h"
+#include "../../../lib/helpers/CTabHandler.h"
 
 //clones a table
 class CloneCTable : public CCommandWithVector {

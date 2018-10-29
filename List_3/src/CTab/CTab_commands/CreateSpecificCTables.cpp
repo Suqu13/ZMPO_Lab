@@ -5,9 +5,8 @@
 #include "CreateSpecificCTables.h"
 #include <iostream>
 #include <limits>
-#include "../../../utilities/Utilities.h"
 #include "../CTable.h"
-#include "../../../helpers/CTabHandler.h"
+#include "../../../lib/utilities/Utilities.h"
 
 CreateSpecificCTables::CreateSpecificCTables(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 

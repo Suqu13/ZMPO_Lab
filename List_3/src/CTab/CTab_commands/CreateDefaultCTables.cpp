@@ -5,8 +5,7 @@
 #include <iostream>
 #include <limits>
 #include "CreateDefaultCTables.h"
-#include "../../../utilities/Utilities.h"
-#include "../../../helpers/CTabHandler.h"
+#include "../../../lib/utilities/Utilities.h"
 
 CreateDefaultCTables::CreateDefaultCTables(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 

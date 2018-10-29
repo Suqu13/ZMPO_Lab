@@ -5,9 +5,7 @@
 #ifndef LIST_3_SHOWONE_H
 #define LIST_3_SHOWONE_H
 
-
-#include "../../../interface/CCommandWithVector.h"
-#include "../../../helpers/CTabHandler.h"
+#include "../../../lib/interface/CCommandWithVector.h"
 
 #define Message_If_Empty "Firstly, you have to create a table!!"
 #define Provide_INDEX "Please provide an index of the table to show: "

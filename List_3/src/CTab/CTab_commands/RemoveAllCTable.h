@@ -6,8 +6,7 @@
 #define LIST_3_REMOVEALLCTABLE_H
 
 
-#include "../../../helpers/CTabHandler.h"
-#include "../../../interface/CCommandWithVector.h"
+#include "../../../lib/interface/CCommandWithVector.h"
 
 //removes all ctables
 class RemoveAllCTable : public CCommandWithVector {

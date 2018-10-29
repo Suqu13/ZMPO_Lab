@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "ShowOne.h"
-#include "../../../utilities/Utilities.h"
+#include "../../../lib/utilities/Utilities.h"
 
 ShowOne::ShowOne(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 

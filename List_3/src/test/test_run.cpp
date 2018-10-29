@@ -3,6 +3,7 @@
 //
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
+#include "../CTab/CTable.h"
 
 SCENARIO("Test constructor") {
     GIVEN("CTable object") {

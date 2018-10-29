@@ -21,6 +21,7 @@ public:
     virtual string getS_command() const;
     virtual string getS_name() const;
     virtual string getS_help() const;
+
 protected:
     string s_command;
     string s_name;

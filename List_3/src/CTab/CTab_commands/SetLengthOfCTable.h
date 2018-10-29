@@ -6,8 +6,8 @@
 #define LIST_3_SETLENGTHOFCTABLE_H
 
 
-#include "../../../interface/CCommandWithVector.h"
-#include "../../../helpers/CTabHandler.h"
+
+#include "../../../lib/interface/CCommandWithVector.h"
 
 #define Message_If_Empty "Firstly, you have to create a table!!"
 #define Provide_INDEX "Please enter the table whose length you want to change: "

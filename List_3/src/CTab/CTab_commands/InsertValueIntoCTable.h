@@ -11,8 +11,8 @@
 #define Provide_VALUE "Please provide the new element: "
 #define Provide_VALUE_INDEX "Please provide an index for the element: "
 
-#include "../../../interface/CCommandWithVector.h"
-#include "../../../helpers/CTabHandler.h"
+
+#include "../../../lib/interface/CCommandWithVector.h"
 
 //inserts a value into a ctable
 class InsertValueIntoCTable : public CCommandWithVector {

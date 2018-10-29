@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "RemoveSingleCTable.h"
-#include "../../../utilities/Utilities.h"
+#include "../../../lib/utilities/Utilities.h"
 
 
 RemoveSingleCTable::RemoveSingleCTable(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}

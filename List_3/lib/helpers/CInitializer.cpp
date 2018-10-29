@@ -4,25 +4,24 @@
 
 #include <iostream>
 #include <sstream>
-#include "../interface/CMenu.h"
 #include "CTabHandler.h"
 #include "CInitializer.h"
+#include "../../src/CTab/CTab_commands/CreateDefaultCTables.h"
+#include "../../src/CTab/CTab_commands/CreateSpecificCTables.h"
+#include "../../src/CTab/CTab_commands/InsertValueIntoCTable.h"
+#include "../../src/CTab/CTab_commands/SetLengthOfCTable.h"
+#include "../../src/CTab/CTab_commands/SetCTableName.h"
+#include "../../src/CTab/CTab_commands/ShowAll.h"
+#include "../../src/CTab/CTab_commands/RemoveAllCTable.h"
+#include "../../src/CTab/CTab_commands/RemoveSingleCTable.h"
+#include "../../src/CTab/CTab_commands/ShowOne.h"
+#include "../../src/CTab/CTab_commands/CloneCTable.h"
 #include "../interface/CMenuCommand.h"
-#include "../src/CTab/CTab_commands/CreateDefaultCTables.h"
-#include "../src/CTab/CTab_commands/CreateSpecificCTables.h"
-#include "../src/CTab/CTab_commands/InsertValueIntoCTable.h"
-#include "../src/CTab/CTab_commands/SetLengthOfCTable.h"
-#include "../src/CTab/CTab_commands/SetCTableName.h"
-#include "../src/CTab/CTab_commands/ShowAll.h"
-#include "../src/CTab/CTab_commands/RemoveAllCTable.h"
-#include "../src/CTab/CTab_commands/RemoveSingleCTable.h"
-#include "../src/CTab/CTab_commands/ShowOne.h"
-#include "../src/CTab/CTab_commands/CloneCTable.h"
 
 
 using namespace std;
 
-void CInitializer::Initialize(CMenu &cMenu, CTabHandler &cTabHandler) {
+void CInitializer::InitializeForCTable(CMenu &cMenu, CTabHandler &cTabHandler) {
     CMenu *menu_create;
     menu_create = new CMenu("Create CTables", "create", "This menu helps in creating new CTable objects");
 

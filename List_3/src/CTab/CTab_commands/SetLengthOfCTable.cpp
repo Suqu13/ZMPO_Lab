@@ -5,7 +5,7 @@
 #include <iostream>
 #include <limits>
 #include "SetLengthOfCTable.h"
-#include "../../../utilities/Utilities.h"
+#include "../../../lib/utilities/Utilities.h"
 
 SetLengthOfCTable::SetLengthOfCTable(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 

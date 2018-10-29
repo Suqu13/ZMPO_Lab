@@ -10,8 +10,8 @@
 #define Provide_LENGTH "Please provide a length: "
 #define REPEAT "Do you want to create one more specified CTable? (Y/N): "
 
-#include "../../../interface/CCommand.h"
-#include "../../../interface/CCommandWithVector.h"
+
+#include "../../../lib/interface/CCommandWithVector.h"
 
 //creates a specific ctable
 class CreateSpecificCTables: public CCommandWithVector {

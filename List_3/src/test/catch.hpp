@@ -7655,7 +7655,7 @@ namespace Catch {
 
             info.kp_proc.p_flag = 0;
 
-            // Initialize mib, which tells sysctl the info we want, in this case
+            // InitializeForCTable mib, which tells sysctl the info we want, in this case
             // we're looking for information about a specific process ID.
 
             mib[0] = CTL_KERN;

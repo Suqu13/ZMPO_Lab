@@ -8,8 +8,8 @@
 
 #define Provide_INT "Please provide a number of CTables to create: "
 
-#include "../../../interface/CCommand.h"
-#include "../../../interface/CCommandWithVector.h"
+
+#include "../../../lib/interface/CCommandWithVector.h"
 
 // creates default ctables, user gives a number of those
 class CreateDefaultCTables : public CCommandWithVector {

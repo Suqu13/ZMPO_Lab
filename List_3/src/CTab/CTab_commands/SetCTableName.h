@@ -11,8 +11,8 @@
 #define Provide_INT "Please provide the name: "
 
 
-#include "../../../interface/CCommandWithVector.h"
-#include "../../../helpers/CTabHandler.h"
+
+#include "../../../lib/interface/CCommandWithVector.h"
 
 //sets name
 class SetCTableName : public CCommandWithVector {

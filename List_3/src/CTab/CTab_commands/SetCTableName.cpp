@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "SetCTableName.h"
-#include "../../../utilities/Utilities.h"
+#include "../../../lib/utilities/Utilities.h"
 
 SetCTableName::SetCTableName(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 

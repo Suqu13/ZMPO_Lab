@@ -3,9 +3,9 @@
 //
 
 #include "InsertValueIntoCTable.h"
+#include "../../../lib/utilities/Utilities.h"
 #include <iostream>
 #include <limits>
-#include "../../../utilities/Utilities.h"
 
 InsertValueIntoCTable::InsertValueIntoCTable(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 

@@ -9,8 +9,7 @@
 #define Message_If_Empty "Firstly, you have to create a table!!"
 #define Provide_INDEX "Please provide an index of the table to delete: "
 
-#include "../../../helpers/CTabHandler.h"
-#include "../../../interface/CCommandWithVector.h"
+#include "../../../lib/interface/CCommandWithVector.h"
 
 //removes a single ctable
 class RemoveSingleCTable : public CCommandWithVector {

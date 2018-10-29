@@ -6,8 +6,8 @@
 #include <sstream>
 #include "CMenu.h"
 #include "CMenuCommand.h"
-#include "../utilities/Utilities.h"
 #include "../helpers/CTabHandler.h"
+#include "../utilities/Utilities.h"
 
 using namespace std;
 
@@ -101,6 +101,7 @@ bool CMenu::ifExist(CMenuItem *vMenuItem) {
     return true;
 }
 
-vector<CMenuItem *> CMenu::getVector() {
+vector<CMenuItem *> CMenu::getVMenuItems() const {
     return vMenuItems;
 }
+

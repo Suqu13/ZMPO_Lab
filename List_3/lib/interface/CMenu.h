@@ -21,11 +21,12 @@ public:
     CMenu();
     CMenu(string s_name, string s_command, string s_help);
     ~CMenu() override;
-    vector<CMenuItem*> getVector();
+//    vector<CMenuItem*> getVector();
     void Run() override;
     void CMenuToString();
     bool AddMenuItem(CMenuItem* vMenuItem);
     bool DeleteMenuItem(string s_command);
+    vector<CMenuItem *> getVMenuItems() const;
 
 private:
     string findHelp(string sCommandName);

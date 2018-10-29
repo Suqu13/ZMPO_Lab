@@ -6,8 +6,7 @@
 #define LIST_3_SHOWALL_H
 
 
-#include "../../../helpers/CTabHandler.h"
-#include "../../../interface/CCommandWithVector.h"
+#include "../../../lib/interface/CCommandWithVector.h"
 
 #define Message_If_Empty "Firstly, you have to create a table!!"
 #define NAME "Name: "

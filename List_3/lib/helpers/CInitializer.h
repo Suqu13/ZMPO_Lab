@@ -6,12 +6,12 @@
 #define LIST_3_CINITIALIZER_H
 
 
-#include "../interface/CMenu.h"
 #include "CTabHandler.h"
+#include "../interface/CMenu.h"
 
 class CInitializer {
 public:
-    static void Initialize(CMenu &cMenu, CTabHandler &cTabHandler);
+    static void InitializeForCTable(CMenu &cMenu, CTabHandler &cTabHandler);
    // static void InitializeCalulator(CMenu &cMenu, CCalculator &calculator);
 };
 

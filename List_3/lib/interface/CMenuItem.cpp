@@ -21,14 +21,15 @@ CMenuItem::CMenuItem(string s_name, string s_command, string help) {
 CMenuItem::~CMenuItem() {
 }
 
-string CMenuItem::getS_name() const {
-    return s_name;
-}
-
 string CMenuItem::getS_command() const {
     return s_command;
+}
+
+string CMenuItem::getS_name() const {
+    return s_name;
 }
 
 string CMenuItem::getS_help() const {
     return s_help;
 }
+
