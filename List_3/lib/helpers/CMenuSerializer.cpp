@@ -7,12 +7,6 @@
 #include "CMenuSerializer.h"
 #include "../utilities/Utilities.h"
 
-CMenu *CMenuSerializer::mainMenu;
-
-void CMenuSerializer::setMainMenu(CMenu *mainMenu) {
-    CMenuSerializer::mainMenu = mainMenu;
-}
-
 string CMenuSerializer::serializeInterface(CMenuItem *cMenuItem) {
     stringstream stream;
     if (CMenu *cMenu = dynamic_cast<CMenu *> (cMenuItem)) {
@@ -92,6 +86,10 @@ CMenuItem *CMenuSerializer::deserializeInterface(string Interface_info) {
     } else {
         return nullptr;
     }
+}
+//TODO
+bool CMenuSerializer::validateInterface_info(string Interface_info) {
+    return false;
 }
 
 
