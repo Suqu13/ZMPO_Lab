@@ -8,12 +8,13 @@
 CMenuCommand::CMenuCommand() : CMenuItem() {
 }
 
-CMenuCommand::CMenuCommand(string s_name, string s_command, string s_help, CCommand *cCommand) : CMenuItem(s_name, s_command, s_help) {
+CMenuCommand::CMenuCommand(const string &s_name, const string &s_command, const string &s_help, CCommand *cCommand) : CMenuItem(s_name, s_command) {
     this->cCommand = cCommand;
+    this->s_help = s_help;
 }
 
 CMenuCommand::~CMenuCommand() {
-    cout << REMOVE << CMENU_COM << NAME << s_name << ", " << COMMAND << s_command << endl;
+    cout << REMOVING_COMMAND_OBJECT<< s_name << ", "<< s_command << endl;
     delete cCommand;
 }
 
@@ -22,7 +23,11 @@ void CMenuCommand::Run() {
     if (cCommand)
         cCommand->RunCommand();
     else {
-        cout << "\n" << empty_COMMAND;
+        cout << "\n" << EMPTY_COMMAND_BY_DEFAULT;
         cout << endl;
     }
+}
+
+const string &CMenuCommand::getS_help() const {
+    return s_help;
 }

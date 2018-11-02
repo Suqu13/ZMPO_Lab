@@ -62,3 +62,16 @@ vector<string> Utilities::vSplitString(string sString, char cDelimiter) {
     }
     return str;
 }
+
+vector<string> Utilities::vSplitString(string sString, string sDelimiter) {
+    vector<string> vec;
+    int startPoint = 0;
+    int endPoint = 0;
+    while(endPoint != -1){
+        endPoint = sString.find(sDelimiter, startPoint);
+        string newStr = sString.substr(startPoint,endPoint - startPoint);
+        vec.push_back(newStr);
+        startPoint = endPoint + sDelimiter.size();
+    }
+    return vec;
+}

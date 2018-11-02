@@ -17,44 +17,46 @@
 #include "../../src/CTab/CTab_commands/ShowOne.h"
 #include "../../src/CTab/CTab_commands/CloneCTable.h"
 #include "../interface/CMenuCommand.h"
+#include "CMenuAnalyzer.h"
 
 
 using namespace std;
 
 void CInitializer::InitializeForCTable(CMenu &cMenu, CTabHandler &cTabHandler) {
     CMenu *menu_create;
-    menu_create = new CMenu("Create CTables", "create", "This menu helps in creating new CTable objects");
+    menu_create = new CMenu(CREATING_MENU, CREATING_COMMAND);
 
-    menu_create->AddMenuItem(new CMenuCommand("Create default CTables", "c1","Helps in creating a large amount of CTable objects",new CreateDefaultCTables(cTabHandler)));
-    menu_create->AddMenuItem(new CMenuCommand("Create a specific CTable", "c2", "Helps in creating a specific CTable, User can provide a length and name", new CreateSpecificCTables(cTabHandler)));
-    menu_create->AddMenuItem(new CMenuCommand("default command", "c3", "Shows how default commands work", new CCommand));
-    menu_create->AddMenuItem(new CMenuCommand("empty command", "c4","Shows how empty commands work", nullptr));
+    menu_create->AddMenuItem(new CMenuCommand(CREATING_MULTIPLE, CREATING_MUTLIPLE_COMMAND,CREATING_MUTLIPLE_HELP,new CreateDefaultCTables(cTabHandler)));
+    menu_create->AddMenuItem(new CMenuCommand(CREATING_ONE, CREATING_ONE_COMMAND, CREATING_ONE_HELP, new CreateSpecificCTables(cTabHandler)));
+    menu_create->AddMenuItem(new CMenuCommand(DEFAULT, DEFAULT_COMMAND, DEFAULT_HELP, new CCommand));
+    menu_create->AddMenuItem(new CMenuCommand(EMPTY, EMPTY_COMMAND,EMPTY_HELP, nullptr));
     cMenu.AddMenuItem(menu_create);
 
     CMenu *menu_change;
-    menu_change = new CMenu("Change details", "change", "Makes changing details of a specific CTable possible");
-    menu_change->AddMenuItem(new CMenuCommand("Insert value", "c1", "Makes inserting a value provided by User into a specific CTable possible", new InsertValueIntoCTable(cTabHandler)));
-    menu_change->AddMenuItem(new CMenuCommand("Set a length", "c2","Makes setting length of a CTable provided by User possible", new SetLengthOfCTable(cTabHandler)));
-    menu_change->AddMenuItem(new CMenuCommand("Set a name", "c3","Makes setting name of a CTable provided by User possible", new SetCTableName(cTabHandler)));
+    menu_change = new CMenu(CHANGING_MENU, CHANGING_COMMAND);
+    menu_change->AddMenuItem(new CMenuCommand(INSERTING_VAL, INSERTING_VAL_COMMAND, INSERTING_VAL_HELP, new InsertValueIntoCTable(cTabHandler)));
+    menu_change->AddMenuItem(new CMenuCommand(SETTING_LENGTH, SETTING_LENGTH_COMMAND,SETTING_LENGTH_HELP, new SetLengthOfCTable(cTabHandler)));
+    menu_change->AddMenuItem(new CMenuCommand(SETTING_NAME, SETTING_NAME_COMMAND,SETTING_NAME_HELP, new SetCTableName(cTabHandler)));
 
     cMenu.AddMenuItem(menu_change);
 
     CMenu *menu_remove;
-    menu_remove = new CMenu("Remove CTables", "remove", "This menu makes removing possible");
-    menu_remove->AddMenuItem(new CMenuCommand("Remove all CTables", "r1", "Removes all CTables, after that the handler for objects is empty", new RemoveAllCTable(cTabHandler)));
-    menu_remove->AddMenuItem(new CMenuCommand("Remove a specific CTable", "r2","Help in removing a CTable from the index provided by User", new RemoveSingleCTable(cTabHandler)));
+    menu_remove = new CMenu(REMOVING_MENU, REMOVING_COMMAND);
+    menu_remove->AddMenuItem(new CMenuCommand(REMOVING_ALL, REMOVING_ALL_COMMAND, REMOVING_ALL_HELP, new RemoveAllCTable(cTabHandler)));
+    menu_remove->AddMenuItem(new CMenuCommand(REMOVING_ONE, REMOVING_ONE_COMMAND,REMOVING_ONE_HELP, new RemoveSingleCTable(cTabHandler)));
 
     cMenu.AddMenuItem(menu_remove);
 
     CMenu *menu_show;
-    menu_show = new CMenu("Show CTables", "show", "Enable printing whole handler of objects");
-    menu_show->AddMenuItem(new CMenuCommand("Show all CTables", "s1", "Shows all existing CTable objects", new ShowAll(cTabHandler)));
-    menu_show->AddMenuItem(new CMenuCommand("Show a single CTable", "s2", "Shows a CTable from the index provided by User", new ShowOne(cTabHandler)));
+    menu_show = new CMenu(SHOWING_MENU, SHOWING_COMMAND);
+    menu_show->AddMenuItem(new CMenuCommand(SHOWING_ALL, SHOWING_ALL_COMMAND, SHOWING_ALL_HELP, new ShowAll(cTabHandler)));
+    menu_show->AddMenuItem(new CMenuCommand(SHOWING_ONE, SHOWING_ONE_COMMAND, SHOWING_ONE_HELP, new ShowOne(cTabHandler)));
 
     cMenu.AddMenuItem(menu_show);
 
-    cMenu.AddMenuItem(new CMenuCommand("Clone a specific CTable", "clone", "Makes cloning possible. User have to give a index of the object to clone", new CloneCTable(cTabHandler)));
+    cMenu.AddMenuItem(new CMenuCommand(CLONING_ONE, CLONING_ONE_COMMAND, CLONING_ONE_HELP, new CloneCTable(cTabHandler)));
 
+    CMenuAnalyzer::setStaticMember(&cMenu);
 }
 
 //void CInitializer::InitializeCalulator(CMenu &cMenu, CCalculator &calculator) {

@@ -11,10 +11,10 @@ RemoveSingleCTable::RemoveSingleCTable(CTabHandler &pHandler) : CCommandWithVect
 
 void RemoveSingleCTable::RunCommand() {
     if (cTabHandler.getVector().empty()) {
-        cout << "\n" << Message_If_Empty << endl;
+        cout << "\n" << MESSAGE_IF_EMPTY << endl;
         return;
     }
-    cout << "\n" << Provide_INDEX;
+    cout << "\n" << PROVIDE_INDEX_TABLE_TO_DELETE;
     int iTableIndex = (Utilities::iProvideIntBetween(1, cTabHandler.getVector().size())) - 1;
     if (cTabHandler.getVector().size() > iTableIndex) {
         delete cTabHandler.getVector()[iTableIndex];

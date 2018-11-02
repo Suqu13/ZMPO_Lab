@@ -11,18 +11,18 @@ InsertValueIntoCTable::InsertValueIntoCTable(CTabHandler &pHandler) : CCommandWi
 
 void InsertValueIntoCTable::RunCommand() {
     if (cTabHandler.getVector().empty()) {
-        cout << "\n" << Message_If_Empty << endl;
+        cout << "\n" << MESSAGE_IF_EMPTY << endl;
         return;
     }
-    cout << "\n" << Provide_INDEX;
+    cout << "\n" << PROVIDE_TABLE_FOR_NEW_ELEMENT ;
     int iTableIndex = Utilities::iProvideIntBetween(1, cTabHandler.getVector().size()) - 1;
-    cout << Provide_VALUE;
+    cout << PROVIDE_ELEMENT;
     int iNewElement = Utilities::iProvideInt();
     if (cTabHandler.getVector()[iTableIndex]->iGetLength() == 0) {
         (cTabHandler.getVector()[iTableIndex]->bInsertElement(1, iNewElement));
         return;
     }
-    cout << Provide_VALUE_INDEX;
+    cout << PROVIDE_INDEX_FOR_NEW_ELEMENT ;
     cTabHandler.getVector()[iTableIndex]->bInsertElement(
             Utilities::iProvideIntBetween(0, cTabHandler.getVector()[iTableIndex]->iGetLength() - 1), iNewElement);
 }

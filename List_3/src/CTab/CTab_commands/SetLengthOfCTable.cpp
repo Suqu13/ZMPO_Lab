@@ -11,11 +11,11 @@ SetLengthOfCTable::SetLengthOfCTable(CTabHandler &pHandler) : CCommandWithVector
 
 void SetLengthOfCTable::RunCommand() {
     if (cTabHandler.getVector().empty()) {
-        cout << "\n" << Message_If_Empty << endl;
+        cout << "\n" << MESSAGE_IF_EMPTY << endl;
         return;
     }
-    cout << "\n" << Provide_INDEX;
+    cout << "\n" << PROVIDE_INDEX_TABLE_TO_SET_LENGTH;
     int iTableIndex = Utilities::iProvideIntBetween(0, cTabHandler.getVector().size()) - 1;
-    cout << Provide_LENGTH;
+    cout << PROVIDE_NEW_LENGTH;
     cTabHandler.getVector()[iTableIndex]->bSetLength(Utilities::iProvideIntBetween(0, numeric_limits<int>::max()));
 }

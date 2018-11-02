@@ -3,16 +3,18 @@
 #include "lib/helpers/CTabHandler.h"
 #include "lib/helpers/CInitializer.h"
 #include "lib/helpers/CMenuAnalyzer.h"
+#include "lib/helpers/CMenuSerializer.h"
+#include "lib/utilities/Utilities.h"
 
 int main() {
-    CMenu cMenu;
-    CTabHandler cTabHandler;
-    CInitializer::InitializeForCTable(cMenu, cTabHandler);
-    CMenuAnalyzer analyzer;
-    analyzer.InitializeMap(cMenu);
-    analyzer.sevaMap();
-    cout<<" \n";
-    cMenu.Run();
-    analyzer.searchPath("c1");
+    //CMenu cMenu("Main menu", "main menu command");
+    //CTabHandler cTabHandler;
+    //CInitializer::InitializeForCTable(cMenu, cTabHandler);
+    string kq = "('menu','gowne';('sub','Sun';['com','com1','com2']),('sub1','subcom';))";
+    // string ser = CMenuSerializer::serializeInterface(&cMenu);
+    // cMenu.Run();
+    CMenu *cMenu1 = dynamic_cast<CMenu*>(CMenuSerializer::deserializeInterface(kq));
+    string ser = CMenuSerializer::serializeInterface(cMenu1);
+    cout << ser << endl;
     return 0;
 }

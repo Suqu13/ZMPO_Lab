@@ -7,8 +7,8 @@
 
 #include "../../../lib/interface/CCommandWithVector.h"
 
-#define Message_If_Empty "Firstly, you have to create a table!!"
-#define Provide_INDEX "Please provide an index of the table to show: "
+#define MESSAGE_IF_EMPTY "Firstly, you have to create a table!!"
+#define PROVIDE_INDEX_TABLE_TO_SHOW "Please provide an index of the table to show: "
 #define NAME "Name: "
 #define LENGTH "Length: "
 #define ELEMENTS "Elements: "

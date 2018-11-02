@@ -9,12 +9,12 @@ ShowAll::ShowAll(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 
 void ShowAll::RunCommand() {
     if (cTabHandler.getVector().empty()) {
-        cout << "\n"<<Message_If_Empty << endl;
+        cout << "\n"<<MESSAGE_IF_EMPTY << endl;
         return;
     }
     for (int i = 0; i < cTabHandler.getVector().size(); i++) {
-        cout << (i + 1) << ". "<< NAME << cTabHandler.getVector()[i]->sGetName() << "; "<< LENGTH << cTabHandler.getVector()[i]->iGetLength()
-             << ";" << ELEMENTS
+        cout << (i + 1) << ". "<< CURRENT_NAME << cTabHandler.getVector()[i]->sGetName() << "; "<< CURRENT_LENGTH << cTabHandler.getVector()[i]->iGetLength()
+             << ";" << CURRENT_ELEMENTS
              << cTabHandler.getVector()[i]->sToString() << endl;
     }
 }

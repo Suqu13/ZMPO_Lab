@@ -18,6 +18,8 @@ public:
     static string sProvideString();
     static bool bYOrNIntepreter();
     static vector<string> vSplitString(string sString, char cDelimiter);
+    static vector<string> vSplitString(string sString, string sDelimiter);
+
 };
 
 

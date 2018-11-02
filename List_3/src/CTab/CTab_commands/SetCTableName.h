@@ -6,9 +6,9 @@
 #define LIST_3_SETCTABLENAME_H
 
 
-#define Message_If_Empty "Firstly, you have to create a table!!"
-#define Provide_INDEX "Please provide an index of the table to change name: "
-#define Provide_INT "Please provide the name: "
+#define MESSAGE_IF_EMPTY "Firstly, you have to create a table!!"
+#define PROVIDE_INDEX_TABLE_TO_SET_NAME "Please provide an index of the table to change name: "
+#define PROVIDE_NEW_NAME "Please provide the name: "
 
 
 

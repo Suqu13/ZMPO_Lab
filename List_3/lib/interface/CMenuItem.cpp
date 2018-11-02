@@ -9,27 +9,23 @@
 CMenuItem::CMenuItem() {
     s_name = DEF_NAME;
     s_command = DEF_COMMAND;
-    s_help = DEF_HELP;
 }
 
-CMenuItem::CMenuItem(string s_name, string s_command, string help) {
+CMenuItem::CMenuItem(const string &s_name,const string &s_command) {
     this->s_name = s_name;
     this->s_command = s_command;
-    this->s_help = help;
 }
 
-CMenuItem::~CMenuItem() {
-}
+CMenuItem::~CMenuItem() = default;
 
-string CMenuItem::getS_command() const {
+const string &CMenuItem::getS_command() const {
     return s_command;
 }
 
-string CMenuItem::getS_name() const {
+const string &CMenuItem::getS_name() const {
     return s_name;
 }
 
-string CMenuItem::getS_help() const {
-    return s_help;
-}
+
+
 

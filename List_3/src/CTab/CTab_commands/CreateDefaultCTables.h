@@ -6,7 +6,7 @@
 #define LIST_3_CREATEDEFAULTCTABLES_H
 
 
-#define Provide_INT "Please provide a number of CTables to create: "
+#define PROVIDE_AMOUNT "Please provide a number of CTables to create: "
 
 
 #include "../../../lib/interface/CCommandWithVector.h"

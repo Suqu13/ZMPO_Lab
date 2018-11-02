@@ -8,10 +8,10 @@
 
 #include "../../../lib/interface/CCommandWithVector.h"
 
-#define Message_If_Empty "Firstly, you have to create a table!!"
-#define NAME "Name: "
-#define LENGTH "Length: "
-#define ELEMENTS "Elements: "
+#define MESSAGE_IF_EMPTY "Firstly, you have to create a table!!"
+#define CURRENT_NAME "Name: "
+#define CURRENT_LENGTH "Length: "
+#define CURRENT_ELEMENTS "Elements: "
 
 
 

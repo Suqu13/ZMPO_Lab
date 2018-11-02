@@ -7,4 +7,4 @@
 
 CCommandWithVector::CCommandWithVector(CTabHandler &cTabHandler) : cTabHandler(cTabHandler) {}
 
-CCommandWithVector::~CCommandWithVector() {}
+CCommandWithVector::~CCommandWithVector() = default;

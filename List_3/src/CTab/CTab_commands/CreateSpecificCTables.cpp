@@ -14,14 +14,14 @@ void CreateSpecificCTables::RunCommand() {
     string sName;
     int iLength;
     do {
-        cout << "\n" << Provide_NAME;
+        cout << "\n" << PROVIDE_NAME;
         sName = Utilities::sProvideString();
 
-        cout << Provide_LENGTH;
+        cout << PROVIDE_LENGTH;
         iLength = Utilities::iProvideIntBetween(0, numeric_limits<int>::max());
 
         cTabHandler.getVector().push_back(new CTable(sName, iLength));
-        cout << REPEAT;
+        cout << REPEATING_OPERATION;
 
     } while (Utilities::bYOrNIntepreter());
 }

@@ -6,8 +6,8 @@
 #define LIST_3_REMOVESINGLECTABLE_H
 
 
-#define Message_If_Empty "Firstly, you have to create a table!!"
-#define Provide_INDEX "Please provide an index of the table to delete: "
+#define MESSAGE_IF_EMPTY "Firstly, you have to create a table!!"
+#define PROVIDE_INDEX_TABLE_TO_DELETE "Please provide an index of the table to delete: "
 
 #include "../../../lib/interface/CCommandWithVector.h"
 

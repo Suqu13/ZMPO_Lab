@@ -7,37 +7,17 @@
 
 #include "string"
 #include "vector"
+#include "../interface/CMenuItem.h"
 #include "../interface/CMenu.h"
 
 using namespace std;
 
 class CMenuAnalyzer {
-    class Node {
-    public:
-        Node();
-        ~Node();
-        Node* makeMap(CMenuItem *cMenu);
-        string writeMap();
-        void findPath(string path,  const string &commandToFind);
-
-    private:
-        string s_name;
-        string s_command;
-        string s_help;
-        vector<Node*> childrens;
-    };
-
 public:
-    CMenuAnalyzer();
-    ~CMenuAnalyzer();
-    string searchPath(string s_name);
-    void InitializeMap(CMenuItem &cMenu);
-    string sevaMap();
-
-
+    static void searchForCommand(CMenu *menu, const string &commandToFind, string path, bool &exist);
+    static void setStaticMember(CMenu* cMenu);
 private:
-    Node *mainNode;
-    vector<string> path;
+    static CMenu *mainMenu;
 };
 
 

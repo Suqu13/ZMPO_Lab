@@ -7,25 +7,22 @@
 
 #include "string"
 
-#define DEF_NAME "DEFAULT_NAME"
-#define DEF_COMMAND "DEFAULT_COMMAND"
-#define DEF_HELP "DEFAULT_HELP"
+#define DEF_NAME "default_menu"
+#define DEF_COMMAND "default_command"
 using namespace std;
 
 class CMenuItem {
 public:
     CMenuItem();
-    CMenuItem(string s_name, string s_command, string help);
+    CMenuItem(const string &s_name,const string &s_command);
     virtual ~CMenuItem();
     virtual void Run() = 0;
-    virtual string getS_command() const;
-    virtual string getS_name() const;
-    virtual string getS_help() const;
+    const string &getS_command() const;
+    const string &getS_name() const;
 
 protected:
     string s_command;
     string s_name;
-    string s_help;
 };
 
 

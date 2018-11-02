@@ -6,11 +6,7 @@
 #define LIST_3_CMENUCOMMAND_H
 
 
-#define REMOVE "usuwam: "
-#define CMENU_COM "CMenuCommand "
-#define NAME "name: "
-#define COMMAND "command: "
-#define empty_COMMAND "empty command"
+#define EMPTY_COMMAND_BY_DEFAULT "empty command"
 
 #include <string>
 #include "CCommand.h"
@@ -20,12 +16,15 @@
 class CMenuCommand: public CMenuItem {
 public:
     CMenuCommand();
-    CMenuCommand(string s_name, string s_command, string s_help, CCommand* cCommand);
+    CMenuCommand(const string &s_name, const string &s_command, const string &s_help, CCommand* cCommand);
     ~CMenuCommand() override;
     void Run() override;
 
+    const string &getS_help() const;
+
 private:
     CCommand* cCommand;
+    string s_help;
 };
 
 

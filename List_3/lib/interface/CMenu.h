@@ -6,22 +6,27 @@
 #define LIST_3_CMENU_H
 
 
-#define Wrong_Command "Wrong command, try again!"
-#define REMOVE "usuwam: "
-#define CMENU "CMenu "
+#define WRONG_COMMAND "Wrong command, try again!"
+#define REMOVING_CMENUITEM_OBJECT "usuwam CMenuItem: "
 #define NAME "name: "
-#define COMMAND "command: "
+#define BACK_COMMAND "back"
+#define BACK_HELP "This command makes moving back and exiting whole program possible"
+#define NO_COMMAND "command does not exist"
+#define BACK_COMMAND_SIGNATURE "Back (back)"
+#define HELP_COMMAND "help"
+#define SEARCH_COMMAND "search"
 
 #include <vector>
 #include "CMenuItem.h"
-using namespace std;
 
+
+using namespace std;
+class CMenuAnalyzer;
 class CMenu: public CMenuItem {
 public:
     CMenu();
-    CMenu(string s_name, string s_command, string s_help);
+    CMenu(const string &s_name, const string &s_command);
     ~CMenu() override;
-//    vector<CMenuItem*> getVector();
     void Run() override;
     void CMenuToString();
     bool AddMenuItem(CMenuItem* vMenuItem);

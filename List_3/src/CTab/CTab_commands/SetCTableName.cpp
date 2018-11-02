@@ -10,12 +10,12 @@ SetCTableName::SetCTableName(CTabHandler &pHandler) : CCommandWithVector(pHandle
 
 void SetCTableName::RunCommand() {
     if (cTabHandler.getVector().empty()) {
-        cout << "\n" << Message_If_Empty << endl;
+        cout << "\n" << MESSAGE_IF_EMPTY << endl;
         return;
     }
-    cout << "\n" << Provide_INDEX;
+    cout << "\n" << PROVIDE_INDEX_TABLE_TO_SET_NAME;
     int iTableIndex = Utilities::iProvideIntBetween(1, cTabHandler.getVector().size()) - 1;
-    cout << Provide_INT;
+    cout << PROVIDE_NEW_NAME;
     string sNewName = Utilities::sProvideString();
     cTabHandler.getVector()[iTableIndex]->vSetName(sNewName);
 }

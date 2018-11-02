@@ -10,10 +10,10 @@ ShowOne::ShowOne(CTabHandler &pHandler) : CCommandWithVector(pHandler) {}
 
 void ShowOne::RunCommand() {
     if (cTabHandler.getVector().empty()) {
-        cout << "\n" << Message_If_Empty << endl;
+        cout << "\n" << MESSAGE_IF_EMPTY << endl;
         return;
     }
-    cout << "\n " << Provide_INDEX;
+    cout << "\n " << PROVIDE_INDEX_TABLE_TO_SHOW;
     int iTableIndex = (Utilities::iProvideIntBetween(1, cTabHandler.getVector().size())) - 1;
     cout << (iTableIndex + 1) << ". " << NAME << cTabHandler.getVector()[iTableIndex]->sGetName() << "; " << LENGTH
          << cTabHandler.getVector()[iTableIndex]->iGetLength()

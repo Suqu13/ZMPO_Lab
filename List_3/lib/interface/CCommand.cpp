@@ -8,10 +8,10 @@
 
 
 CCommand::~CCommand() {
-    cout << REMOVE << CCOM << endl;
+    cout << REMOVING_COMMAND_OBJECT << COMMAND_OBJECT << endl;
 }
 
 void CCommand::RunCommand() {
-    cout << "\n" << DEF << CCOM;
+    cout << "\n" << DEFAULT_CCOMMAND;
     cout << endl;
 }

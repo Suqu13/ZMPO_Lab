@@ -6,9 +6,9 @@
 #define LIST_3_CREATESPECIFICCTABLES_H
 
 
-#define Provide_NAME "Please provide a name: "
-#define Provide_LENGTH "Please provide a length: "
-#define REPEAT "Do you want to create one more specified CTable? (Y/N): "
+#define PROVIDE_NAME "Please provide a name: "
+#define PROVIDE_LENGTH "Please provide a length: "
+#define REPEATING_OPERATION "Do you want to create one more specified CTable? (Y/N): "
 
 
 #include "../../../lib/interface/CCommandWithVector.h"

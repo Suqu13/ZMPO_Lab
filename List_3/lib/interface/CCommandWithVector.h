@@ -12,8 +12,7 @@
 class CCommandWithVector : public CCommand {
 public:
     explicit CCommandWithVector(CTabHandler &cTabHandler);
-    virtual ~CCommandWithVector();
-
+    ~CCommandWithVector() override;
 protected:
     CTabHandler &cTabHandler;
 };

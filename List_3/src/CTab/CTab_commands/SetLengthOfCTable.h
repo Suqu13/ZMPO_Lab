@@ -9,9 +9,9 @@
 
 #include "../../../lib/interface/CCommandWithVector.h"
 
-#define Message_If_Empty "Firstly, you have to create a table!!"
-#define Provide_INDEX "Please enter the table whose length you want to change: "
-#define Provide_LENGTH "Please provide a new length: "
+#define MESSAGE_IF_EMPTY "Firstly, you have to create a table!!"
+#define PROVIDE_INDEX_TABLE_TO_SET_LENGTH "Please enter the table whose length you want to change: "
+#define PROVIDE_NEW_LENGTH "Please provide a new length: "
 
 
 

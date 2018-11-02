@@ -8,18 +8,20 @@
 #include "CMenuCommand.h"
 #include "../helpers/CTabHandler.h"
 #include "../utilities/Utilities.h"
+#include "../helpers/CMenuAnalyzer.h"
+
 
 using namespace std;
 
 CMenu::CMenu() : CMenuItem() {
 }
 
-CMenu::CMenu(string s_name, string s_command, string s_help) : CMenuItem(s_name, s_command, s_help) {
+CMenu::CMenu(const string &s_name, const string &s_command) : CMenuItem(s_name, s_command) {
 }
 
 CMenu::~CMenu() {
     for (int i = 0; i < vMenuItems.size(); i++) {
-        cout << REMOVE << CMENU + vMenuItems[i]->getS_name() << endl;
+        cout << REMOVING_CMENUITEM_OBJECT << vMenuItems[i]->getS_name() << endl;
         delete vMenuItems[i];
     }
     vMenuItems.clear();
@@ -54,39 +56,50 @@ void CMenu::Run() {
 }
 
 string CMenu::findHelp(string sCommandName) {
-    if (sCommandName == "back") {
-        return "This command makes moving back and exiting whole program possible";
+    if (sCommandName == BACK_COMMAND) {
+        return BACK_HELP;
     } else {
         for (int i = 0; i < vMenuItems.size(); ++i) {
             if (vMenuItems[i]->getS_command() == sCommandName) {
-                return vMenuItems[i]->getS_help();
+                if (CMenuCommand *com = dynamic_cast<CMenuCommand *> (vMenuItems[i]))
+                    return com->getS_help();
             }
         }
-        return "command does not exist";
+        return NO_COMMAND;
     }
 }
 
 void CMenu::CMenuToString() {
-    cout << "\n" << CMENU << NAME << s_name << endl << CMENU << COMMAND << s_command << endl << endl;
+    cout << "\n" << s_name << " (" << s_command << ")\n" << endl;
     for (int i = 0; i < vMenuItems.size(); ++i) {
         cout << vMenuItems[i]->getS_name() << " (" << vMenuItems[i]->getS_command() << ") " << endl;
     }
-    cout << "Back " << "(back)\n " << endl;
+    cout << BACK_COMMAND_SIGNATURE << "\n " << endl;
 }
 
 CMenuItem *CMenu::findMenuItem() {
+    bool exist;
     string s_newCommand;
-    while ((s_newCommand = Utilities::sProvideString()) != "back") {
+    while ((s_newCommand = Utilities::sProvideString()) != BACK_COMMAND) {
         vector<string> vString;
-        if ((vString= Utilities::vSplitString(s_newCommand, ' ')).size() == 2 && vString.front() == "help") {
-            cout << findHelp(vString.back()) << endl;
+        if ((vString = Utilities::vSplitString(s_newCommand, ' ')).size() == 2) {
+            if (vString.front() == HELP_COMMAND) {
+                cout << findHelp(vString.back()) << endl;
+            } else if (vString.front() == SEARCH_COMMAND) {
+                string path;
+                exist = false;
+                CMenuAnalyzer::searchForCommand(NULL, vString.back(), path, exist);
+                if (!exist) {
+                    cout << NO_COMMAND << endl;
+                }
+            }
         } else {
             for (int i = 0; i < vMenuItems.size(); ++i) {
                 if (vMenuItems[i]->getS_command() == s_newCommand) {
                     return vMenuItems[i];
                 }
             }
-            cout << Wrong_Command << endl;
+            cout << WRONG_COMMAND << endl;
         }
     }
     return nullptr;
