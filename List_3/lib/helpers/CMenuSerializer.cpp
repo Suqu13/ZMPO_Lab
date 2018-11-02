@@ -40,7 +40,7 @@ string CMenuSerializer::serializeCMenuCommand(CMenuCommand *cMenuCommand) {
 
 CMenuCommand *CMenuSerializer::deserializeCMenuCommand(string cMenuCommand_info) {
     vector<string> vec = Utilities::vSplitString(cMenuCommand_info.substr(2, cMenuCommand_info.size() - 3), "','");
-    return (new CMenuCommand(vec[0], vec[1], vec[2], new CCommand));
+    return (new CMenuCommand(vec[0], vec[1], vec[2], nullptr));
 }
 
 CMenu *CMenuSerializer::deserializeCMenu(string cMenu_info) {
@@ -49,7 +49,6 @@ CMenu *CMenuSerializer::deserializeCMenu(string cMenu_info) {
 }
 
 int CMenuSerializer::findClosingChar(char opening, string toAnalyze) {
-
     char closing;
     switch (opening) {
         case '(':
@@ -61,7 +60,6 @@ int CMenuSerializer::findClosingChar(char opening, string toAnalyze) {
         default:
             return -1;
     }
-
     int start_point = toAnalyze.find(opening);
     int end_point = -1;
     int inside_point = start_point;
@@ -78,13 +76,13 @@ CMenuItem *CMenuSerializer::deserializeInterface(string Interface_info) {
         int findSemicolon = Interface_info.find(';');
         CMenu *cMenu = deserializeCMenu(Interface_info.substr(0, findSemicolon));
         string actualString = Interface_info.substr(findSemicolon + 1, Interface_info.size() - findSemicolon - 1);
-        while ((endPosition = findClosingChar(actualString.at(0), actualString)) != -1 && actualString.size() >= findSemicolon) {
-            CMenuItem* cMenuItem = deserializeInterface(actualString.substr(0, endPosition+1));
+        //dzieli string dwojako, po commandach zostaje pusty "", natomiast po menu mamy jakiś pojedynczy znak konczący
+        while ((actualString.size() != 0) && (endPosition = findClosingChar(actualString.at(0), actualString)) != -1) {
+            CMenuItem *cMenuItem = deserializeInterface(actualString.substr(0, endPosition + 1));
             if (cMenuItem) {
                 cMenu->AddMenuItem(cMenuItem);
             }
-            if ((actualString = actualString.substr(endPosition + 2)).size() == 0)
-                break;
+            actualString = actualString.substr(endPosition + 2);
         }
         return cMenu;
     } else if (Interface_info.at(0) == '[') {
