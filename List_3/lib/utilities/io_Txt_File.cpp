@@ -6,7 +6,7 @@
 #include <fstream>
 #include "io_Txt_File.h"
 
-bool io_Txt_File::writeToFile(string Data_info, string &fileName) {
+bool io_Txt_File::writeToFile(string &Data_info, string &fileName) {
     ofstream fileStream(fileName);
     if (fileStream.is_open()) {
         fileStream << Data_info << endl;

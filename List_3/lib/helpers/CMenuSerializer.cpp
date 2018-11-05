@@ -6,6 +6,15 @@
 #include <iostream>
 #include "CMenuSerializer.h"
 #include "../utilities/Utilities.h"
+#include "Validator.h"
+#include "../utilities/io_Txt_File.h"
+#include <stack>
+
+void CMenuSerializer::serialize(CMenuItem *cMenuItem, string fileName) {
+    string data = serializeInterface(cMenuItem);
+    io_Txt_File::writeToFile(data, fileName);
+}
+
 
 string CMenuSerializer::serializeInterface(CMenuItem *cMenuItem) {
     stringstream stream;
@@ -21,7 +30,7 @@ string CMenuSerializer::serializeInterface(CMenuItem *cMenuItem) {
     } else if (CMenuCommand *cMenuCommand = dynamic_cast<CMenuCommand *>(cMenuItem)) {
         stream << serializeCMenuCommand(cMenuCommand);
     }
-    return stream.str();
+    return stream.str();;
 }
 
 
@@ -72,14 +81,6 @@ int CMenuSerializer::findClosingChar(char opening, string toAnalyze) {
         }
     }
     return -1;
-//    int start_point = toAnalyze.find(opening);
-//    int end_point = -1;
-//    int inside_point = start_point;
-//    do {
-//        inside_point = toAnalyze.find(opening, inside_point + 1);
-//        end_point = toAnalyze.find(closing, end_point + 1);
-//    } while (start_point < inside_point && inside_point < end_point);
-//    return end_point;
 }
 
 string CMenuSerializer::rightPlaceToDivide(int endPosition, const string &String_info) {
@@ -87,6 +88,15 @@ string CMenuSerializer::rightPlaceToDivide(int endPosition, const string &String
         return String_info.substr(endPosition + 2);
     } else {
         return String_info.substr(endPosition + 1);
+    }
+}
+
+CMenuItem *CMenuSerializer::deserialize(string fileName) {
+    string Interface_info = io_Txt_File::readFromFile(fileName);
+    if (Validator::validate(Interface_info, fileName)) {
+        return deserializeInterface(Interface_info);
+    } else {
+        return nullptr;
     }
 }
 
@@ -113,141 +123,7 @@ CMenuItem *CMenuSerializer::deserializeInterface(string Interface_info) {
     }
 }
 
-//TODO
-bool CMenuSerializer::validateInterface_info(string Interface_info) {
-    int currentIndex = 0;
-    int mistakeIndex = -1;
-    char mistakeChar;
-    validateCMenu(Interface_info, currentIndex, mistakeIndex, mistakeChar);
-    if (mistakeIndex != -1) {
-        cout << "Error " << mistakeChar << "placed " << mistakeIndex << endl;
-    }
-}
 
-void
-CMenuSerializer::validateCMenu(const string &cMenu_info, int &currentIndex, int &mistakeIndex, char &mistakeSymbol) {
-    if (cMenu_info.at(0) != '(') {
-        mistakeIndex = currentIndex;
-        mistakeSymbol = '(';
-        return;
-    }
 
-    if (cMenu_info.at(cMenu_info.size() - 1) != ')') {
-        mistakeIndex = currentIndex + cMenu_info.size() - 1;
-        mistakeSymbol = ')';
-        return;
-    }
-    currentIndex++;
-    validateNameAndCommand(cMenu_info.substr(1, cMenu_info.size() - 2), currentIndex, mistakeIndex, mistakeSymbol);
 
-}
-
-void CMenuSerializer::validateNameAndCommand(const string &cMenu_info, int &currentIndex, int &mistakeIndex,
-                                             char &mistakeSymbol) {
-    if (cMenu_info.at(0) != '\'') {
-        mistakeIndex = currentIndex;
-        mistakeSymbol = '\'';
-        return;
-    }
-    int nameEnding = 1 + findClosingChar('\'', cMenu_info.substr(1));
-    if (nameEnding == -1) {
-        mistakeIndex = currentIndex + nameEnding;
-        mistakeSymbol = '\'';
-        return;
-    }
-    if (cMenu_info.at(nameEnding + 1) != ',') {
-        mistakeIndex = currentIndex + nameEnding + 1;
-        mistakeSymbol = ',';
-        return;
-    }
-    if (cMenu_info.at(nameEnding + 2) != '\'') {
-        mistakeIndex = currentIndex + nameEnding + 2;
-        mistakeSymbol = '\'';
-        return;
-    }
-    int semicolon = 0;
-    for (int i = nameEnding + 3; i < cMenu_info.size(); ++i) {
-        if (cMenu_info.at(i) == '\'') {
-            if (cMenu_info.at(i + 1) != ';' || i + 1 > cMenu_info.size()) {
-                mistakeIndex = currentIndex + i;
-                mistakeSymbol = ';';
-                return;
-            } else {
-                semicolon = i + 1;
-                break;
-            }
-        }
-        if (cMenu_info.at(i) == ';' || cMenu_info.at(i) == '[' || cMenu_info.at(i) == ']' || cMenu_info.at(i) == '(' ||
-            cMenu_info.at(i) == ')') {
-            mistakeIndex = currentIndex + i;
-            mistakeSymbol = '\'';
-            return;
-        }
-    }
-    currentIndex += currentIndex + semicolon + 1;
-}
-
-void
-CMenuSerializer::validateCMenuCommand(const string &cMenu_info, int &currentIndex, int &mistakeIndex,
-                                      char &mistakeSymbol) {
-    if (cMenu_info.at(0) != '[') {
-        mistakeIndex = currentIndex;
-        mistakeSymbol = ']';
-        return;
-    }
-
-    if (cMenu_info.at(cMenu_info.size() - 1) != '[') {
-        mistakeIndex = currentIndex + cMenu_info.size() - 1;
-        mistakeSymbol = ']';
-        return;
-    }
-    currentIndex++;
-    validateNameCommandAndHelp(cMenu_info.substr(1, cMenu_info.size() - 2), currentIndex, mistakeIndex, mistakeSymbol);
-
-}
-
-void CMenuSerializer::validateNameCommandAndHelp(const string &cMenu_info, int &currentIndex, int &mistakeIndex,
-                                                 char &mistakeSymbol) {
-    if (cMenu_info.at(0) != '\'') {
-        mistakeIndex = currentIndex;
-        mistakeSymbol = '\'';
-        return;
-    }
-    int nameEnding = 1 + findClosingChar('\'', cMenu_info.substr(1));
-    if (nameEnding == -1) {
-        mistakeIndex = currentIndex + nameEnding;
-        mistakeSymbol = '\'';
-        return;
-    }
-    if (cMenu_info.at(nameEnding + 1) != ',') {
-        mistakeIndex = currentIndex + nameEnding + 1;
-        mistakeSymbol = ',';
-        return;
-    }
-    if (cMenu_info.at(nameEnding + 2) != '\'') {
-        mistakeIndex = currentIndex + nameEnding + 2;
-        mistakeSymbol = '\'';
-        return;
-    }
-    int semicolon = 0;
-    for (int i = nameEnding + 3; i < cMenu_info.size(); ++i) {
-        if (cMenu_info.at(i) == '\'') {
-            if (cMenu_info.at(i + 1) != ';' || i + 1 > cMenu_info.size()) {
-                mistakeIndex = currentIndex + i;
-                mistakeSymbol = ';';
-                return;
-            } else {
-                semicolon = i + 1;
-                break;
-            }
-        }
-        if (cMenu_info.at(i) == ';' || cMenu_info.at(i) == '[' || cMenu_info.at(i) == ']' || cMenu_info.at(i) == '(' ||
-            cMenu_info.at(i) == ')') {
-            mistakeIndex = currentIndex + i;
-            mistakeSymbol = '\'';
-            return;
-        }
-    }
-    currentIndex += currentIndex + semicolon + 1;
-}
 

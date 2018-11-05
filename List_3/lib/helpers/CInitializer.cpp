@@ -55,8 +55,6 @@ void CInitializer::InitializeForCTable(CMenu &cMenu, CTabHandler &cTabHandler) {
     cMenu.AddMenuItem(menu_show);
 
     cMenu.AddMenuItem(new CMenuCommand(CLONING_ONE, CLONING_ONE_COMMAND, CLONING_ONE_HELP, new CloneCTable(cTabHandler)));
-
-    CMenuAnalyzer::setStaticMember(&cMenu);
 }
 
 //void CInitializer::InitializeCalulator(CMenu &cMenu, CCalculator &calculator) {

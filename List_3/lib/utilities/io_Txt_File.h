@@ -11,7 +11,7 @@ using namespace std;
 
 class io_Txt_File {
 public:
-    static bool writeToFile(string Data_info, string &fileName);
+    static bool writeToFile(string &Data_info, string &fileName);
     static string readFromFile(string &fileName);
 };
 
