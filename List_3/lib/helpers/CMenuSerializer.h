@@ -15,12 +15,18 @@ class CMenuSerializer {
 public:
     static string serializeInterface(CMenuItem *cMenuItem);
     static int findClosingChar(char opening, string toAnalyze);
-    static CMenuItem* deserializeInterface(string Interface_info);
+    static CMenuItem *deserializeInterface(string Interface_info);
     static bool validateInterface_info(string Interface_info);
+
 private:
+    static void validateCMenu(const string &cMenu_info, int &currentIndex, int &mistakeIndex, char &mistakeSymbol);
+    static void validateNameAndCommand(const string &cMenu_info,int &currentIndex, int &mistakeIndex, char &mistakeSymbol);
+    static void validateCMenuCommand(const string &cMenu_info, int &currentIndex, int &mistakeIndex, char &mistakeSymbol);
+    static void validateNameCommandAndHelp(const string &cMenu_info,int &currentIndex, int &mistakeIndex, char &mistakeSymbol);
     static string serializeCMenuCommand(CMenuCommand *cMenuCommand);
-    static CMenu* deserializeCMenu(string cMenu_info);
-    static CMenuCommand* deserializeCMenuCommand(string cMenuCommand_info);
+    static string rightPlaceToDivide(int endPosition, const string &String_info);
+    static CMenu *deserializeCMenu(string cMenu_info);
+    static CMenuCommand *deserializeCMenuCommand(string cMenuCommand_info);
 };
 
 
