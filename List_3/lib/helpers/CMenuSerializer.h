@@ -6,6 +6,15 @@
 #define LIST_3_CMENUSERIALIZER_H
 
 
+#define OPEN_BRACKET '('
+#define CLOSE_BRACKET ')'
+#define COMMA ','
+#define APOSTROPHE '\''
+#define SEMICOLON ';'
+#define OPEN_SQUARE_BRACKET '['
+#define CLOSE_SQUARE_BRACKET ']'
+#define DIVIDING_SYMBOLS "','"
+
 #include "../interface/CMenu.h"
 #include "../interface/CMenuItem.h"
 #include "../interface/CMenuCommand.h"

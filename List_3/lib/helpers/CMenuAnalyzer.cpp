@@ -14,12 +14,12 @@ void CMenuAnalyzer::searchForCommand(CMenu *menu, const string &commandToFind, s
         menu = mainMenu;
     }
     if (menu != mainMenu)
-        path += "->";
+        path += SEARCH_DIRECTION;
     path += menu->getS_command();
     vector<CMenuItem *> menuItems = menu->getVMenuItems();
     for (int i = 0; i < menuItems.size(); ++i) {
         if (menuItems[i]->getS_command() == commandToFind) {
-            cout << path << "->" << menuItems[i]->getS_command() << endl;
+            cout << path << SEARCH_DIRECTION << menuItems[i]->getS_command() << endl;
             exist = true;
         }
         if (CMenu *next = dynamic_cast<CMenu *>(menuItems[i])) {

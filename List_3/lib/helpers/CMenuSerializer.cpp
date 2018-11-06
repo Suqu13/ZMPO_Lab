@@ -19,14 +19,15 @@ void CMenuSerializer::serialize(CMenuItem *cMenuItem, string fileName) {
 string CMenuSerializer::serializeInterface(CMenuItem *cMenuItem) {
     stringstream stream;
     if (CMenu *cMenu = dynamic_cast<CMenu *> (cMenuItem)) {
-        stream << "('" << cMenu->getS_name() << "','" << cMenu->getS_command() << "';";
+        stream << OPEN_BRACKET << APOSTROPHE << cMenu->getS_name() << APOSTROPHE << COMMA << APOSTROPHE
+               << cMenu->getS_command() << APOSTROPHE << SEMICOLON;
         for (int i = 0; i < cMenu->getVMenuItems().size(); i++) {
             if (i > 0) {
-                stream << ",";
+                stream << COMMA;
             }
             stream << serializeInterface(cMenu->getVMenuItems()[i]);
         }
-        stream << ")";
+        stream << CLOSE_BRACKET;
     } else if (CMenuCommand *cMenuCommand = dynamic_cast<CMenuCommand *>(cMenuItem)) {
         stream << serializeCMenuCommand(cMenuCommand);
     }
@@ -35,36 +36,38 @@ string CMenuSerializer::serializeInterface(CMenuItem *cMenuItem) {
 
 
 string CMenuSerializer::serializeCMenuCommand(CMenuCommand *cMenuCommand) {
-    string cMenuCommand_info;
-    cMenuCommand_info = "['" + cMenuCommand->getS_name() + "','" + cMenuCommand->getS_command() + "','" +
-                        cMenuCommand->getS_help() + "']";
-    return cMenuCommand_info;
+    stringstream cMenuCommand_info;
+    cMenuCommand_info << OPEN_SQUARE_BRACKET << APOSTROPHE << cMenuCommand->getS_name() << APOSTROPHE << COMMA << APOSTROPHE
+                      << cMenuCommand->getS_command()
+                      << APOSTROPHE << COMMA << APOSTROPHE <<
+                      cMenuCommand->getS_help() << APOSTROPHE << CLOSE_SQUARE_BRACKET;
+    return cMenuCommand_info.str();
 }
 
 CMenuCommand *CMenuSerializer::deserializeCMenuCommand(string cMenuCommand_info) {
-    vector<string> vec = Utilities::vSplitString(cMenuCommand_info.substr(2, cMenuCommand_info.size() - 3), "','");
+    vector<string> vec = Utilities::vSplitString(cMenuCommand_info.substr(2, cMenuCommand_info.size() - 3), DIVIDING_SYMBOLS);
     return (new CMenuCommand(vec[0], vec[1], vec[2], nullptr));
 }
 
 CMenu *CMenuSerializer::deserializeCMenu(string cMenu_info) {
-    vector<string> newCMenu = Utilities::vSplitString(cMenu_info.substr(2, cMenu_info.size() - 3), "','");
+    vector<string> newCMenu = Utilities::vSplitString(cMenu_info.substr(2, cMenu_info.size() - 3), DIVIDING_SYMBOLS);
     return new CMenu(newCMenu[0], newCMenu[1]);
 }
 
 int CMenuSerializer::findClosingChar(char opening, string toAnalyze) {
     char closing;
     switch (opening) {
-        case '\'':
+        case APOSTROPHE:
             for (int i = 0; i < toAnalyze.length(); ++i) {
                 if (toAnalyze[i] == opening)
                     return i;
             }
             return -1;
-        case '(':
-            closing = ')';
+        case OPEN_BRACKET:
+            closing = CLOSE_BRACKET;
             break;
-        case '[':
-            closing = ']';
+        case OPEN_SQUARE_BRACKET:
+            closing = CLOSE_SQUARE_BRACKET;
             break;
         default:
             return -1;
@@ -101,8 +104,8 @@ CMenuItem *CMenuSerializer::deserialize(string fileName) {
 }
 
 CMenuItem *CMenuSerializer::deserializeInterface(string Interface_info) {
-    if (Interface_info.at(0) == '(') {
-        int findSemicolon = Interface_info.find(';');
+    if (Interface_info.at(0) == OPEN_BRACKET) {
+        int findSemicolon = Interface_info.find(SEMICOLON);
         CMenu *cMenu = deserializeCMenu(Interface_info.substr(0, findSemicolon));
         string actualString = Interface_info.substr(findSemicolon + 1, Interface_info.size() - findSemicolon - 2);
         while (!actualString.empty()) {
@@ -114,8 +117,8 @@ CMenuItem *CMenuSerializer::deserializeInterface(string Interface_info) {
             actualString = rightPlaceToDivide(endPosition, actualString);
         }
         return cMenu;
-    } else if (Interface_info.at(0) == '[') {
-        int closingCMenuCommand = findClosingChar('[', Interface_info);
+    } else if (Interface_info.at(0) == OPEN_SQUARE_BRACKET) {
+        int closingCMenuCommand = findClosingChar(OPEN_SQUARE_BRACKET, Interface_info);
         CMenuCommand *cMenuCommand = deserializeCMenuCommand(Interface_info.substr(0, closingCMenuCommand));
         return cMenuCommand;
     } else {

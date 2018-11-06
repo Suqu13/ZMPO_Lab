@@ -15,7 +15,7 @@ int main() {
     CMenuAnalyzer::setStaticMember(&cMenu);
 //    cMenu.Run();
     CMenuSerializer::serialize(&cMenu, "newOne.txt");
-    CMenu *test = dynamic_cast<CMenu *> (CMenuSerializer::deserialize("test.txt"));
+    CMenu *test = dynamic_cast<CMenu *> (CMenuSerializer::deserialize("newOne.txt"));
     CMenuAnalyzer::setStaticMember(test);
     test->Run();
 

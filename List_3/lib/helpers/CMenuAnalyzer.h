@@ -5,6 +5,8 @@
 #ifndef LIST_3_CMENUANALYZER_H
 #define LIST_3_CMENUANALYZER_H
 
+#define SEARCH_DIRECTION "->"
+
 #include "string"
 #include "vector"
 #include "../interface/CMenuItem.h"
