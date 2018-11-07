@@ -70,9 +70,10 @@ string CMenu::findHelp(string sCommandName) {
 }
 
 void CMenu::CMenuToString() {
-    cout << "\n" << s_name << " (" << s_command << ")\n" << endl;
+    cout << "\n" << s_name << SPACE_AS_STRING << OPEN_BRACKET_AS_STRING << s_command << CLOSE_BRACKET_AS_STRING << "\n" << endl;
     for (int i = 0; i < vMenuItems.size(); ++i) {
-        cout << vMenuItems[i]->getS_name() << " (" << vMenuItems[i]->getS_command() << ") " << endl;
+        cout << vMenuItems[i]->getS_name() << SPACE_AS_STRING << OPEN_BRACKET_AS_STRING << vMenuItems[i]->getS_command() << CLOSE_BRACKET_AS_STRING
+             << SPACE_AS_STRING << endl;
     }
     cout << BACK_COMMAND_SIGNATURE << "\n " << endl;
 }
@@ -92,6 +93,8 @@ CMenuItem *CMenu::findMenuItem() {
                 if (!exist) {
                     cout << NO_COMMAND << endl;
                 }
+            } else {
+                cout << WRONG_COMMAND << endl;
             }
         } else {
             for (int i = 0; i < vMenuItems.size(); ++i) {
@@ -99,6 +102,7 @@ CMenuItem *CMenu::findMenuItem() {
                     return vMenuItems[i];
                 }
             }
+            if (s_newCommand != "")
             cout << WRONG_COMMAND << endl;
         }
     }

@@ -9,15 +9,46 @@
 
 
 int main() {
-    CMenu cMenu("Main menu", "main menu command");
-    CTabHandler cTabHandler;
-    CInitializer::InitializeForCTable(cMenu, cTabHandler);
-    CMenuAnalyzer::setStaticMember(&cMenu);
-//    cMenu.Run();
-    CMenuSerializer::serialize(&cMenu, "newOne.txt");
-    CMenu *test = dynamic_cast<CMenu *> (CMenuSerializer::deserialize("newOne.txt"));
-    CMenuAnalyzer::setStaticMember(test);
-    test->Run();
 
+    CMenu *cMenu = new CMenu("Main menu", "main menu command");
+    CTabHandler cTabHandler;
+    CInitializer::InitializeForCTable(*cMenu, cTabHandler);
+    bool again = true;
+
+    while (again) {
+        CMenuAnalyzer::setStaticMember(cMenu);
+
+        cout << "\nDo you want to run: " << cMenu->getS_name() << " (" << cMenu->getS_command() << ")?(y/n): ";
+        if (Utilities::bYOrNIntepreter()) {
+            cMenu->Run();
+        }
+
+        cout << "\nDo you want to serialize this object?(y/n): ";
+        if (Utilities::bYOrNIntepreter()) {
+            cout << "Provide source name: ";
+            string fileName;
+            cin >> fileName;
+            CMenuSerializer::serialize(cMenu, fileName);
+        }
+
+        cout << "\nDo you want to deserialize some file?(y/n): ";
+        again = Utilities::bYOrNIntepreter();
+        if (again) {
+            delete cMenu;
+            cout << "\nProvide source name: ";
+            string fileName;
+            while (fileName.empty() || cMenu == nullptr) {
+                cin >> fileName;
+                cMenu = dynamic_cast<CMenu *> (CMenuSerializer::deserialize(fileName));
+                if (cMenu == nullptr)
+                    cout << "\nSomething went wrong. Do you want to exit?(y/n): ";
+                if (Utilities::bYOrNIntepreter()) {
+                    return 0;
+                }
+            }
+        } else {
+            delete cMenu;
+        }
+    }
     return 0;
 }

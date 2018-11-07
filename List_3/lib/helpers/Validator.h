@@ -15,10 +15,8 @@
 #define COMMA ','
 #define CLOSE_SQUARE_BRACKET ']'
 #define APOSTROPHE '\''
-
 #define EMPTY_STRING ""
-
-#define DIFFERENT_SYMBOL '~'
+#define DEFAULT_SYMBOL '~'
 
 #include <string>
 
@@ -32,9 +30,11 @@ private:
     static void validateMenu(string Interface_info, char &mistakeSymbol, int &mistakeIndex, int &currentIndex, bool &correctness);
     static int findClosingChar(string &Interface_info, char opening);
     static int findIndexOfExpectedSymbol(string &menuSave);
-    static void validateMenuCommand(string toValidate, char &errorCode, int &errorIndex, int &currentIndex, bool &correctness);
-    static void validateNameAndCommand(string &cMenu_info, char &errorCode, int &errorIndex, int &currentIndex, bool &correctness);
-    static bool checkSymbolInString(string &Interface_info, int index, char compareWith, char &errorCode, bool &correctness);
+    static void validateMenuCommand(string cMenuCommand_info, char &errorCode, int &errorIndex, int &currentIndex, bool &correctness);
+    static void validateInsideItem(string &cMenu_info, char &errorCode, int &errorIndex, int &currentIndex,
+                                   bool &correctness);
+    static bool checkSymbolCorrectness(string &Interface_info, int index, char compareWith, char &errorCode,
+                                       bool &correctness);
 
 };
 

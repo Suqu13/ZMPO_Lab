@@ -16,6 +16,12 @@
 #define HELP_COMMAND "help"
 #define SEARCH_COMMAND "search"
 
+#define SPACE_AS_STRING " "
+
+#define OPEN_BRACKET_AS_STRING "("
+
+#define CLOSE_BRACKET_AS_STRING ")"
+
 #include <vector>
 #include "CMenuItem.h"
 

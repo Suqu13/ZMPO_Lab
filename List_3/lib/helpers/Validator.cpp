@@ -12,10 +12,10 @@ bool Validator::validate(string Interface_info, string fileName) {
     bool correct = true;
     int mistakeIndex = -1;
     int currentIndex = 0;
-    char mistakeSymbol = DIFFERENT_SYMBOL;
+    char mistakeSymbol = DEFAULT_SYMBOL;
     validateMenu(Interface_info, mistakeSymbol, mistakeIndex, currentIndex, correct);
     if (!correct) {
-        cout << FILE_WITH_MISTAKE << fileName << "\n" << SOURCE_OF_MISTAKE << mistakeIndex
+        cout << "\n" <<FILE_WITH_MISTAKE << fileName << "\n" << SOURCE_OF_MISTAKE << mistakeIndex
              << "\n" << EXPECTED_CHARACTER << mistakeSymbol << endl;
     }
     return correct;
@@ -23,9 +23,9 @@ bool Validator::validate(string Interface_info, string fileName) {
 
 void Validator::validateMenu(string Interface_info, char &mistakeSymbol, int &mistakeIndex, int &currentIndex,
                              bool &correctness) {
-    if (!checkSymbolInString(Interface_info, 0, OPEN_BRACKET, mistakeSymbol, correctness) && mistakeIndex == -1)
+    if (!checkSymbolCorrectness(Interface_info, 0, OPEN_BRACKET, mistakeSymbol, correctness) && mistakeIndex == -1)
         mistakeIndex = currentIndex;
-    if (!checkSymbolInString(Interface_info, Interface_info.length() - 1, CLOSE_BRACKET, mistakeSymbol, correctness) &&
+    if (!checkSymbolCorrectness(Interface_info, Interface_info.length() - 1, CLOSE_BRACKET, mistakeSymbol, correctness) &&
         mistakeIndex == -1)
         mistakeIndex = currentIndex + Interface_info.length() - 1;
     if (Interface_info.length() > 2)
@@ -35,9 +35,9 @@ void Validator::validateMenu(string Interface_info, char &mistakeSymbol, int &mi
         Interface_info = EMPTY_STRING;
     }
     currentIndex++;
-    validateNameAndCommand(Interface_info, mistakeSymbol, mistakeIndex, currentIndex, correctness);
+    validateInsideItem(Interface_info, mistakeSymbol, mistakeIndex, currentIndex, correctness);
 
-    if (!checkSymbolInString(Interface_info, 0, SEMICOLON, mistakeSymbol, correctness) && mistakeIndex == -1)
+    if (!checkSymbolCorrectness(Interface_info, 0, SEMICOLON, mistakeSymbol, correctness) && mistakeIndex == -1)
         mistakeIndex = currentIndex;
     if (Interface_info.length() > 2)
         Interface_info = Interface_info.substr(1, Interface_info.length() - 1);
@@ -55,7 +55,6 @@ void Validator::validateMenu(string Interface_info, char &mistakeSymbol, int &mi
             else
                 mistakeSymbol = OPEN_SQUARE_BRACKET;
         }
-
         int innerMenuEnd = findClosingChar(Interface_info, Interface_info[0]);
         if (innerMenuEnd == -1 && correctness) {
             correctness = false;
@@ -75,7 +74,7 @@ void Validator::validateMenu(string Interface_info, char &mistakeSymbol, int &mi
             if (innerMenuEnd + 1 < Interface_info.length() - 1) {
                 Interface_info = Interface_info.substr(innerMenuEnd + 1, Interface_info.length() - (innerMenuEnd + 1));
                 currentIndex += 1;
-                if (!checkSymbolInString(Interface_info, 0, COMMA, mistakeSymbol, correctness) && mistakeIndex == -1)
+                if (!checkSymbolCorrectness(Interface_info, 0, COMMA, mistakeSymbol, correctness) && mistakeIndex == -1)
                     mistakeIndex = currentIndex;
                 if (Interface_info.length() > 1)
                     Interface_info = Interface_info.substr(1, Interface_info.length() - 1);
@@ -98,40 +97,40 @@ void Validator::validateMenu(string Interface_info, char &mistakeSymbol, int &mi
     }
 }
 
-void Validator::validateMenuCommand(string toValidate, char &errorCode, int &errorIndex, int &currentIndex,
+void Validator::validateMenuCommand(string cMenuCommand_info, char &errorCode, int &errorIndex, int &currentIndex,
                                     bool &correctness) {
-    if (!checkSymbolInString(toValidate, 0, OPEN_SQUARE_BRACKET, errorCode, correctness) && errorIndex == -1) {
+    if (!checkSymbolCorrectness(cMenuCommand_info, 0, OPEN_SQUARE_BRACKET, errorCode, correctness) && errorIndex == -1) {
         errorIndex = currentIndex;
     }
 
-    if (!checkSymbolInString(toValidate, toValidate.length() - 1, CLOSE_SQUARE_BRACKET, errorCode, correctness) && errorIndex == -1) {
-        errorIndex = currentIndex + toValidate.length();
+    if (!checkSymbolCorrectness(cMenuCommand_info, cMenuCommand_info.length() - 1, CLOSE_SQUARE_BRACKET, errorCode, correctness) && errorIndex == -1) {
+        errorIndex = currentIndex + cMenuCommand_info.length();
     }
-    toValidate = toValidate.substr(1, toValidate.length() - 2);
+    cMenuCommand_info = cMenuCommand_info.substr(1, cMenuCommand_info.length() - 2);
     currentIndex++;
-    validateNameAndCommand(toValidate, errorCode, errorIndex, currentIndex, correctness);
-    if (!checkSymbolInString(toValidate, 0, COMMA, errorCode, correctness) && errorIndex == -1) {
+    validateInsideItem(cMenuCommand_info, errorCode, errorIndex, currentIndex, correctness);
+    if (!checkSymbolCorrectness(cMenuCommand_info, 0, COMMA, errorCode, correctness) && errorIndex == -1) {
         errorIndex = currentIndex;
     }
-    toValidate = toValidate.substr(1, toValidate.length() - 1);
+    cMenuCommand_info = cMenuCommand_info.substr(1, cMenuCommand_info.length() - 1);
     currentIndex++;
 
-    if (!checkSymbolInString(toValidate, 0, APOSTROPHE, errorCode, correctness) && errorIndex == -1) {
+    if (!checkSymbolCorrectness(cMenuCommand_info, 0, APOSTROPHE, errorCode, correctness) && errorIndex == -1) {
         errorIndex = currentIndex;
     }
 
-    if (findClosingChar(toValidate, APOSTROPHE) != toValidate.length() - 1 && correctness) {
+    if (findClosingChar(cMenuCommand_info, APOSTROPHE) != cMenuCommand_info.length() - 1 && correctness) {
         correctness = false;
         if (errorIndex == -1) {
-            errorIndex = currentIndex + toValidate.length() - 1;
+            errorIndex = currentIndex + cMenuCommand_info.length() - 1;
             errorCode = APOSTROPHE;
         }
     }
 }
 
-void Validator::validateNameAndCommand(string &cMenu_info, char &errorCode, int &errorIndex, int &currentIndex,
-                                       bool &correctness) {
-    if (!checkSymbolInString(cMenu_info, 0, APOSTROPHE, errorCode, correctness) && errorIndex == -1) {
+void Validator::validateInsideItem(string &cMenu_info, char &errorCode, int &errorIndex, int &currentIndex,
+                                   bool &correctness) {
+    if (!checkSymbolCorrectness(cMenu_info, 0, APOSTROPHE, errorCode, correctness) && errorIndex == -1) {
         errorIndex = currentIndex;
     }
     int nameEnd = findClosingChar(cMenu_info, APOSTROPHE);
@@ -139,29 +138,40 @@ void Validator::validateNameAndCommand(string &cMenu_info, char &errorCode, int 
         correctness = false;
         errorIndex = currentIndex + nameEnd;
     }
-    if (!checkSymbolInString(cMenu_info, nameEnd + 1, COMMA, errorCode, correctness) && errorIndex == -1) {
+    if (cMenu_info[nameEnd - 1] == COMMA) {
+        correctness = false;
+        errorIndex = currentIndex + nameEnd - 1;
+        errorCode = APOSTROPHE;
+    }
+
+    if (!checkSymbolCorrectness(cMenu_info, nameEnd + 1, COMMA, errorCode, correctness) && errorIndex == -1) {
         errorIndex = currentIndex + nameEnd + 1;
     }
     cMenu_info = cMenu_info.substr(nameEnd + 2, cMenu_info.length() - (nameEnd + 2));
     currentIndex += nameEnd + 2;
-    if (!checkSymbolInString(cMenu_info, 0, APOSTROPHE, errorCode, correctness) && errorIndex == -1) {
+    if (!checkSymbolCorrectness(cMenu_info, 0, APOSTROPHE, errorCode, correctness) && errorIndex == -1) {
         errorIndex = currentIndex;
     }
     int commandEnd = findClosingChar(cMenu_info, APOSTROPHE);
     if (commandEnd == -1 && errorIndex == -1) {
-        correctness = false;
         errorIndex = currentIndex;
+        correctness = false;
+    }
+    if (cMenu_info[commandEnd - 1] == COMMA) {
+        correctness = false;
+        errorCode = APOSTROPHE;
+        errorIndex = currentIndex - 1;
     }
     cMenu_info = cMenu_info.substr(commandEnd + 1, cMenu_info.length() - (commandEnd + 1));
     currentIndex += commandEnd + 1;
 }
 
-bool Validator::checkSymbolInString(string &Interface_info, int index, char compareWith, char &errorCode,
-                                    bool &correctness) {
+bool Validator::checkSymbolCorrectness(string &Interface_info, int index, char compareWith, char &errorCode,
+                                       bool &correctness) {
     if (0 <= index && index < Interface_info.length() && correctness) {
         if (Interface_info[index] != compareWith) {
             correctness = false;
-            if (errorCode == DIFFERENT_SYMBOL)
+            if (errorCode == DEFAULT_SYMBOL)
                 errorCode = compareWith;
             return false;
         }
