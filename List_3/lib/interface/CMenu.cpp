@@ -70,12 +70,12 @@ string CMenu::findHelp(string sCommandName) {
 }
 
 void CMenu::CMenuToString() {
-    cout << "\n" << s_name << SPACE_AS_STRING << OPEN_BRACKET_AS_STRING << s_command << CLOSE_BRACKET_AS_STRING << "\n" << endl;
+    cout << "\n" <<STARS << "\n" << s_name << SPACE_AS_STRING << OPEN_BRACKET_AS_STRING << s_command << CLOSE_BRACKET_AS_STRING << "\n" << endl;
     for (int i = 0; i < vMenuItems.size(); ++i) {
         cout << vMenuItems[i]->getS_name() << SPACE_AS_STRING << OPEN_BRACKET_AS_STRING << vMenuItems[i]->getS_command() << CLOSE_BRACKET_AS_STRING
              << SPACE_AS_STRING << endl;
     }
-    cout << BACK_COMMAND_SIGNATURE << "\n " << endl;
+    cout << BACK_COMMAND_SIGNATURE << "\n\n" << STARS << endl;
 }
 
 CMenuItem *CMenu::findAction() {
@@ -88,9 +88,10 @@ CMenuItem *CMenu::findAction() {
                 cout << findHelp(vString.back()) << endl;
             } else if (vString.front() == SEARCH_COMMAND) {
                 string path;
+                string empty;
                 exist = false;
-                //CMenuAnalyzer::searchForCommand(NULL, vString.back(), path, exist);
-                CMenuAnalyzer::searchForRoute(NULL, this->getS_command(), vString.back(), exist);
+                //CMenuAnalyzer::searchForCommand(NULL, vString.back(),empty, path, exist);
+                    CMenuAnalyzer::searchForRoute(this, this->getS_command(), vString.back(), exist);
                 if (!exist) {
                     cout << NO_COMMAND << endl;
                 }

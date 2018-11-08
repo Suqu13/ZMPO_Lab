@@ -5,7 +5,6 @@
 #ifndef LIST_3_CINITIALIZER_H
 #define LIST_3_CINITIALIZER_H
 
-
 #define CREATING_MENU "Create CTables"
 #define CREATING_COMMAND "create"
 #define CREATING_MULTIPLE "Create default CTables"
@@ -23,13 +22,13 @@
 #define CHANGING_MENU "Change details"
 #define CHANGING_COMMAND "change"
 #define INSERTING_VAL "Insert value"
-#define INSERTING_VAL_COMMAND "i"
+#define INSERTING_VAL_COMMAND "c1"
 #define INSERTING_VAL_HELP "Allows for inserting values given by the user"
 #define SETTING_LENGTH "Set a length"
-#define SETTING_LENGTH_COMMAND "l"
+#define SETTING_LENGTH_COMMAND "c2"
 #define SETTING_LENGTH_HELP "Allows for setting length of a CTable provided by user"
 #define SETTING_NAME "Set a name"
-#define SETTING_NAME_COMMAND "n"
+#define SETTING_NAME_COMMAND "c3"
 #define SETTING_NAME_HELP "Allows for setting name of a CTable provided by user"
 #define REMOVING_MENU "Remove CTables"
 #define REMOVING_COMMAND "remove"

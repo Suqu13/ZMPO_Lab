@@ -18,7 +18,7 @@ int main() {
     while (again) {
         CMenuAnalyzer::setStaticMember(cMenu);
 
-        cout << "\nDo you want to run: " << cMenu->getS_name() << " (" << cMenu->getS_command() << ")?(y/n): ";
+        cout << "\nDo you want to run: " << cMenu->getS_name() << "(" << cMenu->getS_command() << ")?(y/n): ";
         if (Utilities::bYOrNIntepreter()) {
             cMenu->Run();
         }

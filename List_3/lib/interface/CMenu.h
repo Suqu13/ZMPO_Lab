@@ -11,7 +11,7 @@
 #define NAME "name: "
 #define BACK_COMMAND "back"
 #define BACK_HELP "This command makes moving back and exiting whole program possible"
-#define NO_COMMAND "command does not exist"
+#define NO_COMMAND "CMenu doesn't support help!"
 #define BACK_COMMAND_SIGNATURE "Back (back)"
 #define HELP_COMMAND "help"
 #define SEARCH_COMMAND "search"
@@ -21,6 +21,8 @@
 #define OPEN_BRACKET_AS_STRING "("
 
 #define CLOSE_BRACKET_AS_STRING ")"
+
+#define STARS "**********************************"
 
 #include <vector>
 #include "CMenuItem.h"
