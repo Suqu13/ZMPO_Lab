@@ -7,6 +7,12 @@
 
 #define SEARCH_DIRECTION "->"
 
+#define BACK_STRING "back"
+
+#define YOU_ARE_HERE "You are here!"
+
+#define EMPTY_STRING ""
+
 #include "string"
 #include "vector"
 #include "../interface/CMenuItem.h"
@@ -16,7 +22,8 @@ using namespace std;
 
 class CMenuAnalyzer {
 public:
-    static void searchForCommand(CMenu *menu, const string &commandToFind, string path, bool &exist);
+    static void searchForCommand(CMenu *cMenu, const string &commandToFind,string &holder, string path, bool &exist);
+    static void searchForRoute(CMenu *cMenu, const string &currentPlace, const string &commandToFind, bool &exist);
     static void setStaticMember(CMenu* cMenu);
 private:
     static CMenu *mainMenu;

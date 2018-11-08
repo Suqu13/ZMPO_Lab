@@ -42,7 +42,7 @@ public:
 private:
     string findHelp(string sCommandName);
     bool ifExist(CMenuItem *vMenuItem);
-    CMenuItem* findMenuItem();
+    CMenuItem* findAction();
     vector<CMenuItem*> vMenuItems;
 };
 

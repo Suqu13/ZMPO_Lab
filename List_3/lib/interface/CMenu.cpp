@@ -49,7 +49,7 @@ bool CMenu::DeleteMenuItem(string s_command) {
 void CMenu::Run() {
     CMenuToString();
     CMenuItem *item;
-    while ((item = this->findMenuItem()) != nullptr) {
+    while ((item = this->findAction()) != nullptr) {
         item->Run();
         CMenuToString();
     }
@@ -78,7 +78,7 @@ void CMenu::CMenuToString() {
     cout << BACK_COMMAND_SIGNATURE << "\n " << endl;
 }
 
-CMenuItem *CMenu::findMenuItem() {
+CMenuItem *CMenu::findAction() {
     bool exist;
     string s_newCommand;
     while ((s_newCommand = Utilities::sProvideString()) != BACK_COMMAND) {
@@ -89,7 +89,8 @@ CMenuItem *CMenu::findMenuItem() {
             } else if (vString.front() == SEARCH_COMMAND) {
                 string path;
                 exist = false;
-                CMenuAnalyzer::searchForCommand(NULL, vString.back(), path, exist);
+                //CMenuAnalyzer::searchForCommand(NULL, vString.back(), path, exist);
+                CMenuAnalyzer::searchForRoute(NULL, this->getS_command(), vString.back(), exist);
                 if (!exist) {
                     cout << NO_COMMAND << endl;
                 }

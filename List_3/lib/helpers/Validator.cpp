@@ -143,7 +143,6 @@ void Validator::validateInsideItem(string &cMenu_info, char &errorCode, int &err
         errorIndex = currentIndex + nameEnd - 1;
         errorCode = APOSTROPHE;
     }
-
     if (!checkSymbolCorrectness(cMenu_info, nameEnd + 1, COMMA, errorCode, correctness) && errorIndex == -1) {
         errorIndex = currentIndex + nameEnd + 1;
     }

@@ -40,10 +40,11 @@ int main() {
             while (fileName.empty() || cMenu == nullptr) {
                 cin >> fileName;
                 cMenu = dynamic_cast<CMenu *> (CMenuSerializer::deserialize(fileName));
-                if (cMenu == nullptr)
+                if (cMenu == nullptr) {
                     cout << "\nSomething went wrong. Do you want to exit?(y/n): ";
-                if (Utilities::bYOrNIntepreter()) {
-                    return 0;
+                    if (Utilities::bYOrNIntepreter()) {
+                        return 0;
+                    }
                 }
             }
         } else {
