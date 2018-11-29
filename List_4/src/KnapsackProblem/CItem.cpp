@@ -7,7 +7,7 @@
 
 using namespace std;
 
-CItem::CItem(string name, int weight, int value) : weight(weight), value(value) {}
+CItem::CItem(string name, int weight, int value) : name(name), weight(weight), value(value) {}
 
 CItem::~CItem() {
 cout << "Item object deleted" << endl;
@@ -17,15 +17,12 @@ int CItem::getWeight() const {
     return weight;
 }
 
+ostream &operator<<(ostream &os, const CItem &item) {
+    os << "Name: " << item.name << " Weight: " << item.weight << " Value: " << item.value;
+    return os;
+}
+
 int CItem::getValue() const {
     return value;
 }
 
-const string &CItem::getName() const {
-    return name;
-}
-
-ostream &operator<<(ostream &os, const CItem &item) {
-    os << "weight: " << item.weight << " value: " << item.value << " name: " << item.name;
-    return os;
-}

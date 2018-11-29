@@ -25,12 +25,13 @@ private:
     CKnapsackProblem *cKnapsackProblem;
 
     void generatePopulation(const int &genotypeSize);
-    void showPopulation() const;
-
+    //    void showPopulation() const;
+    void crossingProcess(vector<CIndividual *> &newPopulation, int firstIndividualIndex, int secondIndividualIndex, double currentCrossProb);
+    void rewritingPopulation(vector<CIndividual *> &newPopulation);
+    void findBestSolution();
 public:
     CGeneticAlgorithm(int popSize, double mutProb, double crossProb, CKnapsackProblem *cKnapsackProblem);
     ~CGeneticAlgorithm();
-
     CIndividual *runGeneticAlgorithm(int iterations);
 };
 

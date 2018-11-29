@@ -20,15 +20,12 @@ int main() {
     CKnapsackProblem *cKnapsackProblem;
     cKnapsackProblem = cKnapsackProblem = new CKnapsackProblem(10, items, 34);
     CGeneticAlgorithm geneticAlgorithm(4, 0.25, 0.75, cKnapsackProblem);
-    CIndividual* bestSolution = geneticAlgorithm.runGeneticAlgorithm(10000);
+    CIndividual* bestSolution = geneticAlgorithm.runGeneticAlgorithm(100);
     vector<CItem*> bestItems = cKnapsackProblem->getSolution(bestSolution);
     for (int i = 0; i < bestItems.size(); ++i) {
         cout << *bestItems.at(i) << endl;
     }
-    for (int j = 0; j < items.size(); ++j) {
-        delete items.at(j);
-    }
     items.clear();
+
     delete bestSolution;
-    delete cKnapsackProblem;
 }

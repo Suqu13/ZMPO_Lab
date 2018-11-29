@@ -3,16 +3,19 @@
 //
 
 #include <climits>
+#include <iostream>
 #include "CKnapsackProblem.h"
 
 
 CKnapsackProblem::CKnapsackProblem(int itemsNumber, const vector<CItem *> &items, int maxWeight) : itemsNumber(
-        itemsNumber), items(items), maxWeight(maxWeight) {}
+        itemsNumber), items(items), maxWeight(maxWeight){}
 
 CKnapsackProblem::~CKnapsackProblem() {
     for (int i = 0; i < items.size() ; ++i) {
         delete items[i];
     }
+        delete bestIndividual;
+    cout << "KnapsackProblem object deleted" << endl;
 }
 
 int CKnapsackProblem::getItemsNumber() const {
@@ -38,16 +41,23 @@ vector<CItem *> CKnapsackProblem::getSolution(CIndividual *cIndividual) const {
     return solution;
 }
 
-CIndividual *CKnapsackProblem::getBest(vector<CIndividual *> population) {
-    CIndividual *cIndividual;
-    int bestValue = INT_MIN	;
+void CKnapsackProblem::findBestCIndividual(vector<CIndividual *> population) {
+    int bestValue;
+    if(bestIndividual != nullptr) {
+        bestValue = bestIndividual->evaluateFitness(this);
+    } else {
+        bestValue = INT_MIN;
+    }
     for(CIndividual* pretendent: population) {
-        if (pretendent->evaluateFitness() > bestValue) {
-            cIndividual = pretendent;
-            bestValue = pretendent->evaluateFitness();
+        if (0 != pretendent->evaluateFitness(this) && pretendent->evaluateFitness(this) > bestValue) {
+            bestIndividual = new CIndividual(*pretendent);
+            bestValue = pretendent->evaluateFitness(this);
         }
     }
-    return new CIndividual(*cIndividual);
+}
+
+CIndividual *CKnapsackProblem::getCIndividual() const {
+    return bestIndividual;
 }
 
 

@@ -15,21 +15,17 @@ class CIndividual {
 private:
 
     vector<int> genotype;
-    CKnapsackProblem *cKnapsackProblem;
 
-    void mutateIndividual(const int &mutProb);
+    void mutateIndividual(const double &mutProb);
 public:
 
-    CIndividual(CKnapsackProblem *cKnapsackProblem);
-    CIndividual(const vector<int> &genotype, CKnapsackProblem *cKnapsackProblem);
+    CIndividual();
+    CIndividual(const vector<int> &genotype);
     CIndividual(CIndividual &cIndividual);
     ~CIndividual();
-    int evaluateFitness();
-    void crossIndividuals(CIndividual *cIndividual, double &mutProb, vector<CIndividual *> &newPopulation);
-
-    CKnapsackProblem *getCKnapsackProblem() const;
-
     const vector<int> &getGenotype() const;
+    int evaluateFitness(const CKnapsackProblem *cKnapsackProblem);
+    void crossIndividuals(CIndividual *cIndividual, double &mutProb, vector<CIndividual *> &newPopulation, const CKnapsackProblem *cKnapsackProblem);
 
 };
 

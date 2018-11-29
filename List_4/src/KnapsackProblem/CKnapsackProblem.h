@@ -18,16 +18,17 @@ private:
     int itemsNumber;
     vector<CItem*> items;
     int maxWeight;
+    CIndividual *bestIndividual;
 public:
     //TODO gdzieś w wykładzie o I/O jest coś wspomnniane o komunikacji o błedach, np. maxWeight = -34
     CKnapsackProblem(int itemsNumber, const vector<CItem *> &items, int maxWeight);
-
     ~CKnapsackProblem();
     int getItemsNumber() const;
     vector<CItem *> getItems() const;
     int getMaxWeight() const;
-    CIndividual *getBest(vector<CIndividual*> population);
+    void findBestCIndividual(vector<CIndividual*> population);
     vector<CItem *> getSolution(CIndividual *cIndividual) const;
+    CIndividual *getCIndividual() const;
 };
 
 

@@ -19,12 +19,9 @@ public:
 
     CItem(string name, int weight, int value);
     ~CItem();
-
     friend ostream &operator<<(ostream &os, const CItem &item);
-
     int getWeight() const;
     int getValue() const;
-    const string &getName() const;
 };
 
 
