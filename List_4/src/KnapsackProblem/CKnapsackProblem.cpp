@@ -7,8 +7,8 @@
 #include "CKnapsackProblem.h"
 
 
-CKnapsackProblem::CKnapsackProblem(int itemsNumber, const vector<CItem *> &items, int maxWeight) : itemsNumber(
-        itemsNumber), items(items), maxWeight(maxWeight){}
+CKnapsackProblem::CKnapsackProblem(const vector<CItem *> &items, int maxWeight) : items(items), maxWeight(maxWeight), bestIndividual(
+        nullptr){}
 
 CKnapsackProblem::~CKnapsackProblem() {
     for (int i = 0; i < items.size() ; ++i) {
@@ -16,10 +16,6 @@ CKnapsackProblem::~CKnapsackProblem() {
     }
         delete bestIndividual;
     cout << "KnapsackProblem object deleted" << endl;
-}
-
-int CKnapsackProblem::getItemsNumber() const {
-    return itemsNumber;
 }
 
 int CKnapsackProblem::getMaxWeight() const {
@@ -48,10 +44,10 @@ void CKnapsackProblem::findBestCIndividual(vector<CIndividual *> population) {
     } else {
         bestValue = INT_MIN;
     }
-    for(CIndividual* pretendent: population) {
-        if (0 != pretendent->evaluateFitness(this) && pretendent->evaluateFitness(this) > bestValue) {
-            bestIndividual = new CIndividual(*pretendent);
-            bestValue = pretendent->evaluateFitness(this);
+    for(CIndividual* candidate: population) {
+        if (candidate->evaluateFitness(this) > bestValue) {
+            bestIndividual = new CIndividual(*candidate);
+            bestValue = bestIndividual->evaluateFitness(this);
         }
     }
 }

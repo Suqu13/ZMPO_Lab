@@ -18,7 +18,7 @@ CGeneticAlgorithm::~CGeneticAlgorithm() {
         delete population[i];
     }
     delete cKnapsackProblem;
-    cout << "Genetic Algorithm object dleted" << endl;
+    cout << "GeneticAlgorithm object dleted" << endl;
 }
 
 void CGeneticAlgorithm::generatePopulation(const int &genotypeSize) {
@@ -37,7 +37,7 @@ void CGeneticAlgorithm::generatePopulation(const int &genotypeSize) {
 
 CIndividual *CGeneticAlgorithm::runGeneticAlgorithm(int iterations) {
 
-    generatePopulation(cKnapsackProblem->getItemsNumber());
+    generatePopulation(cKnapsackProblem->getItems().size());
 
     random_device rd;
     mt19937 gen(rd());
@@ -52,16 +52,6 @@ CIndividual *CGeneticAlgorithm::runGeneticAlgorithm(int iterations) {
     }
     return bestSolution;
 }
-
-//void CGeneticAlgorithm::showPopulation() const {
-//    for (int i = 0; i < population.size(); ++i) {
-//        cout <<"Fitness: " << population[i]->evaluateFitness(cKnapsackProblem) << endl;
-//        for (int j = 0; j < population[i]->getGenotype().size(); j++ ) {
-//            cout << (population[i]->getGenotype())[j] << " ";
-//        }
-//        cout << endl;
-//    }
-//}
 
 void CGeneticAlgorithm::crossingProcess(vector<CIndividual *> &newPopulation, const int firstIndividualIndex, const int secondIndividualIndex, const double currentCrossProb) {
     while (newPopulation.size() != popSize) {
@@ -89,9 +79,9 @@ void CGeneticAlgorithm::rewritingPopulation(vector<CIndividual *> &newPopulation
 
 void CGeneticAlgorithm::findBestSolution() {
     cKnapsackProblem->findBestCIndividual(population);
-    CIndividual* pretendent = new CIndividual(*cKnapsackProblem->getCIndividual());
-    if (bestSolution == nullptr || bestSolution->evaluateFitness(cKnapsackProblem) < pretendent->evaluateFitness(cKnapsackProblem)){
-        bestSolution = pretendent;
+    CIndividual* candidate = new CIndividual(*cKnapsackProblem->getCIndividual());
+    if (bestSolution == nullptr || bestSolution->evaluateFitness(cKnapsackProblem) < candidate->evaluateFitness(cKnapsackProblem)){
+        bestSolution = candidate;
     }
 }
 

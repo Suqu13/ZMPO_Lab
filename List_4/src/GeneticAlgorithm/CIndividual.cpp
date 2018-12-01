@@ -8,14 +8,14 @@
 
 using namespace std;
 
-CIndividual::CIndividual(){}
+CIndividual::CIndividual() {}
 
-CIndividual::CIndividual(const vector<int> &genotype) : genotype(genotype){}
+CIndividual::CIndividual(const vector<int> &genotype) : genotype(genotype) {}
 
-CIndividual::CIndividual(CIndividual &cIndividual) : genotype(cIndividual.getGenotype()){}
+CIndividual::CIndividual(CIndividual &cIndividual) : genotype(cIndividual.getGenotype()) {}
 
 CIndividual::~CIndividual() {
-    cout << "Individual deleted" << endl;
+//    cout << "Individual object deleted" << endl;
 }
 
 const vector<int> &CIndividual::getGenotype() const {
@@ -54,7 +54,8 @@ void CIndividual::mutateIndividual(const double &mutProb) {
     }
 }
 
-void CIndividual::crossIndividuals(CIndividual *cIndividual, double &mutProb, vector<CIndividual *> &newPopulation, const CKnapsackProblem *cKnapsackProblem) {
+void CIndividual::crossIndividuals(CIndividual *cIndividual, double &mutProb, vector<CIndividual *> &newPopulation,
+                                   const CKnapsackProblem *cKnapsackProblem) {
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dis(1, (int) cIndividual->genotype.size() - 1);
@@ -74,16 +75,31 @@ void CIndividual::crossIndividuals(CIndividual *cIndividual, double &mutProb, ve
         worstParent = this;
     }
 
-    //TODO check if crossing procedure is correct
+//    //TODO check if crossing procedure is correct
+//    for (int i = 0; i < crossingPoint; ++i) {
+//        firstChildren->genotype.push_back(betterParent->genotype.at(i));
+//        secondChildren->genotype.push_back(worstParent->genotype.at(i));
+//    }
+//
+//    for (int i = crossingPoint; i < genotype.size(); ++i) {
+//        firstChildren->genotype.push_back(worstParent->genotype.at(i));
+//        secondChildren->genotype.push_back(betterParent->genotype.at(i));
+//    }
+
+    for (int i = 0; i < betterParent->genotype.size(); ++i) {
+        if (i < crossingPoint)
+            firstChildren->genotype.push_back(betterParent->genotype.at(i));
+        else
+            firstChildren->genotype.push_back(worstParent->genotype.at(i));
+    }
+
+    for (int i = crossingPoint; i < betterParent->genotype.size(); ++i) {
+        secondChildren->genotype.push_back(betterParent->genotype.at(i));
+    }
     for (int i = 0; i < crossingPoint; ++i) {
-        firstChildren->genotype.push_back(betterParent->genotype.at(i));
         secondChildren->genotype.push_back(worstParent->genotype.at(i));
     }
 
-    for (int i = crossingPoint; i < genotype.size(); ++i) {
-        firstChildren->genotype.push_back(worstParent->genotype.at(i));
-        secondChildren->genotype.push_back(betterParent->genotype.at(i));
-    }
 
     firstChildren->mutateIndividual(mutProb);
     secondChildren->mutateIndividual(mutProb);

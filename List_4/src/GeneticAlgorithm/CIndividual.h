@@ -5,7 +5,7 @@
 #ifndef LIST_4_CINDIVIDUAL_H
 #define LIST_4_CINDIVIDUAL_H
 #include <vector>
-#include "KnapsackProblem/CKnapsackProblem.h"
+#include "../KnapsackProblem/CKnapsackProblem.h"
 
 using namespace std;
 
