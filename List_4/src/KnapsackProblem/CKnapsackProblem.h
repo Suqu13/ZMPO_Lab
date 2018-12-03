@@ -16,10 +16,10 @@ class CIndividual;
 class CKnapsackProblem {
 private:
     vector<CItem*> items;
-    int maxWeight;
+    int maxCapacity;
     CIndividual *bestIndividual;
 public:
-    //TODO gdzieś w wykładzie o I/O jest coś wspomnniane o komunikacji o błedach, np. maxWeight = -34
+    //TODO gdzieś w wykładzie o I/O jest coś wspomnniane o komunikacji o błedach, np. maxCapacity = -34
     CKnapsackProblem(const vector<CItem *> &items, int maxWeight);
     ~CKnapsackProblem();
     vector<CItem *> getItems() const;

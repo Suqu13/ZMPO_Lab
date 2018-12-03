@@ -7,7 +7,10 @@
 
 using namespace std;
 
-CItem::CItem(string name, int weight, int value) : name(name), weight(weight), value(value) {}
+CItem::CItem(string name, int weight, int value) : name(name), weight(weight), value(value) {
+    if(this->weight <= 0) throw "Item weight have to be greater than 0";
+    if(this->value <= 0) throw "Item value have to be greater than 0";
+}
 
 CItem::~CItem() {
 cout << "Item object deleted" << endl;

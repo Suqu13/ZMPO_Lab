@@ -7,8 +7,10 @@
 #include "CKnapsackProblem.h"
 
 
-CKnapsackProblem::CKnapsackProblem(const vector<CItem *> &items, int maxWeight) : items(items), maxWeight(maxWeight), bestIndividual(
-        nullptr){}
+CKnapsackProblem::CKnapsackProblem(const vector<CItem *> &items, int maxWeight) : items(items), maxCapacity(maxWeight), bestIndividual(
+        nullptr){
+    if(this->maxCapacity <= 0) throw "Maximal backpack capacity have to be greater than 0";
+}
 
 CKnapsackProblem::~CKnapsackProblem() {
     for (int i = 0; i < items.size() ; ++i) {
@@ -19,7 +21,7 @@ CKnapsackProblem::~CKnapsackProblem() {
 }
 
 int CKnapsackProblem::getMaxWeight() const {
-    return maxWeight;
+    return maxCapacity;
 }
 
 vector<CItem *> CKnapsackProblem::getItems() const {
