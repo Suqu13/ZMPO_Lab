@@ -9,7 +9,7 @@
 
 CKnapsackProblem::CKnapsackProblem(const vector<CItem *> &items, int maxWeight) : items(items), maxCapacity(maxWeight), bestIndividual(
         nullptr){
-    if(this->maxCapacity <= 0) throw "Maximal backpack capacity have to be greater than 0";
+    if(this->maxCapacity <= 0) this->maxCapacity = 10;
 }
 
 CKnapsackProblem::~CKnapsackProblem() {
@@ -17,7 +17,7 @@ CKnapsackProblem::~CKnapsackProblem() {
         delete items[i];
     }
         delete bestIndividual;
-    cout << "KnapsackProblem object deleted" << endl;
+    cout << DEF_KNAPSACKPROBLEM_DELETED << endl;
 }
 
 int CKnapsackProblem::getMaxWeight() const {
@@ -48,6 +48,7 @@ void CKnapsackProblem::findBestCIndividual(vector<CIndividual *> population) {
     }
     for(CIndividual* candidate: population) {
         if (candidate->evaluateFitness(this) > bestValue) {
+            delete bestIndividual;
             bestIndividual = new CIndividual(*candidate);
             bestValue = bestIndividual->evaluateFitness(this);
         }

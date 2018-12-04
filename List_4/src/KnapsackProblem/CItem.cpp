@@ -8,12 +8,12 @@
 using namespace std;
 
 CItem::CItem(string name, int weight, int value) : name(name), weight(weight), value(value) {
-    if(this->weight <= 0) throw "Item weight have to be greater than 0";
-    if(this->value <= 0) throw "Item value have to be greater than 0";
+    if (this->weight <= 0) this->weight = 1;
+    if (this->value <= 0) this->value = 1;
 }
 
 CItem::~CItem() {
-cout << "Item object deleted" << endl;
+    cout << DEF_ITEM_DELETED << endl;
 }
 
 int CItem::getWeight() const {
@@ -21,7 +21,7 @@ int CItem::getWeight() const {
 }
 
 ostream &operator<<(ostream &os, const CItem &item) {
-    os << "Name: " << item.name << " Weight: " << item.weight << " Value: " << item.value;
+    os << DEF_NAME << item.name << DEF_WEIGHT << item.weight << DEF_VALUE << item.value;
     return os;
 }
 

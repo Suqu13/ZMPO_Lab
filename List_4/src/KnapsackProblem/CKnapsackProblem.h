@@ -5,6 +5,8 @@
 #ifndef LIST_4_CKNAPSACKPROBLEM_H
 #define LIST_4_CKNAPSACKPROBLEM_H
 
+#define DEF_KNAPSACKPROBLEM_DELETED "KnapsackProblem object deleted"
+
 #include <vector>
 #include "CItem.h"
 #include "../GeneticAlgorithm/CIndividual.h"

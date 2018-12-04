@@ -5,7 +5,7 @@
 #ifndef LIST_4_CGENETICALGORITHM_H
 #define LIST_4_CGENETICALGORITHM_H
 
-
+#define DEF_GENALG_DELETED "GeneticAlgorithm object dleted"
 
 #include <vector>
 #include "../KnapsackProblem/CKnapsackProblem.h"

@@ -13,10 +13,9 @@ CGeneticAlgorithm::CGeneticAlgorithm(const int popSize, const double mutProb, co
                                      CKnapsackProblem *cKnapsackProblem)
         : popSize(popSize), mutProb(mutProb), crossProb(crossProb), cKnapsackProblem(cKnapsackProblem), bestSolution(
         nullptr) {
-    if (this->popSize <= 0) throw "Population size have to be greater than 0";
-    if (this->mutProb <= 0 || this->mutProb >= 1) throw "Mutation probability have to be placed in the range (0,1)";
-    if (this->crossProb <= 0 || this->crossProb >= 1) throw "Crossing probability have to be placed in the range (0,1)" ;
-
+    if (this->popSize <= 0) this->popSize = 5;
+    if (this->mutProb <= 0 || this->mutProb >= 1) this->mutProb = 0.2;
+    if (this->crossProb <= 0 || this->crossProb >= 1) this->crossProb = 0.6;
 }
 
 CGeneticAlgorithm::~CGeneticAlgorithm() {
@@ -24,7 +23,7 @@ CGeneticAlgorithm::~CGeneticAlgorithm() {
         delete population[i];
     }
     delete cKnapsackProblem;
-    cout << "GeneticAlgorithm object dleted" << endl;
+    cout << DEF_GENALG_DELETED << endl;
 }
 
 void CGeneticAlgorithm::generatePopulation(const int &genotypeSize) {
@@ -43,7 +42,7 @@ void CGeneticAlgorithm::generatePopulation(const int &genotypeSize) {
 
 CIndividual *CGeneticAlgorithm::runGeneticAlgorithm(int iterations) {
 
-    if (iterations <= 0) throw "Iterations number have to be greater than 0";
+    if (iterations <= 0) iterations = 10;
 
     generatePopulation(cKnapsackProblem->getItems().size());
     random_device rd;
@@ -90,8 +89,10 @@ void CGeneticAlgorithm::findBestSolution() {
     CIndividual *candidate = new CIndividual(*cKnapsackProblem->getCIndividual());
     if (bestSolution == nullptr ||
         bestSolution->evaluateFitness(cKnapsackProblem) < candidate->evaluateFitness(cKnapsackProblem)) {
-        bestSolution = candidate;
+        delete bestSolution;
+        bestSolution = new CIndividual(*candidate);
     }
+    delete candidate;
 }
 
 

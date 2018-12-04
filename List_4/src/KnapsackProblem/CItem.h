@@ -4,6 +4,11 @@
 
 #ifndef LIST_4_CITEM_H
 #define LIST_4_CITEM_H
+#define DEF_ITEM_DELETED "Item object deleted"
+#define DEF_NAME "Name: "
+#define DEF_WEIGHT " Weight: "
+#define DEF_VALUE " Value: "
+
 #include <string>
 #include <ostream>
 
