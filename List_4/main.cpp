@@ -29,27 +29,25 @@ int main() {
     int iterations = IO_module::inputPositiveInt();
     cout << DEF_SEPARATOR << "\n" << endl;
 
-//    try {
-    vector<CItem *> items = {
-//                             new CItem("item_1", 3, 5),
-//                             new CItem("item_2", 1, -1),
-//                             new CItem("item_3", 3, 4),
-//                             new CItem("item_4", 2, 3),
-            new CItem("item_1", 2, 4),
-            new CItem("item_2", 9, 1),
-            new CItem("item_3", 1, 10),
-            new CItem("item_4", 8, 12),
-            new CItem("item_5", 4, 13),
-            new CItem("item_6", 20, 100),
-            new CItem("item_7", 4, 19),
-            new CItem("item_8", 32, 13),
-            new CItem("item_9", 6, 22),
-            new CItem("item_10", 3, 8)
 
+    //pop = 20
+    //mut & prob -> self
+    //iter = 100
+    //maxCap = 25
+    vector<int > newVec;
+    vector<CItem *> itemVector = {
+            new CItem("item_0", 10, 7),
+            new CItem("item_1", 7, 5),
+            new CItem("item_2", 5, 4),
+            new CItem("item_3", 3, 3),
+            new CItem("item_4", 6, 6),
+            new CItem("item_5", 8, 7),
+            new CItem("item_6", 3, 2),
+            new CItem("item_7", 2, 1)
     };
 
     CKnapsackProblem *cKnapsackProblem;
-    cKnapsackProblem = cKnapsackProblem = new CKnapsackProblem(items, maxCapacity);
+    cKnapsackProblem = new CKnapsackProblem(itemVector, maxCapacity);
     CGeneticAlgorithm geneticAlgorithm(popSize, mutProb, crossProb, cKnapsackProblem);
     CIndividual *bestSolution = geneticAlgorithm.runGeneticAlgorithm(iterations);
 
@@ -65,11 +63,6 @@ int main() {
     }
     cout << DEF_SEPARATOR << "\n" << endl;
 
-    items.clear();
+    itemVector.clear();
     delete bestSolution;
-//    }
-//    catch (const char *e) {
-//        cout << "\nError: " << e << endl;
-//    }
-
 }
