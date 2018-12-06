@@ -26,7 +26,7 @@ private:
 
     void generatePopulation(const int &genotypeSize);
     //    void showPopulation() const;
-    void crossingProcess(vector<CIndividual *> &newPopulation, int firstIndividualIndex, int secondIndividualIndex, double currentCrossProb);
+    void crossingProcess(vector<CIndividual *> &newPopulation);
     void rewritingPopulation(vector<CIndividual *> &newPopulation);
     void findBestSolution();
 public:

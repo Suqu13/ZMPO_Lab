@@ -43,12 +43,15 @@ void CIndividual::mutateIndividual(const double &mutProb) {
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<> mut(0, 1);
-    for (int i = 0; i < genotype.size(); ++i) {
-        if (mut(gen) < mutProb) {
-            if (genotype.at(i) == 0) {
-                genotype.at(i) = 1;
-            } else {
-                genotype.at(i) = 0;
+    //TODO added
+    if (mut(gen) < mutProb) {
+        for (int i = 0; i < genotype.size(); ++i) {
+            if (mut(gen) < mutProb) {
+                if (genotype.at(i) == 0) {
+                    genotype.at(i) = 1;
+                } else {
+                    genotype.at(i) = 0;
+                }
             }
         }
     }

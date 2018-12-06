@@ -45,23 +45,26 @@ CIndividual *CGeneticAlgorithm::runGeneticAlgorithm(int iterations) {
     if (iterations <= 0) iterations = 10;
 
     generatePopulation(cKnapsackProblem->getItems().size());
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<> dis(0, popSize - 1);
-    uniform_real_distribution<> real(0, 1);
 
     for (int i = 0; i < iterations; i++) {
         vector<CIndividual *> newPopulation;
-        crossingProcess(newPopulation, dis(gen), dis(gen), real(gen));
+        crossingProcess(newPopulation);
         rewritingPopulation(newPopulation);
         findBestSolution();
     }
     return bestSolution;
 }
 
-void CGeneticAlgorithm::crossingProcess(vector<CIndividual *> &newPopulation, const int firstIndividualIndex,
-                                        const int secondIndividualIndex, const double currentCrossProb) {
+void CGeneticAlgorithm::crossingProcess(vector<CIndividual *> &newPopulation) {
     while (newPopulation.size() != popSize) {
+        random_device rd;
+        mt19937 gen(rd());
+        uniform_int_distribution<> dis(0, popSize - 1);
+        uniform_real_distribution<> real(0, 1);
+        int firstIndividualIndex = dis(gen);
+        const int secondIndividualIndex = dis(gen);
+        double currentCrossProb = real(gen);
+
         if (currentCrossProb < crossProb) {
             population.at(firstIndividualIndex)->crossIndividuals(population.at(secondIndividualIndex), mutProb,
                                                                   newPopulation, cKnapsackProblem);
