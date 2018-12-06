@@ -20,15 +20,14 @@ private:
     vector<CItem*> items;
     int maxCapacity;
     CIndividual *bestIndividual;
+    int evaluateFitness(vector<int> genotype) const;
 public:
-    //TODO gdzieś w wykładzie o I/O jest coś wspomnniane o komunikacji o błedach, np. maxCapacity = -34
     CKnapsackProblem(const vector<CItem *> &items, int maxWeight);
     ~CKnapsackProblem();
-    vector<CItem *> getItems() const;
-    int getMaxWeight() const;
+    CIndividual *createIndividual();
     void findBestCIndividual(vector<CIndividual*> population);
-    vector<CItem *> getSolution(CIndividual *cIndividual) const;
-    CIndividual *getCIndividual() const;
+    vector<CItem *> getBestItem() const;
+    bool checkIfGreater(CIndividual *first, CIndividual *second) const;
 };
 
 

@@ -22,28 +22,10 @@ const vector<int> &CIndividual::getGenotype() const {
     return genotype;
 }
 
-int CIndividual::evaluateFitness(const CKnapsackProblem *cKnapsackProblem) {
-    vector<CItem *> items = cKnapsackProblem->getItems();
-    int maxWeight = cKnapsackProblem->getMaxWeight();
-    int currentValue = 0;
-    int currentWeight = 0;
-    for (int i = 0; i < genotype.size(); ++i) {
-        if (genotype[i] == 1) {
-            currentValue += (*(items.at(i))).getValue();
-            currentWeight += items[i]->getWeight();
-            if (currentWeight > maxWeight) {
-                return 0;
-            }
-        }
-    }
-    return currentValue;
-}
-
 void CIndividual::mutateIndividual(const double &mutProb) {
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<> mut(0, 1);
-    //TODO added
     if (mut(gen) < mutProb) {
         for (int i = 0; i < genotype.size(); ++i) {
             if (mut(gen) < mutProb) {
@@ -57,8 +39,7 @@ void CIndividual::mutateIndividual(const double &mutProb) {
     }
 }
 
-void CIndividual::crossIndividuals(CIndividual *cIndividual, double &mutProb, vector<CIndividual *> &newPopulation,
-                                   const CKnapsackProblem *cKnapsackProblem) {
+void CIndividual::crossIndividuals(CIndividual *cIndividual, double &mutProb, vector<CIndividual *> &newPopulation) {
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dis(1, (int) cIndividual->genotype.size() - 1);
@@ -67,42 +48,18 @@ void CIndividual::crossIndividuals(CIndividual *cIndividual, double &mutProb, ve
     CIndividual *firstChildren = new CIndividual();
     CIndividual *secondChildren = new CIndividual();
 
-    CIndividual *betterParent;
-    CIndividual *worstParent;
+    CIndividual *firstParent = this;
+    CIndividual *secondParent = cIndividual;
 
-    if (this->evaluateFitness(cKnapsackProblem) > cIndividual->evaluateFitness(cKnapsackProblem)) {
-        betterParent = this;
-        worstParent = cIndividual;
-    } else {
-        betterParent = cIndividual;
-        worstParent = this;
+    for (int i = 0; i < firstParent->genotype.size(); ++i) {
+        if (i < crossingPoint) {
+            firstChildren->genotype.push_back(firstParent->genotype.at(i));
+            secondChildren->genotype.push_back(secondParent->genotype.at(i));
+        } else {
+            firstChildren->genotype.push_back(secondParent->genotype.at(i));
+            secondChildren->genotype.push_back(firstParent->genotype.at(i));
+        }
     }
-
-//    //TODO check if crossing procedure is correct
-//    for (int i = 0; i < crossingPoint; ++i) {
-//        firstChildren->genotype.push_back(betterParent->genotype.at(i));
-//        secondChildren->genotype.push_back(worstParent->genotype.at(i));
-//    }
-//
-//    for (int i = crossingPoint; i < genotype.size(); ++i) {
-//        firstChildren->genotype.push_back(worstParent->genotype.at(i));
-//        secondChildren->genotype.push_back(betterParent->genotype.at(i));
-//    }
-
-    for (int i = 0; i < betterParent->genotype.size(); ++i) {
-        if (i < crossingPoint)
-            firstChildren->genotype.push_back(betterParent->genotype.at(i));
-        else
-            firstChildren->genotype.push_back(worstParent->genotype.at(i));
-    }
-
-    for (int i = crossingPoint; i < betterParent->genotype.size(); ++i) {
-        secondChildren->genotype.push_back(betterParent->genotype.at(i));
-    }
-    for (int i = 0; i < crossingPoint; ++i) {
-        secondChildren->genotype.push_back(worstParent->genotype.at(i));
-    }
-
 
     firstChildren->mutateIndividual(mutProb);
     secondChildren->mutateIndividual(mutProb);

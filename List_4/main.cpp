@@ -10,7 +10,8 @@
 #define DEF_CROSSING_PROBABILITY "Provide a crossing probability: "
 #define DEF_ITERATIONS_NUMBER "Provide a iterations number: "
 #define DEF_BEST_SOLUTION "The best solution!"
-#define DEF_BEST_SOLUTION_NOT_FOUND "The solution has been not found, try again with a bigger population!"
+#define SUM_W "Weights sum: "
+#define SUM_V "Values sum: "
 using namespace std;
 
 int main() {
@@ -19,7 +20,6 @@ int main() {
     cout << DEF_BACKPACK_CAPACITY;
     int maxCapacity = IO_module::inputPositiveInt();
     cout << DEF_POPULATION_SIZE;
-    //int popSize = -1;
     int popSize = IO_module::inputPositiveInt();
     cout << DEF_MUTATION_PROBABILITY;
     double mutProb = IO_module::inputPositiveDouble();
@@ -29,40 +29,46 @@ int main() {
     int iterations = IO_module::inputPositiveInt();
     cout << DEF_SEPARATOR << "\n" << endl;
 
-
-    //pop = 20
-    //mut & prob -> self
-    //iter = 100
-    //maxCap = 25
-    vector<int > newVec;
+    vector<int> newVec;
     vector<CItem *> itemVector = {
-            new CItem("item_0", 10, 7),
-            new CItem("item_1", 7, 5),
-            new CItem("item_2", 5, 4),
-            new CItem("item_3", 3, 3),
-            new CItem("item_4", 6, 6),
-            new CItem("item_5", 8, 7),
-            new CItem("item_6", 3, 2),
-            new CItem("item_7", 2, 1)
+            new CItem("item_1", 2, 4),
+            new CItem("item_2", 9, 1),
+            new CItem("item_3", 1, 10),
+            new CItem("item_4", 8, 12),
+            new CItem("item_5", 4, 13),
+            new CItem("item_6", 20, 100),
+            new CItem("item_7", 4, 19),
+            new CItem("item_8", 32, 13),
+            new CItem("item_9", 6, 22),
+            new CItem("item_10", 3, 8)
+//            new CItem("item_0", 10, 7),
+//            new CItem("item_1", 7, 5),
+//            new CItem("item_2", 5, 4),
+//            new CItem("item_3", 3, 3),
+//            new CItem("item_4", 6, 6),
+//            new CItem("item_5", 8, 7),
+//            new CItem("item_6", 3, 2),
+//            new CItem("item_7", 2, 1)
     };
 
     CKnapsackProblem *cKnapsackProblem;
     cKnapsackProblem = new CKnapsackProblem(itemVector, maxCapacity);
     CGeneticAlgorithm geneticAlgorithm(popSize, mutProb, crossProb, cKnapsackProblem);
-    CIndividual *bestSolution = geneticAlgorithm.runGeneticAlgorithm(iterations);
+    vector<CItem *> bestItems =  geneticAlgorithm.runGeneticAlgorithm(iterations);
 
     cout << "\n" << DEF_SEPARATOR << endl;
-    if (bestSolution->evaluateFitness(cKnapsackProblem) != 0) {
-        cout << DEF_BEST_SOLUTION << endl;
-        vector<CItem *> bestItems = cKnapsackProblem->getSolution(bestSolution);
-        for (int i = 0; i < bestItems.size(); ++i) {
-            cout << *bestItems.at(i) << endl;
-        }
-    } else {
-        cout << DEF_BEST_SOLUTION_NOT_FOUND << endl;
-    }
-    cout << DEF_SEPARATOR << "\n" << endl;
+    int weightSum = 0;
+    int valSum = 0;
 
-    itemVector.clear();
-    delete bestSolution;
+    cout << DEF_BEST_SOLUTION << endl;
+
+    for (int i = 0; i < bestItems.size(); ++i) {
+        cout << *bestItems.at(i) << endl;
+        weightSum += bestItems.at(i)->getWeight();
+        valSum += bestItems.at(i)->getValue();
+    }
+    cout << SUM_W << weightSum << endl;
+    cout << SUM_V << valSum << endl;
+
+    cout << DEF_SEPARATOR << "\n" << endl;
 }

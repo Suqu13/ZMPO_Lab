@@ -24,8 +24,7 @@ public:
     CIndividual(CIndividual &cIndividual);
     ~CIndividual();
     const vector<int> &getGenotype() const;
-    int evaluateFitness(const CKnapsackProblem *cKnapsackProblem);
-    void crossIndividuals(CIndividual *cIndividual, double &mutProb, vector<CIndividual *> &newPopulation, const CKnapsackProblem *cKnapsackProblem);
+    void crossIndividuals(CIndividual *cIndividual, double &mutProb, vector<CIndividual *> &newPopulation);
 
 };
 

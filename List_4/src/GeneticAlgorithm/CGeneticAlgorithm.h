@@ -20,19 +20,17 @@ private:
     int popSize;
     double mutProb;
     double crossProb;
-    CIndividual* bestSolution;
     vector<CIndividual *> population;
     CKnapsackProblem *cKnapsackProblem;
 
-    void generatePopulation(const int &genotypeSize);
-    //    void showPopulation() const;
-    void crossingProcess(vector<CIndividual *> &newPopulation);
-    void rewritingPopulation(vector<CIndividual *> &newPopulation);
-    void findBestSolution();
+    int getRandomIndividualFromPopulation();
+    void generatePopulation();
+    void reproducePopulation(vector<CIndividual *> &newPopulation);
+    void rewritePopulation(vector<CIndividual *> &newPopulation);
 public:
     CGeneticAlgorithm(int popSize, double mutProb, double crossProb, CKnapsackProblem *cKnapsackProblem);
     ~CGeneticAlgorithm();
-    CIndividual *runGeneticAlgorithm(int iterations);
+    vector<CItem *> runGeneticAlgorithm(int iterations);
 };
 
 

@@ -11,8 +11,7 @@ using namespace std;
 
 CGeneticAlgorithm::CGeneticAlgorithm(const int popSize, const double mutProb, const double crossProb,
                                      CKnapsackProblem *cKnapsackProblem)
-        : popSize(popSize), mutProb(mutProb), crossProb(crossProb), cKnapsackProblem(cKnapsackProblem), bestSolution(
-        nullptr) {
+        : popSize(popSize), mutProb(mutProb), crossProb(crossProb), cKnapsackProblem(cKnapsackProblem){
     if (this->popSize <= 0) this->popSize = 5;
     if (this->mutProb <= 0 || this->mutProb >= 1) this->mutProb = 0.2;
     if (this->crossProb <= 0 || this->crossProb >= 1) this->crossProb = 0.6;
@@ -26,48 +25,42 @@ CGeneticAlgorithm::~CGeneticAlgorithm() {
     cout << DEF_GENALG_DELETED << endl;
 }
 
-void CGeneticAlgorithm::generatePopulation(const int &genotypeSize) {
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<> dis(0, 1);
+void CGeneticAlgorithm::generatePopulation() {
     while (population.size() < popSize) {
-        vector<int> genotype;
-        for (int i = 0; i < genotypeSize; ++i) {
-            genotype.push_back(dis(gen));
-        }
-        CIndividual *cIndividual = new CIndividual(genotype);
-        population.push_back(cIndividual);
+        population.push_back(cKnapsackProblem->createIndividual());
     }
 }
 
-CIndividual *CGeneticAlgorithm::runGeneticAlgorithm(int iterations) {
+vector<CItem *> CGeneticAlgorithm::runGeneticAlgorithm(int iterations) {
 
     if (iterations <= 0) iterations = 10;
 
-    generatePopulation(cKnapsackProblem->getItems().size());
+    generatePopulation();
 
     for (int i = 0; i < iterations; i++) {
         vector<CIndividual *> newPopulation;
-        crossingProcess(newPopulation);
-        rewritingPopulation(newPopulation);
-        findBestSolution();
+        reproducePopulation(newPopulation);
+        rewritePopulation(newPopulation);
+        cKnapsackProblem->findBestCIndividual(population);
     }
-    return bestSolution;
+    return cKnapsackProblem->getBestItem();
 }
 
-void CGeneticAlgorithm::crossingProcess(vector<CIndividual *> &newPopulation) {
+void CGeneticAlgorithm::reproducePopulation(vector<CIndividual *> &newPopulation) {
     while (newPopulation.size() != popSize) {
+
         random_device rd;
         mt19937 gen(rd());
         uniform_int_distribution<> dis(0, popSize - 1);
         uniform_real_distribution<> real(0, 1);
-        int firstIndividualIndex = dis(gen);
-        const int secondIndividualIndex = dis(gen);
+        int firstIndividualIndex = getRandomIndividualFromPopulation();
+        int secondIndividualIndex = getRandomIndividualFromPopulation();
+
         double currentCrossProb = real(gen);
 
         if (currentCrossProb < crossProb) {
             population.at(firstIndividualIndex)->crossIndividuals(population.at(secondIndividualIndex), mutProb,
-                                                                  newPopulation, cKnapsackProblem);
+                                                                  newPopulation);
         } else {
             newPopulation.push_back(new CIndividual(*population.at(firstIndividualIndex)));
             newPopulation.push_back(new CIndividual(*population.at(secondIndividualIndex)));
@@ -75,7 +68,7 @@ void CGeneticAlgorithm::crossingProcess(vector<CIndividual *> &newPopulation) {
     }
 }
 
-void CGeneticAlgorithm::rewritingPopulation(vector<CIndividual *> &newPopulation) {
+void CGeneticAlgorithm::rewritePopulation(vector<CIndividual *> &newPopulation) {
     for (int k = 0; k < popSize; k++) {
         delete population.at(k);
     }
@@ -87,15 +80,18 @@ void CGeneticAlgorithm::rewritingPopulation(vector<CIndividual *> &newPopulation
     newPopulation.clear();
 }
 
-void CGeneticAlgorithm::findBestSolution() {
-    cKnapsackProblem->findBestCIndividual(population);
-    CIndividual *candidate = new CIndividual(*cKnapsackProblem->getCIndividual());
-    if (bestSolution == nullptr ||
-        bestSolution->evaluateFitness(cKnapsackProblem) < candidate->evaluateFitness(cKnapsackProblem)) {
-        delete bestSolution;
-        bestSolution = new CIndividual(*candidate);
+int CGeneticAlgorithm::getRandomIndividualFromPopulation() {
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> dis(0, popSize - 1);
+    int first = dis(gen);
+    int second = dis(gen);
+
+    if (cKnapsackProblem->checkIfGreater(population.at(first), population.at(second))) {
+        return first;
+    } else {
+        return second;
     }
-    delete candidate;
 }
 
 
