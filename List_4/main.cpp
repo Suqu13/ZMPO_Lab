@@ -31,24 +31,24 @@ int main() {
 
     vector<int> newVec;
     vector<CItem *> itemVector = {
-            new CItem("item_1", 2, 4),
-            new CItem("item_2", 9, 1),
-            new CItem("item_3", 1, 10),
-            new CItem("item_4", 8, 12),
-            new CItem("item_5", 4, 13),
-            new CItem("item_6", 20, 100),
-            new CItem("item_7", 4, 19),
-            new CItem("item_8", 32, 13),
-            new CItem("item_9", 6, 22),
-            new CItem("item_10", 3, 8)
-//            new CItem("item_0", 10, 7),
-//            new CItem("item_1", 7, 5),
-//            new CItem("item_2", 5, 4),
-//            new CItem("item_3", 3, 3),
-//            new CItem("item_4", 6, 6),
-//            new CItem("item_5", 8, 7),
-//            new CItem("item_6", 3, 2),
-//            new CItem("item_7", 2, 1)
+//            new CItem("item_1", 2, 4),
+//            new CItem("item_2", 9, 1),
+//            new CItem("item_3", 1, 10),
+//            new CItem("item_4", 8, 12),
+//            new CItem("item_5", 4, 13),
+//            new CItem("item_6", 20, 100),
+//            new CItem("item_7", 4, 19),
+//            new CItem("item_8", 32, 13),
+//            new CItem("item_9", 6, 22),
+//            new CItem("item_10", 3, 8)
+            new CItem("item_0", 10, 7),
+            new CItem("item_1", 7, 5),
+            new CItem("item_2", 5, 4),
+            new CItem("item_3", 3, 3),
+            new CItem("item_4", 6, 6),
+            new CItem("item_5", 8, 7),
+            new CItem("item_6", 3, 2),
+            new CItem("item_7", 2, 1)
     };
 
     CKnapsackProblem *cKnapsackProblem;
@@ -62,10 +62,10 @@ int main() {
 
     cout << DEF_BEST_SOLUTION << endl;
 
-    for (int i = 0; i < bestItems.size(); ++i) {
-        cout << *bestItems.at(i) << endl;
-        weightSum += bestItems.at(i)->getWeight();
-        valSum += bestItems.at(i)->getValue();
+    for (auto &bestItem : bestItems) {
+        cout << *bestItem << endl;
+        weightSum += bestItem->getWeight();
+        valSum += bestItem->getValue();
     }
     cout << SUM_W << weightSum << endl;
     cout << SUM_V << valSum << endl;

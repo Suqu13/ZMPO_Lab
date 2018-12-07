@@ -11,15 +11,15 @@ using namespace std;
 
 CGeneticAlgorithm::CGeneticAlgorithm(const int popSize, const double mutProb, const double crossProb,
                                      CKnapsackProblem *cKnapsackProblem)
-        : popSize(popSize), mutProb(mutProb), crossProb(crossProb), cKnapsackProblem(cKnapsackProblem){
+        : popSize(popSize), mutProb(mutProb), crossProb(crossProb), cKnapsackProblem(cKnapsackProblem) {
     if (this->popSize <= 0) this->popSize = 5;
     if (this->mutProb <= 0 || this->mutProb >= 1) this->mutProb = 0.2;
     if (this->crossProb <= 0 || this->crossProb >= 1) this->crossProb = 0.6;
 }
 
 CGeneticAlgorithm::~CGeneticAlgorithm() {
-    for (int i = 0; i < population.size(); ++i) {
-        delete population[i];
+    for (auto &i : population) {
+        delete i;
     }
     delete cKnapsackProblem;
     cout << DEF_GENALG_DELETED << endl;
@@ -47,7 +47,7 @@ vector<CItem *> CGeneticAlgorithm::runGeneticAlgorithm(int iterations) {
 }
 
 void CGeneticAlgorithm::reproducePopulation(vector<CIndividual *> &newPopulation) {
-    while (newPopulation.size() != popSize) {
+    while (newPopulation.size() < popSize) {
 
         random_device rd;
         mt19937 gen(rd());
@@ -59,11 +59,13 @@ void CGeneticAlgorithm::reproducePopulation(vector<CIndividual *> &newPopulation
         double currentCrossProb = real(gen);
 
         if (currentCrossProb < crossProb) {
-            population.at(firstIndividualIndex)->crossIndividuals(population.at(secondIndividualIndex), mutProb,
+            population.at(firstIndividualIndex)->crossIndividuals(population.at(secondIndividualIndex), popSize,
+                                                                  mutProb,
                                                                   newPopulation);
         } else {
             newPopulation.push_back(new CIndividual(*population.at(firstIndividualIndex)));
-            newPopulation.push_back(new CIndividual(*population.at(secondIndividualIndex)));
+            if (newPopulation.size() < popSize)
+                newPopulation.push_back(new CIndividual(*population.at(secondIndividualIndex)));
         }
     }
 }

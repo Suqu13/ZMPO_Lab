@@ -8,15 +8,13 @@
 
 using namespace std;
 
-CIndividual::CIndividual() {}
+CIndividual::CIndividual() = default;
 
 CIndividual::CIndividual(const vector<int> &genotype) : genotype(genotype) {}
 
 CIndividual::CIndividual(CIndividual &cIndividual) : genotype(cIndividual.getGenotype()) {}
 
-CIndividual::~CIndividual() {
-//    cout << "Individual object deleted" << endl;
-}
+CIndividual::~CIndividual() = default;
 
 const vector<int> &CIndividual::getGenotype() const {
     return genotype;
@@ -27,19 +25,20 @@ void CIndividual::mutateIndividual(const double &mutProb) {
     mt19937 gen(rd());
     uniform_real_distribution<> mut(0, 1);
     if (mut(gen) < mutProb) {
-        for (int i = 0; i < genotype.size(); ++i) {
+        for (int &i : genotype) {
             if (mut(gen) < mutProb) {
-                if (genotype.at(i) == 0) {
-                    genotype.at(i) = 1;
+                if (i == 0) {
+                    i = 1;
                 } else {
-                    genotype.at(i) = 0;
+                    i = 0;
                 }
             }
         }
     }
 }
 
-void CIndividual::crossIndividuals(CIndividual *cIndividual, double &mutProb, vector<CIndividual *> &newPopulation) {
+void CIndividual::crossIndividuals(CIndividual *cIndividual, int &popSize, double &mutProb,
+                                   vector<CIndividual *> &newPopulation) {
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dis(1, (int) cIndividual->genotype.size() - 1);
@@ -62,10 +61,12 @@ void CIndividual::crossIndividuals(CIndividual *cIndividual, double &mutProb, ve
     }
 
     firstChildren->mutateIndividual(mutProb);
-    secondChildren->mutateIndividual(mutProb);
-
     newPopulation.push_back(firstChildren);
-    newPopulation.push_back(secondChildren);
+
+    if (newPopulation.size() < popSize) {
+        secondChildren->mutateIndividual(mutProb);
+        newPopulation.push_back(secondChildren);
+    }
 }
 
 

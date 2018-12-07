@@ -20,11 +20,11 @@ private:
 public:
 
     CIndividual();
-    CIndividual(const vector<int> &genotype);
+    explicit CIndividual(const vector<int> &genotype);
     CIndividual(CIndividual &cIndividual);
     ~CIndividual();
     const vector<int> &getGenotype() const;
-    void crossIndividuals(CIndividual *cIndividual, double &mutProb, vector<CIndividual *> &newPopulation);
+    void crossIndividuals(CIndividual *cIndividual,int &popSize, double &mutProb, vector<CIndividual *> &newPopulation);
 
 };
 
