@@ -51,24 +51,25 @@ vector<CItem *> CGeneticAlgorithm::runGeneticAlgorithm(double &timeForIterations
 }
 
 void CGeneticAlgorithm::reproducePopulation(vector<CIndividual *> &newPopulation) {
+    CIndividual child;
+
     while (newPopulation.size() < popSize) {
 
         random_device rd;
         mt19937 gen(rd());
         uniform_int_distribution<> dis(0, popSize - 1);
         uniform_real_distribution<> real(0, 1);
+
         int firstIndividualIndex = getBetterFromTwo();
         int secondIndividualIndex = getBetterFromTwo();
 
-        double currentCrossProb = real(gen);
-
         //todo zwraca mi jedno dziecko, co z drugim?
-        if (currentCrossProb < crossProb) {
+        if (real(gen) < crossProb) {
 //            population.at(firstIndividualIndex)->crossIndividuals(population.at(secondIndividualIndex), popSize,
 //                                                                  newPopulation);
-            CIndividual *child = (*population.at(firstIndividualIndex))+(population.at(secondIndividualIndex));
-            newPopulation.push_back(new CIndividual(*child));
-            delete child;
+            child = ((*population.at(firstIndividualIndex)) + (population.at(secondIndividualIndex)));
+            newPopulation.push_back(new CIndividual(child));
+            child;
         } else {
             newPopulation.push_back(new CIndividual(*population.at(firstIndividualIndex)));
             if (newPopulation.size() < popSize)

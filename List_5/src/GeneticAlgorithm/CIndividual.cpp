@@ -92,24 +92,24 @@ void CIndividual::operator++(int) {
     }
 }
 
-CIndividual *CIndividual::operator+(CIndividual *secondParent) {
+CIndividual CIndividual::operator+(CIndividual *secondParent) {
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dis(1, (int) this->genotype.size() - 1);
     int crossingPoint = dis(gen);
 
-    CIndividual *children = new CIndividual(mutProb);
+    CIndividual children(mutProb);
 
     for (int i = 0; i < genotype.size(); ++i) {
         if (i < crossingPoint) {
-            children->genotype.push_back(genotype.at(i));
+            children.genotype.push_back(genotype.at(i));
         } else {
-            children->genotype.push_back(secondParent->genotype.at(i));
+            children.genotype.push_back(secondParent->genotype.at(i));
         }
     }
 
-    (*children)++;
-    return new CIndividual(*children);
+    children++;
+    return children;
 }
 
 
