@@ -27,7 +27,7 @@ public:
     void operator++(int);
     CIndividual operator+(CIndividual *secondParent);
     const vector<int> &getGenotype() const;
-    void crossIndividuals(CIndividual *cIndividual,int &popSize, vector<CIndividual *> &newPopulation);
+   // void crossIndividuals(CIndividual *cIndividual,int &popSize, vector<CIndividual *> &newPopulation);
 
 };
 
