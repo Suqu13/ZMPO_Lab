@@ -44,8 +44,8 @@ void CIndividual::crossIndividuals(CIndividual *cIndividual, int &popSize, doubl
     uniform_int_distribution<> dis(1, (int) cIndividual->genotype.size() - 1);
     int crossingPoint = dis(gen);
 
-    CIndividual *firstChildren = new CIndividual();
-    CIndividual *secondChildren = new CIndividual();
+    CIndividual *firstChildren = new CIndividual;
+    CIndividual *secondChildren = new CIndividual;;
 
     CIndividual *firstParent = this;
     CIndividual *secondParent = cIndividual;
@@ -68,6 +68,9 @@ void CIndividual::crossIndividuals(CIndividual *cIndividual, int &popSize, doubl
         newPopulation.push_back(secondChildren);
     }
 }
+
+
+
 
 
 

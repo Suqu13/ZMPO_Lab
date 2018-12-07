@@ -1,7 +1,21 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.13)
 project(List_4)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(ListTest main.cpp)
-add_executable(List_4 main.cpp src/KnapsackProblem/CKnapsackProblem.cpp src/KnapsackProblem/CKnapsackProblem.h src/KnapsackProblem/CItem.cpp src/KnapsackProblem/CItem.h src/GeneticAlgorithm/CIndividual.cpp src/GeneticAlgorithm/CIndividual.h src/GeneticAlgorithm/CGeneticAlgorithm.cpp src/GeneticAlgorithm/CGeneticAlgorithm.h tools/IO_module.cpp tools/IO_module.h)
+include_directories(src/GeneticAlgorithm)
+include_directories(src/KnapsackProblem)
+include_directories(tools)
+
+add_executable(List_4
+        src/GeneticAlgorithm/CGeneticAlgorithm.cpp
+        src/GeneticAlgorithm/CGeneticAlgorithm.h
+        src/GeneticAlgorithm/CIndividual.cpp
+        src/GeneticAlgorithm/CIndividual.h
+        src/KnapsackProblem/CItem.cpp
+        src/KnapsackProblem/CItem.h
+        src/KnapsackProblem/CKnapsackProblem.cpp
+        src/KnapsackProblem/CKnapsackProblem.h
+        tools/IO_module.cpp
+        tools/IO_module.h
+        main.cpp)

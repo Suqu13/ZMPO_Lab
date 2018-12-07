@@ -24,7 +24,7 @@ private:
     vector<CIndividual *> population;
     CKnapsackProblem *cKnapsackProblem;
 
-    int getRandomIndividualFromPopulation();
+    int getBetterFromTwo();
     void generatePopulation();
     void reproducePopulation(vector<CIndividual *> &newPopulation);
     void rewritePopulation(vector<CIndividual *> &newPopulation);

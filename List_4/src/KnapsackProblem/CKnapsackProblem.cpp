@@ -35,11 +35,9 @@ vector<CItem *> CKnapsackProblem::getBestItem() const {
 }
 
 void CKnapsackProblem::findBestCIndividual(vector<CIndividual *> population) {
-    int bestValue;
+    int bestValue = 0;
     if (bestIndividual != nullptr) {
         bestValue = this->evaluateFitness(bestIndividual->getGenotype());
-    } else {
-        bestValue = INT_MIN;
     }
     for (CIndividual *candidate: population) {
         if (this->evaluateFitness(candidate->getGenotype()) > bestValue) {

@@ -45,6 +45,7 @@ vector<CItem *> CGeneticAlgorithm::runGeneticAlgorithm(double &timeForIterations
         cKnapsackProblem->findBestCIndividual(population);
         finish = time(nullptr) - start;
     }
+    cout << "Measured time: " << finish << endl;
 
     return cKnapsackProblem->getBestItem();
 }
@@ -56,14 +57,18 @@ void CGeneticAlgorithm::reproducePopulation(vector<CIndividual *> &newPopulation
         mt19937 gen(rd());
         uniform_int_distribution<> dis(0, popSize - 1);
         uniform_real_distribution<> real(0, 1);
-        int firstIndividualIndex = getRandomIndividualFromPopulation();
-        int secondIndividualIndex = getRandomIndividualFromPopulation();
+        int firstIndividualIndex = getBetterFromTwo();
+        int secondIndividualIndex = getBetterFromTwo();
 
         double currentCrossProb = real(gen);
 
+        //todo zwraca mi jedno dziecko, co z drugim?
         if (currentCrossProb < crossProb) {
-            population.at(firstIndividualIndex)->crossIndividuals(population.at(secondIndividualIndex), popSize,
-                                                                  newPopulation);
+//            population.at(firstIndividualIndex)->crossIndividuals(population.at(secondIndividualIndex), popSize,
+//                                                                  newPopulation);
+            CIndividual *child = (*population.at(firstIndividualIndex))+(population.at(secondIndividualIndex));
+            newPopulation.push_back(new CIndividual(*child));
+            delete child;
         } else {
             newPopulation.push_back(new CIndividual(*population.at(firstIndividualIndex)));
             if (newPopulation.size() < popSize)
@@ -84,7 +89,7 @@ void CGeneticAlgorithm::rewritePopulation(vector<CIndividual *> &newPopulation) 
     newPopulation.clear();
 }
 
-int CGeneticAlgorithm::getRandomIndividualFromPopulation() {
+int CGeneticAlgorithm::getBetterFromTwo() {
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dis(0, popSize - 1);
