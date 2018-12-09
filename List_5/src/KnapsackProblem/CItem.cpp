@@ -7,7 +7,7 @@
 
 using namespace std;
 
-CItem::CItem(string name, int weight, int value) : name(name), weight(weight), value(value) {
+CItem::CItem(string name, int weight, int value) : name(name), weight(weight), value(value), factor(1) {
     if (this->weight <= 0) this->weight = 1;
     if (this->value <= 0) this->value = 1;
 }
@@ -20,12 +20,20 @@ int CItem::getWeight() const {
     return weight;
 }
 
+int CItem::getValue() const {
+    return value;
+}
+
+void CItem::setFold(double fold) {
+    CItem::factor = fold;
+}
+
 ostream &operator<<(ostream &os, const CItem &item) {
-    os << DEF_NAME << item.name << DEF_WEIGHT << item.weight << DEF_VALUE << item.value;
+    os << DEF_WEIGHT << item.weight << DEF_VALUE << item.value << DEF_FACTOR << item.factor << DEF_NAME << item.name;
     return os;
 }
 
-int CItem::getValue() const {
-    return value;
+double CItem::getFactor() const {
+    return factor;
 }
 
