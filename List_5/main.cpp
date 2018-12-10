@@ -1,43 +1,15 @@
 #include <iostream>
-#include <random>
-#include "src/GeneticAlgorithm/CGeneticAlgorithm.h"
-#include "tools/IO_module.h"
-
-#define DEF_SEPARATOR "********************************************"
-#define DEF_BACKPACK_CAPACITY "Provide a backpack capacity: "
-#define DEF_POPULATION_SIZE "Provide a population size: "
-#define DEF_MUTATION_PROBABILITY "Provide a mutation probability: "
-#define DEF_CROSSING_PROBABILITY "Provide a crossing probability: "
-#define DEF_TIME "Provide a time for algorithm: "
-#define DEF_BEST_SOLUTION "The best solution!"
-#define SUM_W "Weights sum: "
-#define SUM_V "Values sum: "
-using namespace std;
-
-template<class T>
-class CIndividual;
-
-template<class T>
-class CKnapsackProblem;
-
-template<class T>
-class CGeneticAlgorithm;
+#include "lib/interface/CMenu.h"
+#include "lib/helpers/CTabHandler.h"
+#include "lib/helpers/CInitializer.h"
+#include "lib/helpers/CMenuAnalyzer.h"
+#include "lib/helpers/CMenuSerializer.h"
+#include "lib/utilities/Utilities.h"
+#include "lib/helpers/Validator.h"
+#define DEF_SEPARATOR_MAIN "********************************************"
 
 
 int main() {
-
-//    cout << "\n" << DEF_SEPARATOR << endl;
-//    cout << DEF_BACKPACK_CAPACITY;
-//    int maxCapacity = IO_module::inputPositiveInt();
-//    cout << DEF_POPULATION_SIZE;
-//    int popSize = IO_module::inputPositiveInt();
-//    cout << DEF_MUTATION_PROBABILITY;
-//    double mutProb = IO_module::inputPositiveDoubleBet0_1();
-//    cout << DEF_CROSSING_PROBABILITY;
-//    double crossProb = IO_module::inputPositiveDoubleBet0_1();
-//    cout << DEF_TIME_MEASURE;
-//    int time = IO_module::inputPositiveInt();
-//    cout << DEF_SEPARATOR << "\n" << endl;
 
     vector<CItem *> itemVector = {
             new CItem("item_1", 2, 4),
@@ -59,30 +31,56 @@ int main() {
 //            new CItem("item_6", 3, 2),
 //            new CItem("item_7", 2, 1)
     };
-     int time = 3;
-    CKnapsackProblem<double> *cKnapsackProblem;
-    cKnapsackProblem = new CKnapsackProblem<double>(itemVector, 34);
-    CGeneticAlgorithm<double> geneticAlgorithm(4, 0.2, 0.7, cKnapsackProblem);
-    vector<CItem *> bestItems =  geneticAlgorithm.runGeneticAlgorithm(time);
 
-    cout << "\n" << DEF_SEPARATOR << endl;
-    double weightSum = 0;
-    double valSum = 0;
+    CMenu *cMenu = new CMenu("Main menu", "main menu command");
+    CInitializer::InitializeForGenetic(*cMenu,itemVector);
+    bool again = true;
 
-    cout << DEF_BEST_SOLUTION << endl;
+    cout << "\n" << DEF_SEPARATOR_MAIN << endl;
 
-    for (int i = 0; i< bestItems.size(); i++) {
-        cout << *bestItems.at(i) << endl;
-        weightSum += (bestItems.at(i)->getWeight()) * (bestItems.at(i)->getFactor());
-        valSum += (bestItems.at(i)->getValue()) * (bestItems.at(i)->getFactor());
+    while (again) {
+        CMenuAnalyzer::setStaticMember(cMenu);
+
+        cout << "Do you want to run: " << cMenu->getS_name() << "(" << cMenu->getS_command() << ")?(y/n): ";
+        if (Utilities::bYOrNIntepreter()) {
+            cMenu->Run();
+        }
+
+        cout << "\n" << DEF_SEPARATOR_MAIN << endl;
+
+        cout << "Do you want to serialize this object?(y/n): ";
+        if (Utilities::bYOrNIntepreter()) {
+            cout << "Provide source name: ";
+            string fileName;
+            cin >> fileName;
+            CMenuSerializer::serialize(cMenu, fileName);
+        }
+
+        cout << "\n" << DEF_SEPARATOR_MAIN << endl;
+
+        cout << "Do you want to deserialize some file?(y/n): ";
+        again = Utilities::bYOrNIntepreter();
+        if (again) {
+            delete cMenu;
+            cout << "\nProvide source name: ";
+            string fileName;
+            while (fileName.empty() || cMenu == nullptr) {
+                cin >> fileName;
+                cMenu = dynamic_cast<CMenu *> (CMenuSerializer::deserialize(fileName));
+                if (cMenu == nullptr) {
+                    cout << "\nSomething went wrong. Do you want to exit?(y/n): ";
+                    if (Utilities::bYOrNIntepreter()) {
+                        return 0;
+                    }
+                }
+            }
+        } else {
+            cout << "\n" << DEF_SEPARATOR_MAIN << endl;
+            delete cMenu;
+        }
     }
-//    for (auto &bestItem  : bestItems) {
-//        cout << *bestItem << endl;
-//        weightSum += bestItem->getWeight();
-//        valSum += bestItem->getValue();
-//    }
-    cout << SUM_W << weightSum << endl;
-    cout << SUM_V << valSum << endl;
 
-    cout << DEF_SEPARATOR << "\n" << endl;
+    cout << "\n" << DEF_SEPARATOR_MAIN << endl;
+
+    return 0;
 }
