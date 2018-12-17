@@ -57,7 +57,6 @@
 class CInitializer {
 public:
     static void InitializeForCTable(CMenu &cMenu, CTabHandler &cTabHandler);
-    // static void InitializeCalulator(CMenu &cMenu, CCalculator &calculator);
     static void InitializeForGenetic(CMenu &cMenu, vector<CItem *> &itemVector);
 
 };

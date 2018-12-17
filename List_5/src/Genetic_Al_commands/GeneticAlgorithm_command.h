@@ -17,6 +17,7 @@
 
 
 #define DEF_WORK_IN_PROGRESS "Work in progress..."
+#define EMPTY_VECTOR_INFO "Item vector is empty. First, you have to add some items!"
 
 #include <vector>
 #include "../../lib/interface/CCommand.h"
@@ -26,20 +27,24 @@
 template<class T>
 class GeneticAlgorithm_command : public CCommand {
 private:
-    vector<CItem *> itemVector;
+    vector<CItem *> &itemVector;
 public:
-    explicit GeneticAlgorithm_command(const vector<CItem *> &itemVector);
+    explicit GeneticAlgorithm_command(vector<CItem *> &itemVector);
 
     void RunCommand() override;
 
 };
 
 template<class T>
-GeneticAlgorithm_command<T>::GeneticAlgorithm_command(const vector<CItem *> &itemVector) : itemVector(itemVector) {
+GeneticAlgorithm_command<T>::GeneticAlgorithm_command(vector<CItem *> &itemVector) : itemVector(itemVector) {
 };
 
 template<class T>
 void GeneticAlgorithm_command<T>::RunCommand() {
+    if(itemVector.empty()) {
+        cout << EMPTY_VECTOR_INFO << endl;
+        return;
+    }
 
     cout << "\n" << DEF_SEPARATOR << endl;
     cout << DEF_BACKPACK_CAPACITY;
@@ -68,12 +73,12 @@ void GeneticAlgorithm_command<T>::RunCommand() {
     cout << DEF_BEST_SOLUTION << endl;
 
     for (int i = 0; i < bestItems.size(); i++) {
-        cout << *bestItems.at(i) << endl;
+        cout << *bestItems.at(i);
         weightSum += (bestItems.at(i)->getWeight()) * (bestItems.at(i)->getFactor());
         valSum += (bestItems.at(i)->getValue()) * (bestItems.at(i)->getFactor());
     }
 
-    cout << SUM_W << weightSum << endl;
+    cout << "\n" << SUM_W << weightSum << endl;
     cout << SUM_V << valSum << endl;
 
     cout << "\n" << DEF_SEPARATOR  << endl;

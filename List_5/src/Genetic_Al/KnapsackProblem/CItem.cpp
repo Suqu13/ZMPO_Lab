@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <iomanip>
 #include "CItem.h"
 
 using namespace std;
@@ -29,11 +30,15 @@ void CItem::setFactor(double fold) {
 }
 
 ostream &operator<<(ostream &os, const CItem &item) {
-    os << DEF_WEIGHT << item.weight << DEF_VALUE << item.value << DEF_FACTOR << item.factor << DEF_NAME << item.name;
+    os << DEF_NAME << setw(8) << item.name << setw(10) << DEF_WEIGHT << setw(4) << item.weight << setw(10) << DEF_VALUE << setw(4) << item.value << setw(10) << DEF_FACTOR << setw(4) << item.factor  << endl;
     return os;
 }
 
 double CItem::getFactor() const {
     return factor;
+}
+
+string CItem::getName() const {
+    return name;
 }
 

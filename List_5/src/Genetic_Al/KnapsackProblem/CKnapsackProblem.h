@@ -21,7 +21,7 @@ using namespace std;
 template<class T>
 class CKnapsackProblem {
 private:
-    vector<CItem *> items;
+    vector<CItem *> &items;
     int maxCapacity;
     CIndividual<T> *bestIndividual;
     vector<double> maxItems;
@@ -29,23 +29,18 @@ private:
     double evaluateFitness(vector<T> genotype) const;
 
 public:
-    CKnapsackProblem(const vector<CItem *> &items, int maxCapacity);
-
+    CKnapsackProblem(vector<CItem *> &items, int maxCapacity);
     ~CKnapsackProblem();
-
     CIndividual<T> *createIndividual(double &mutProb);
-
     void findBestCIndividual(vector<CIndividual<T> *> population);
-
     vector<CItem *> getBestItem() const;
-
     bool checkIfGreater(CIndividual<T> *first, CIndividual<T> *second) const;
 
 };
 
 
 template<class T>
-CKnapsackProblem<T>::CKnapsackProblem(const vector<CItem *> &items, int maxCapacity) : items(items),
+CKnapsackProblem<T>::CKnapsackProblem(vector<CItem *> &items, int maxCapacity) : items(items),
                                                                                        maxCapacity(maxCapacity),
                                                                                        bestIndividual(
                                                                                                nullptr) {
@@ -59,7 +54,7 @@ CKnapsackProblem<T>::CKnapsackProblem(const vector<CItem *> &items, int maxCapac
 }
 
 template<>
-CKnapsackProblem<bool>::CKnapsackProblem(const vector<CItem *> &items, int maxCapacity) : items(items),
+CKnapsackProblem<bool>::CKnapsackProblem( vector<CItem *> &items, int maxCapacity) : items(items),
                                                                                        maxCapacity(maxCapacity),
                                                                                        bestIndividual(
                                                                                                nullptr) {

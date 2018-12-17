@@ -11,7 +11,7 @@
 #ifndef LIST_5_CGENETICALGORITHM_H
 #define LIST_5_CGENETICALGORITHM_H
 
-#define DEF_GENALG_DELETED "GeneticAlgorithm object dleted"
+#define DEF_GENALG_DELETED "GeneticAlgorithm object deleted"
 #define DEF_TIME_MEASURE "Measured time: "
 
 #include <random>

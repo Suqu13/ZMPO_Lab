@@ -7,7 +7,7 @@
 
 #define PARAMETER "parametr: "
 #define Copy_SUFFIX "_copy"
-#define REMOVING_COMMAND_OBJECT "usuwam: "
+#define REMOVING_TABLE "delete CTable object: "
 #define Def_NAME "Regular_CTable"
 #define Def_CON "bezp: "
 #define COPY "kopiuj: "

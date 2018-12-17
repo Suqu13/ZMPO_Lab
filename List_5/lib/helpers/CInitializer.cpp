@@ -19,6 +19,10 @@
 #include "../interface/CMenuCommand.h"
 #include "CMenuAnalyzer.h"
 #include "../../src/Genetic_Al_commands/GeneticAlgorithm_command.h"
+#include "../../src/Genetic_Al_commands/AddItem.h"
+#include "../../src/Genetic_Al_commands/RemoveItem.h"
+#include "../../src/Genetic_Al_commands/RemoveItemVector.h"
+#include "../../src/Genetic_Al_commands/ShowItems.h"
 
 
 using namespace std;
@@ -73,12 +77,22 @@ void CInitializer::InitializeForGenetic(CMenu &cMenu, vector<CItem *> &itemVecto
     CMenu *menu_solve;
     menu_solve = new CMenu("Solve Knapsack problem", "solve");
 
-    menu_solve->AddMenuItem(new CMenuCommand("As int", "int", "INT", new GeneticAlgorithm_command<int>(itemVector)));
+    menu_solve->AddMenuItem(new CMenuCommand("As int", "int", "It makes possible to run the algorithm as int example", new GeneticAlgorithm_command<int>(itemVector)));
     menu_solve->AddMenuItem(
-            new CMenuCommand("As double", "double", "DOUBLE", new GeneticAlgorithm_command<double>(itemVector)));
+            new CMenuCommand("As double", "double", "It makes possible to run the algorithm as double example", new GeneticAlgorithm_command<double>(itemVector)));
     menu_solve->AddMenuItem(
-            new CMenuCommand("AS boolean", "boolean", "BOOLEAN", new GeneticAlgorithm_command<bool>(itemVector)));
+            new CMenuCommand("AS boolean", "boolean", "It makes possible to run the algorithm as boolean example", new GeneticAlgorithm_command<bool>(itemVector)));
     cMenu.AddMenuItem(menu_solve);
-}
 
+    CMenu *menu_menage;
+    menu_menage = new CMenu("Items manage", "manage");
+
+    menu_menage->AddMenuItem(new CMenuCommand("Add a new item", "add", "This command adds a completely new item to the vector", new AddItem(itemVector)));
+    menu_menage->AddMenuItem(new CMenuCommand("Remove an item", "remove", "This command removes an item from the vector", new RemoveItem(itemVector)));
+    menu_menage->AddMenuItem(new CMenuCommand("Clear vector", "clear", "This command erase the whole vector", new RemoveItemVector(itemVector)));
+    cMenu.AddMenuItem(menu_menage);
+
+    cMenu.AddMenuItem(new CMenuCommand("Show items", "show", "This command prints all items on the console", new ShowItems(itemVector)));
+
+}
 

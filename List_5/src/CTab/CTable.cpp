@@ -46,7 +46,7 @@ CTable::CTable(const CTable &pcOther) : iDEF_LENGTH(10), sDEF_NAME(Def_NAME) {
 //Deconstuctor
 CTable::~CTable() {
     delete[] iArray;
-    cout << REMOVING_COMMAND_OBJECT << sName << endl;
+    cout << REMOVING_TABLE<< sName << endl;
 }
 
 //Operator copies values from A to B

@@ -32,7 +32,7 @@ int main() {
 //            new CItem("item_7", 2, 1)
     };
 
-    CMenu *cMenu = new CMenu("Main menu", "main menu command");
+    CMenu *cMenu = new CMenu("Knapsack Problem", "SPECIAL INTERFACE");
     CInitializer::InitializeForGenetic(*cMenu,itemVector);
     bool again = true;
 
@@ -41,7 +41,7 @@ int main() {
     while (again) {
         CMenuAnalyzer::setStaticMember(cMenu);
 
-        cout << "Do you want to run: " << cMenu->getS_name() << "(" << cMenu->getS_command() << ")?(y/n): ";
+        cout << "Do you want to run: " << cMenu->getS_name() << " (" << cMenu->getS_command() << ")?(y/n): ";
         if (Utilities::bYOrNIntepreter()) {
             cMenu->Run();
         }
