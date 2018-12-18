@@ -35,18 +35,13 @@ private:
     CKnapsackProblem<T> *cKnapsackProblem;
 
     int getBetterFromTwo();
-
     void generatePopulation();
-
     void reproducePopulation(vector<CIndividual<T> *> &newPopulation);
-
     void rewritePopulation(vector<CIndividual<T> *> &newPopulation);
 
 public:
     CGeneticAlgorithm(int popSize, double mutProb, double crossProb, CKnapsackProblem<T> *cKnapsackProblem);
-
     ~CGeneticAlgorithm();
-
     vector<CItem *> runGeneticAlgorithm(int &timeForIterations);
 };
 
@@ -94,11 +89,9 @@ vector<CItem *> CGeneticAlgorithm<T>::runGeneticAlgorithm(int &timeForIterations
     return cKnapsackProblem->getBestItem();
 }
 
+//TODO ZJEBANE
 template<class T>
 void CGeneticAlgorithm<T>::reproducePopulation(vector<CIndividual<T> *> &newPopulation) {
-    CIndividual<T> firstChild;
-    CIndividual<T> secondChild;
-
     while (newPopulation.size() < popSize) {
 
         random_device rd;
@@ -108,20 +101,32 @@ void CGeneticAlgorithm<T>::reproducePopulation(vector<CIndividual<T> *> &newPopu
         int firstIndividualIndex = getBetterFromTwo();
         int secondIndividualIndex = getBetterFromTwo();
 
-        //todo zwraca mi jedno dziecko, co z drugim? możę zrobić to samo na odwrotnej kolejności?
         if (real(gen) < crossProb) {
+            CIndividual<T> *firstChild = ((*population.at(firstIndividualIndex)) + (*population.at(secondIndividualIndex)));
+            CIndividual<T> *secondChild = ((*population.at(secondIndividualIndex)) + (*population.at(firstIndividualIndex)));
 
-            firstChild = ((*population.at(firstIndividualIndex)) + (population.at(secondIndividualIndex)));
-            newPopulation.push_back(new CIndividual<T>(firstChild));
-            if (newPopulation.size() < popSize) {
-                secondChild = ((*population.at(secondIndividualIndex)) + (population.at(firstIndividualIndex)));
-                newPopulation.push_back(new CIndividual<T>(secondChild));
+            if (newPopulation.size() + 1 < popSize) {
+                newPopulation.push_back(secondChild);
+                newPopulation.push_back(firstChild);
+            } else if (newPopulation.size() < popSize) {
+                if (cKnapsackProblem->checkIfGreater(firstChild, secondChild)) {
+                    newPopulation.push_back(firstChild);
+                } else {
+                    newPopulation.push_back(secondChild);
+                }
             }
-
         } else {
-            newPopulation.push_back(new CIndividual<T>(*population.at(firstIndividualIndex)));
-            if (newPopulation.size() < popSize)
+            if (newPopulation.size() + 1 < popSize) {
+                newPopulation.push_back(new CIndividual<T>(*population.at(firstIndividualIndex)));
                 newPopulation.push_back(new CIndividual<T>(*population.at(secondIndividualIndex)));
+            } else if (newPopulation.size() < popSize) {
+                if (cKnapsackProblem->checkIfGreater(population.at(firstIndividualIndex),
+                                                     population.at(secondIndividualIndex))) {
+                    newPopulation.push_back(new CIndividual<T>(*population.at(firstIndividualIndex)));
+                } else {
+                    newPopulation.push_back(new CIndividual<T>(*population.at(secondIndividualIndex)));
+                }
+            }
         }
     }
 }
@@ -144,8 +149,13 @@ int CGeneticAlgorithm<T>::getBetterFromTwo() {
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dis(0, popSize - 1);
-    int first = dis(gen);
-    int second = dis(gen);
+    int first;
+    int second;
+
+    do {
+        first = dis(gen);
+        second = dis(gen);
+    }while (first == second);
 
     if (cKnapsackProblem->checkIfGreater(population.at(first), population.at(second))) {
         return first;

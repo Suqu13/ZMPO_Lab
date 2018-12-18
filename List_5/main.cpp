@@ -9,6 +9,10 @@
 #define DEF_SEPARATOR_MAIN "********************************************"
 
 
+#define MAIN_MENU_TITTLE "Knapsack Problem"
+
+#define MAIN_COMMAND_TITTLE "SPECIAL INTERFACE"
+
 int main() {
 
     vector<CItem *> itemVector = {
@@ -32,7 +36,7 @@ int main() {
 //            new CItem("item_7", 2, 1)
     };
 
-    CMenu *cMenu = new CMenu("Knapsack Problem", "SPECIAL INTERFACE");
+    CMenu *cMenu = new CMenu(MAIN_MENU_TITTLE, MAIN_COMMAND_TITTLE);
     CInitializer::InitializeForGenetic(*cMenu,itemVector);
     bool again = true;
 

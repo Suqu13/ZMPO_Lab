@@ -34,7 +34,7 @@ public:
     CIndividual<T> *createIndividual(double &mutProb);
     void findBestCIndividual(vector<CIndividual<T> *> population);
     vector<CItem *> getBestItem() const;
-    bool checkIfGreater(CIndividual<T> *first, CIndividual<T> *second) const;
+    bool checkIfGreater(CIndividual<T> *first, CIndividual<T> *second);
 
 };
 
@@ -53,27 +53,14 @@ CKnapsackProblem<T>::CKnapsackProblem(vector<CItem *> &items, int maxCapacity) :
     };
 }
 
-template<>
-CKnapsackProblem<bool>::CKnapsackProblem( vector<CItem *> &items, int maxCapacity) : items(items),
-                                                                                       maxCapacity(maxCapacity),
-                                                                                       bestIndividual(
-                                                                                               nullptr) {
-    if (this->maxCapacity <= 0) this->maxCapacity = 10;
-    for (int i = 0; i < items.size(); ++i) {
-        this->maxItems.push_back(1);
-    };
-}
+
 template<class T>
 CKnapsackProblem<T>::~CKnapsackProblem() {
-//    for (int i = 0; i < items.size(); ++i) {
-//        delete items[i];
-//    }
-//    delete bestIndividual;
+    delete bestIndividual;
     maxItems.clear();
     cout << DEF_KNAPSACKPROBLEM_DELETED << endl;
 }
 
-//TODO zastanow sie co z factorem, jak do konca go przekazywac
 template<class T>
 vector<CItem *> CKnapsackProblem<T>::getBestItem() const {
     vector<CItem *> solution;
@@ -81,18 +68,6 @@ vector<CItem *> CKnapsackProblem<T>::getBestItem() const {
     for (int i = 0; i < genotype.size(); ++i) {
         if (genotype[i] != 0) {
             items.at(i)->setFactor(genotype[i]);
-            solution.push_back(items[i]);
-        }
-    }
-    return solution;
-}
-
-template<>
-vector<CItem *> CKnapsackProblem<bool>::getBestItem() const {
-    vector<CItem *> solution;
-    vector<bool> genotype = bestIndividual->getGenotype();
-    for (int i = 0; i < genotype.size(); ++i) {
-        if (genotype[i] == true) {
             solution.push_back(items[i]);
         }
     }
@@ -130,26 +105,10 @@ double CKnapsackProblem<T>::evaluateFitness(vector<T> genotype) const {
     return currentValue;
 }
 
-template<>
-double CKnapsackProblem<bool>::evaluateFitness(vector<bool> genotype) const {
-    int currentValue = 0;
-    int currentWeight = 0;
-    for (int i = 0; i < genotype.size(); ++i) {
-        if (genotype[i] == true) {
-            currentValue += (*(items.at(i))).getValue();
-            currentWeight += items[i]->getWeight();
-            if (currentWeight > maxCapacity) {
-                return 0;
-            }
-        }
-    }
-    return currentValue;
-}
-
 template<class T>
-bool CKnapsackProblem<T>::checkIfGreater(CIndividual<T> *first, CIndividual<T> *second) const {
-    return this->evaluateFitness(first->getGenotype()) >
-           this->evaluateFitness(second->getGenotype());
+bool CKnapsackProblem<T>::checkIfGreater(CIndividual<T> *first, CIndividual<T> *second) {
+    return evaluateFitness(first->getGenotype()) >
+           evaluateFitness(second->getGenotype());
 }
 
 template<class T>
@@ -165,16 +124,6 @@ CIndividual<T> *CKnapsackProblem<T>::createIndividual(double &mutProb) {
     return new CIndividual<T>(genotype, mutProb, maxItems);
 }
 
-template<>
-CIndividual<bool> *CKnapsackProblem<bool>::createIndividual(double &mutProb) {
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<> dis(0, 1);
-    vector<bool> genotype;
-    for (int i = 0; i < items.size(); ++i) {
-        genotype.push_back(dis(gen) == 1);
-    }
-    return new CIndividual<bool>(genotype, mutProb, maxItems);
-}
+
 
 #endif //LIST_5_CKNAPSACKPROBLEM_H

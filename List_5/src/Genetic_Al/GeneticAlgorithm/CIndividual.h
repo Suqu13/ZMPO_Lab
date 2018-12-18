@@ -35,7 +35,7 @@ public:
 
     void operator++(int);
 
-    CIndividual operator+(CIndividual *secondParent);
+    CIndividual *operator+(CIndividual &secondParent);
 
     const vector<T> &getGenotype() const;
 };
@@ -82,40 +82,28 @@ void CIndividual<T>::mutate() {
         if (mut(gen) < mutProb) {
             uniform_real_distribution<> fold(-(maxItems.at(i)/2), maxItems.at(i));
             T newFactor = fold(gen);
-            newFactor > 0 ? genotype.at(i) = newFactor : genotype.at(i) = 0;
-        }
-    }
-}
-
-template<>
-void CIndividual<bool>::mutate() {
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_real_distribution<> mut(0, 1);
-    for (int i = 0; i < genotype.size(); i++) {
-        if (mut(gen) < mutProb) {
-            genotype.at(i) = !genotype.at(i);
+            genotype.at(i) = (newFactor > 0) ? newFactor : 0;
         }
     }
 }
 
 template<class T>
-CIndividual<T> CIndividual<T>::operator+(CIndividual *secondParent) {
+CIndividual<T> *CIndividual<T>::operator+(CIndividual &secondParent) {
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> dis(1, int (this->genotype.size() - 1));
     int crossingPoint = dis(gen);
 
-    CIndividual children(mutProb, this->maxItems);
+    CIndividual *children = new CIndividual(mutProb, this->maxItems);
 
     for (int i = 0; i < genotype.size(); ++i) {
         if (i < crossingPoint) {
-            children.genotype.push_back(genotype.at(i));
+            children->genotype.push_back(genotype.at(i));
         } else {
-            children.genotype.push_back(secondParent->genotype.at(i));
+            children->genotype.push_back(secondParent.genotype.at(i));
         }
     }
-    children++;
+    (*children)++;
     return children;
 }
 
