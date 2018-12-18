@@ -60,7 +60,7 @@ int main() {
 
         cout << "Do you want to deserialize some file?(y/n): ";
         again = Utilities::bYOrNIntepreter();
-        if (again) {
+        if (again == 'y' || again == 'Y') {
             delete cMenu;
             cout << "\nProvide source name: ";
             string fileName;
@@ -79,6 +79,11 @@ int main() {
             delete cMenu;
         }
     }
+
+    for (int i = 0; i < itemVector.size() ; ++i) {
+        delete itemVector.at(i);
+    }
+    itemVector.clear();
 
     cout << "\n" << DEF_SEPARATOR_MAIN << endl;
 
